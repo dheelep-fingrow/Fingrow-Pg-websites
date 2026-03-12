@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aria Residences — Premium Women's PG</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=Italiana&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   CSS VARIABLES
+============================================= */
+:root {
+  --lavender-mist:   #c2b0c9;
+  --lavender-light:  #e2d5e8;
+  --lavender-soft:   #d4c4dd;
+  --lavender-warm:   #cbb8d4;
+  --lavender-pale:   #f3ecf5;
+  --lavender-accent: #a88fb5;
+  --mauve-soft:      #b5879f;
+  --dusty-lavender:  #9b89a3;
+  --nude:            #f5ede6;
+  --blush:           #f2dde4;
+  --champagne:       #e8d5a3;
+  --gold:            #b8924a;
+  --dark:            #2a1520;
+  --text:            #331525;
+  --text-soft:       #6e2d46;
+  --text-muted:      #a07888;
+}
+
+/* =============================================
+   RESET & BASE
+============================================= */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--lavender-pale);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Noise texture */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9990; opacity: 0.25;
+}
+
+/* =============================================
+   LOADER
+============================================= */
+#loader {
+  position: fixed; inset: 0;
+  background: var(--lavender-accent);
+  z-index: 100000;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 1.5rem;
+  transition: opacity 1s ease, visibility 1s;
+}
+#loader.out { opacity: 0; visibility: hidden; }
+.loader-wordmark {
+  font-family: 'Italiana', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--lavender-pale);
+  letter-spacing: 0.2em;
+  opacity: 0;
+  animation: loaderFadeIn 0.8s 0.3s forwards;
+  text-align: center;
+  padding: 0 1rem;
+}
+.loader-wordmark em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: rgb(92, 8, 8);
+}
+.loader-line-wrap { width: 160px; height: 1px; background: rgba(81, 4, 4, 0.1); overflow: hidden; }
+.loader-line {
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+  animation: loadSweep 1.6s ease-in-out forwards;
+  transform: translateX(-100%);
+}
+@keyframes loadSweep { to { transform: translateX(100%); } }
+@keyframes loaderFadeIn { to { opacity: 1; } }
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* =============================================
+   NAVBAR
+============================================= */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 5rem;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+nav.scrolled {
+  background: rgba(243,236,245,0.95);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 1px 0 rgba(168,143,181,0.1), 0 8px 30px rgba(168,143,181,0.07);
+  padding: 0.9rem 5rem;
+}
+.nav-logo {
+  font-family: 'Italiana', serif;
+  font-size: 1.6rem;
+  color: var(--dark);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-logo em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-soft); text-decoration: none;
+  position: relative; padding-bottom: 2px; transition: color 0.3s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 0.5px;
+  background: linear-gradient(90deg, var(--mauve-soft), var(--dusty-lavender));
+  transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.nav-links a:hover { color: var(--lavender-accent); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; border: none; padding: 0.55rem 1.5rem;
+  border-radius: 100px; cursor: pointer;
+  transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(168,143,181,0.3); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-soft); transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* =============================================
+   SIDEBAR
+============================================= */
+.sidebar {
+  position: fixed; top: 0; right: -100%;
+  width: min(320px, 90vw); height: 100vh;
+  background: linear-gradient(160deg, var(--mauve-soft), var(--dusty-lavender));
+  z-index: 2000; padding: 3rem 2.5rem;
+  transition: right 0.55s cubic-bezier(0.77,0,0.175,1);
+  display: flex; flex-direction: column;
+}
+.sidebar.open { right: 0; }
+.sidebar-close {
+  align-self: flex-end; background: none; border: none;
+  color: rgba(255,255,255,0.5); font-size: 1.3rem; cursor: pointer;
+  margin-bottom: 2.5rem; transition: color 0.3s;
+}
+.sidebar-close:hover { color: var(--champagne); }
+.sidebar-nav { list-style: none; flex: 1; }
+.sidebar-nav li { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.sidebar-nav a {
+  display: block; padding: 0.9rem 0;
+  font-family: 'Italiana', serif; font-size: 1.7rem;
+  color: var(--lavender-pale); text-decoration: none;
+  letter-spacing: 0.04em; transition: color 0.3s, padding-left 0.3s;
+}
+.sidebar-nav a:hover { color: var(--champagne); padding-left: 0.8rem; }
+.sidebar-social { display: flex; gap: 0.7rem; margin-top: 2rem; }
+.sidebar-social a {
+  width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: var(--champagne); text-decoration: none; font-size: 0.75rem; transition: all 0.3s;
+}
+.sidebar-social a:hover { background: var(--champagne); color: var(--mauve-soft); border-color: transparent; }
+.overlay {
+  position: fixed; inset: 0; background: rgba(100,80,110,0.55);
+  backdrop-filter: blur(5px); z-index: 1500;
+  opacity: 0; pointer-events: none; transition: opacity 0.4s;
+}
+.overlay.show { opacity: 1; pointer-events: auto; }
+
+/* =============================================
+   HERO
+============================================= */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 6rem 2rem 4rem;
+   background: linear-gradient(rgba(255, 240, 243, 0.8), rgba(255, 240, 243, 0.8)), 
+                        url(ne2.jpg) center/cover;
+}
+.hero-mesh {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 10%, var(--lavender-light) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 20%, var(--lavender-soft) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 90%, var(--lavender-warm) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, var(--lavender-mist) 0%, transparent 50%),
+    var(--lavender-pale);
+  animation: meshShift 14s ease-in-out infinite alternate;
+}
+@keyframes meshShift {
+  0%   { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(3deg) brightness(1.02); }
+}
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); animation: orbFloat 10s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(181,135,159,0.12), transparent 70%); top: -200px; left: -200px; }
+.orb-2 { width: 450px; height: 450px; background: radial-gradient(circle, rgba(155,137,163,0.1), transparent 70%); bottom: -80px; right: -80px; animation-delay: 4s; }
+.orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, rgba(194,176,201,0.12), transparent 70%); top: 40%; left: 60%; animation-delay: 2s; }
+@keyframes orbFloat {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(25px,-25px) scale(1.04); }
+  66%     { transform: translate(-18px,18px) scale(0.97); }
+}
+.hero-lines {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(168,143,181,0.025) 80px, rgba(168,143,181,0.025) 81px);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; display: flex; flex-direction: column; align-items: center;
+  width: 100%; max-width: 900px;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--lavender-accent); font-weight: 400;
+  margin-bottom: 1.8rem;
+  opacity: 0; animation: riseIn 1s 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+  padding: 0.5rem 1.3rem;
+  border: 0.5px solid rgba(168,143,181,0.25);
+  border-radius: 100px; background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(10px);
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '◆'; font-size: 0.45rem; color: var(--mauve-soft);
+}
+.hero-title {
+  font-family: 'Italiana', serif;
+  font-size: clamp(2.8rem, 7vw, 7rem);
+  font-weight: 400; line-height: 1.1; letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  opacity: 0; animation: riseIn 1.2s 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  color: var(--dark);
+}
+.hero-title .accent {
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+.hero-title .accent-light {
+  background: linear-gradient(135deg, #c79bb3, #ad9bb5);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  color: var(--text-soft); max-width: 440px;
+  line-height: 1.85; font-weight: 300; margin-bottom: 2.5rem;
+  opacity: 0; animation: riseIn 1s 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: riseIn 1s 1.1s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; padding: 0.95rem 2.2rem; border-radius: 100px;
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 10px 35px rgba(168,143,181,0.3);
+  font-family: 'DM Sans', sans-serif; position: relative; overflow: hidden;
+}
+.btn-primary span { position: relative; z-index: 1; }
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, #c79bb3, #9b89a3);
+  opacity: 0; transition: opacity 0.4s;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 45px rgba(168,143,181,0.4); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-secondary {
+  background: transparent; color: var(--text);
+  padding: 0.95rem 2.2rem; border-radius: 100px;
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  border: 1px solid rgba(168,143,181,0.3); cursor: pointer;
+  transition: all 0.4s; font-family: 'DM Sans', sans-serif;
+}
+.btn-secondary:hover { border-color: var(--dusty-lavender); color: var(--dusty-lavender); transform: translateY(-2px); }
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+  opacity: 0; animation: riseIn 1s 1.5s forwards;
+}
+.scroll-word { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-muted); writing-mode: vertical-rl; }
+.scroll-track { width: 1px; height: 50px; background: rgba(168,143,181,0.15); position: relative; overflow: hidden; }
+.scroll-thumb {
+  position: absolute; top: -100%; left: 0; width: 100%; height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--mauve-soft), transparent);
+  animation: scrollThumb 2.5s ease-in-out infinite;
+}
+@keyframes scrollThumb { to { top: 150%; } }
+
+/* =============================================
+   STATS BAR
+============================================= */
+.stats-bar {
+  background: var(--lavender-light);
+  display: grid; grid-template-columns: repeat(4,1fr);
+  position: relative; overflow: hidden;
+}
+.stats-bar::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(181,135,159,0.06), transparent 50%, rgba(155,137,163,0.05));
+  pointer-events: none;
+}
+.stat-item {
+  text-align: center; padding: 2.5rem 1.5rem;
+  position: relative; transition: background 0.3s;
+}
+.stat-item::after {
+  content: ''; position: absolute; right: 0; top: 20%; bottom: 20%;
+  width: 1px; background: rgba(0,0,0,0.06);
+}
+.stat-item:last-child::after { display: none; }
+.stat-item:hover { background: whitesmoke; }
+.stat-num {
+  font-family: 'Italiana', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: rgb(57, 3, 57);
+  line-height: 1; letter-spacing: 0.03em;
+}
+.stat-label {
+  font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgb(23, 5, 23); margin-top: 0.45rem;
+}
+
+/* =============================================
+   REVEAL ANIMATIONS
+============================================= */
+.fade-up    { opacity: 0; transform: translateY(40px);  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1); }
+.fade-left  { opacity: 0; transform: translateX(-50px); transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1); }
+.fade-right { opacity: 0; transform: translateX(50px);  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1); }
+.fade-scale { opacity: 0; transform: scale(0.93);       transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1), transform 0.85s cubic-bezier(0.16,1,0.3,1); }
+.in-view    { opacity: 1 !important; transform: none !important; }
+
+/* =============================================
+   SECTION COMMON
+============================================= */
+section { padding: 7rem 5rem; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--mauve-soft); font-weight: 400; margin-bottom: 1rem;
+}
+.section-label::before { content: ''; width: 22px; height: 0.5px; background: linear-gradient(90deg, var(--mauve-soft), var(--dusty-lavender)); }
+.section-title {
+  font-family: 'Italiana', serif;
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 400; line-height: 1.15; color: var(--dark); letter-spacing: 0.02em;
+}
+.section-title em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* =============================================
+   ABOUT (AWARD CARD REMOVED)
+============================================= */
+#about {
+  background: var(--lavender-soft);
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 6rem; align-items: center;
+}
+.about-visual { position: relative; }
+.about-main-img {
+  width: 100%; aspect-ratio: 4/5;
+  border-radius: 2px 24px 2px 24px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px rgba(168,143,181,0.2);
+  display: block;
+  background: linear-gradient(135deg, var(--lavender-light), var(--lavender-mist));
+}
+.about-main-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px 24px 2px 24px; display: block; }
+.about-float-tag {
+  position: absolute; top: 2rem; left: -1.2rem;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; padding: 0.65rem 1.2rem;
+  border-radius: 100px; font-size: 0.68rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(168,143,181,0.35);
+}
+/* Award card (the one with 🏆) has been removed entirely */
+.about-accent-img {
+  position: absolute; bottom: -2.5rem; right: -2rem;
+  width: 180px; aspect-ratio: 1; border-radius: 18px;
+  box-shadow: 0 18px 55px rgba(168,143,181,0.22);
+  overflow: hidden; border: 4px solid var(--lavender-pale);
+}
+.about-accent-img img { width: 100%; height: 100%; object-fit: cover; }
+.about-content { padding: 1rem 0; }
+.about-body {
+  font-size: 0.95rem; line-height: 1.95;
+  color: var(--text-soft); font-weight: 300;
+  margin: 1.6rem 0 2.5rem; max-width: 490px;
+}
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.about-card {
+  background: var(--lavender-pale); border-radius: 14px; padding: 1.2rem;
+  border: 1px solid rgba(181,135,159,0.1);
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  display: flex; gap: 0.9rem; align-items: flex-start;
+}
+.about-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(168,143,181,0.1); border-color: rgba(155,137,163,0.25); }
+.about-card-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blush), #f0dde8);
+  border-radius: 11px; display: flex; align-items: center;
+  justify-content: center; font-size: 1.1rem; transition: all 0.3s;
+}
+.about-card:hover .about-card-icon { background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender)); }
+.about-card strong { display: block; font-size: 0.85rem; color: var(--dark); margin-bottom: 0.2rem; }
+.about-card p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+
+/* =============================================
+   FEATURES
+============================================= */
+#features { background: var(--lavender-pale); }
+.features-intro {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3.5rem; gap: 2rem;
+}
+.features-intro p { font-size: 0.88rem; color: var(--text-soft); max-width: 280px; line-height: 1.8; text-align: right; font-weight: 300; }
+.features-grid {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.1rem;
+}
+.feature-card {
+  background: white; border-radius: 18px; padding: 2.2rem 1.8rem;
+  border: 1px solid rgba(181,135,159,0.08);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.feature-card.span-2 { grid-column: span 2; display: flex; gap: 1.8rem; align-items: center; }
+.feature-card.span-2 .feature-body { flex: 1; }
+.feature-card.dark {
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  border-color: transparent;
+}
+.feature-card:hover { transform: translateY(-6px); box-shadow: 0 22px 55px rgba(168,143,181,0.12); border-color: rgba(155,137,163,0.2); }
+.feature-card.dark:hover { box-shadow: 0 22px 55px rgba(168,143,181,0.35); }
+.feature-num {
+  position: absolute; top: 1.4rem; right: 1.4rem;
+  font-family: 'Italiana', serif; font-size: 2.8rem;
+  color: rgba(181,135,159,0.07); line-height: 1; pointer-events: none;
+  transition: color 0.4s;
+}
+.feature-card.dark .feature-num { color: rgba(255,255,255,0.05); }
+.feature-card:hover .feature-num { color: rgba(155,137,163,0.13); }
+.feature-icon {
+  width: 50px; height: 50px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; margin-bottom: 1.4rem;
+  background: linear-gradient(135deg, #f5e8ed, #eddff0);
+  transition: all 0.4s; flex-shrink: 0;
+}
+.feature-card.dark .feature-icon { background: rgba(255,255,255,0.15); }
+.feature-card:hover .feature-icon { background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender)); transform: rotate(-5deg) scale(1.08); }
+.feature-tag {
+  display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mauve-soft);
+  background: var(--blush); padding: 0.2rem 0.65rem;
+  border-radius: 100px; margin-bottom: 0.75rem;
+}
+.feature-card.dark .feature-tag { color: var(--champagne); background: rgba(255,255,255,0.14); }
+.feature-card h3 {
+  font-family: 'Italiana', serif; font-size: 1.28rem;
+  font-weight: 400; color: var(--dark); margin-bottom: 0.65rem; letter-spacing: 0.02em;
+}
+.feature-card.dark h3 { color: white; }
+.feature-card p { font-size: 0.8rem; color: var(--text-soft); line-height: 1.72; }
+.feature-card.dark p { color: rgba(255,255,255,0.7); }
+
+/* =============================================
+   PRICING
+============================================= */
+#pricing {
+  background: var(--lavender-warm);
+  position: relative; overflow: hidden; text-align: center;
+}
+.pricing-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 0%, rgba(181,135,159,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(155,137,163,0.1) 0%, transparent 55%);
+  pointer-events: none;
+}
+.pricing-lines {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(168,143,181,0.02) 59px, rgba(168,143,181,0.02) 60px);
+  pointer-events: none;
+}
+#pricing .section-label { justify-content: center; color: var(--mauve-soft); }
+#pricing .section-label::before { display: none; }
+#pricing .section-title { margin: 0.5rem auto 0.7rem; max-width: 480px; }
+.pricing-tagline { font-size: 0.85rem; color: var(--text-soft); margin-bottom: 3.5rem; font-weight: 300; letter-spacing: 0.05em; }
+.pricing-cards {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.4rem; max-width: 960px; margin: 0 auto; position: relative; z-index: 1;
+}
+.price-card {
+  background: var(--lavender-pale); border: 1px solid rgba(181,135,159,0.14);
+  border-radius: 22px; padding: 2.8rem 2rem; text-align: left;
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.price-card:hover { transform: translateY(-10px); border-color: var(--mauve-soft); box-shadow: 0 28px 65px rgba(168,143,181,0.16); }
+.price-card.featured {
+  background: linear-gradient(145deg, var(--lavender-pale), var(--lavender-light));
+  border-color: var(--dusty-lavender); transform: scale(1.04);
+  box-shadow: 0 18px 48px rgba(155,137,163,0.2);
+}
+.price-card.featured:hover { transform: scale(1.04) translateY(-10px); }
+.popular-pill {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.35rem 1.1rem; border-radius: 0 0 10px 10px; white-space: nowrap;
+}
+.price-type { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.4rem; }
+.price-amount {
+  font-family: 'Italiana', serif; font-size: clamp(2.8rem, 5vw, 4rem);
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;
+}
+.price-amount sup { font-size: 1.4rem; vertical-align: super; opacity: 0.7; }
+.price-period { font-size: 0.7rem; color: var(--text-muted); margin: 0.4rem 0 2.2rem; }
+.price-divider { height: 0.5px; background: rgba(0,0,0,0.06); margin-bottom: 1.8rem; }
+.price-features { list-style: none; margin-bottom: 2.5rem; }
+.price-features li {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.6rem 0; font-size: 0.82rem; color: var(--text-soft);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.price-features li:last-child { border: none; }
+.check { background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 0.72rem; }
+.price-btn {
+  display: block; width: 100%; padding: 0.9rem;
+  border-radius: 11px; text-align: center;
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.4s;
+  border: 1px solid rgba(181,135,159,0.25);
+  background: transparent; color: var(--mauve-soft); text-decoration: none;
+}
+.price-card.featured .price-btn {
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; border-color: transparent;
+  box-shadow: 0 8px 22px rgba(168,143,181,0.4);
+}
+.price-btn:hover { background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender)); color: white; border-color: transparent; }
+
+/* =============================================
+   GALLERY
+============================================= */
+#gallery { background: var(--lavender-light); padding-bottom: 0; }
+.gallery-intro {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 2.8rem; padding-bottom: 2.8rem;
+  border-bottom: 0.5px solid rgba(168,143,181,0.12); gap: 2rem;
+}
+.gallery-intro p { font-size: 0.88rem; color: var(--text-soft); max-width: 270px; line-height: 1.8; font-weight: 300; }
+.gallery-filter { display: flex; gap: 0.45rem; margin-top: 1rem; flex-wrap: wrap; }
+.filter-pill {
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.38rem 0.95rem; border-radius: 100px;
+  border: 1px solid rgba(181,135,159,0.2); color: var(--text-muted);
+  background: none; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+}
+.filter-pill.active, .filter-pill:hover {
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; border-color: transparent;
+}
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(12,1fr);
+  grid-template-rows: 280px 280px; gap: 0.9rem;
+}
+.g-item { border-radius: 14px; overflow: hidden; position: relative; cursor: pointer; background: var(--lavender-mist); }
+.g-item:nth-child(1) { grid-column:1/6;  grid-row:1/2; }
+.g-item:nth-child(2) { grid-column:6/9;  grid-row:1/2; }
+.g-item:nth-child(3) { grid-column:9/13; grid-row:1/3; }
+.g-item:nth-child(4) { grid-column:1/4;  grid-row:2/3; }
+.g-item:nth-child(5) { grid-column:4/9;  grid-row:2/3; }
+.g-item img { width:100%; height:100%; object-fit:cover; filter:saturate(1.02) brightness(0.98); transition:transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.5s; display:block; }
+.g-item:hover img { transform:scale(1.07); filter:saturate(1.1) brightness(0.92); }
+.g-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(155,137,163,0.7) 0%, transparent 50%); opacity:0; transition:opacity 0.5s; display:flex; align-items:flex-end; padding:1.6rem; }
+.g-item:hover .g-overlay { opacity:1; }
+.g-label { font-family:'Italiana', serif; font-size:1.25rem; color:white; letter-spacing:0.04em; transform:translateY(8px); opacity:0; transition:opacity 0.4s, transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.g-item:hover .g-label { opacity:1; transform:none; }
+
+/* =============================================
+   TESTIMONIALS
+============================================= */
+#testimonials { background: var(--lavender-pale); }
+.testimonials-layout { display: grid; grid-template-columns: 280px 1fr; gap: 5rem; align-items: start; }
+.testimonials-sticky { position: sticky; top: 5.5rem; }
+.testimonial-big-quote {
+  font-family: 'Italiana', serif; font-size: 7rem;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 0.8; margin-bottom: 1rem; pointer-events: none;
+}
+.testimonials-info p { font-size: 0.86rem; color: var(--text-soft); line-height: 1.8; font-weight: 300; margin: 0.9rem 0 1.8rem; }
+.testi-stats { display: flex; flex-direction: column; gap: 0.9rem; }
+.testi-stat-num {
+  font-family: 'Italiana', serif; font-size: 2.3rem;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;
+}
+.testi-stat-label { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.1em; }
+.testimonials-list { display: flex; flex-direction: column; gap: 1.3rem; }
+.testi-card {
+  background: white; border-radius: 18px; padding: 2.2rem;
+  border: 1px solid rgba(181,135,159,0.09);
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1); position: relative; overflow: hidden;
+}
+.testi-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(to bottom, var(--mauve-soft), var(--dusty-lavender));
+  transform: scaleY(0); transition: transform 0.4s; transform-origin: top;
+}
+.testi-card:hover { transform: translateX(5px); box-shadow: 0 12px 38px rgba(168,143,181,0.09); }
+.testi-card:hover::before { transform: scaleY(1); }
+.testi-stars {
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-size: 0.78rem; letter-spacing: 0.2em; margin-bottom: 0.9rem;
+}
+.testi-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; line-height: 1.75; color: var(--text); margin-bottom: 1.3rem; }
+.testi-author { display: flex; align-items: center; gap: 0.85rem; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blush), var(--nude));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0; border: 2px solid rgba(181,135,159,0.18);
+}
+.testi-name { font-size: 0.87rem; font-weight: 500; color: var(--dark); }
+.testi-role { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+/* =============================================
+   BOOKING
+============================================= */
+#booking {
+  background: linear-gradient(150deg, var(--lavender-mist) 0%, var(--lavender-soft) 45%, var(--lavender-light) 100%);
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 5rem; align-items: center; position: relative; overflow: hidden;
+}
+#booking::before {
+  content: ''; position: absolute; top: -180px; right: -180px;
+  width: 550px; height: 550px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(181,135,159,0.09), transparent 70%);
+  pointer-events: none;
+}
+.booking-contact { position: relative; z-index: 1; }
+.booking-contact p { font-size: 0.94rem; line-height: 1.95; color: var(--text-soft); font-weight: 300; margin: 1.4rem 0 2.5rem; max-width: 400px; }
+.contact-items { display: flex; flex-direction: column; gap: 0.5rem; }
+.ci {
+  display: flex; align-items: center; gap: 1.1rem;
+  padding: 1.1rem; border-radius: 14px;
+  background: var(--lavender-pale); border: 1px solid rgba(181,135,159,0.1);
+  transition: all 0.3s;
+}
+.ci:hover { transform: translateX(5px); box-shadow: 0 7px 22px rgba(168,143,181,0.09); border-color: rgba(155,137,163,0.28); }
+.ci-icon { width: 42px; height: 42px; border-radius: 11px; background: linear-gradient(135deg, var(--blush), #f0dce8); display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; }
+.ci-label { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.ci-value { font-size: 0.88rem; color: var(--dark); font-weight: 500; margin-top: 0.1rem; }
+.booking-form-card {
+  background: var(--lavender-pale); border-radius: 24px; padding: 3rem;
+  box-shadow: 0 35px 90px rgba(168,143,181,0.13);
+  position: relative; z-index: 1; border: 1px solid rgba(181,135,159,0.08);
+}
+.form-head {
+  font-family: 'Italiana', serif; font-size: 2rem;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 0.35rem; letter-spacing: 0.02em;
+}
+.form-sub { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 2.2rem; }
+.fg { margin-bottom: 1.15rem; }
+.fg label {
+  display: block; font-size: 0.65rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-soft); margin-bottom: 0.45rem;
+}
+.fg input, .fg select, .fg textarea {
+  width: 100%; padding: 0.85rem 1.1rem;
+  background: var(--lavender-light); border: 1.5px solid rgba(181,135,159,0.14);
+  border-radius: 11px; font-size: 0.86rem; color: var(--dark);
+  transition: all 0.3s; outline: none; font-family: 'DM Sans', sans-serif; appearance: none;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  border-color: var(--dusty-lavender); background: var(--lavender-pale);
+  box-shadow: 0 0 0 4px rgba(155,137,163,0.08);
+}
+.fg textarea { height: 85px; resize: none; }
+.fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.form-btn {
+  width: 100%; padding: 1.05rem;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  color: white; border: none; border-radius: 13px;
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1); margin-top: 0.7rem;
+  box-shadow: 0 10px 28px rgba(168,143,181,0.3);
+}
+.form-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(168,143,181,0.42); }
+.form-btn.sent { background: linear-gradient(135deg, #4a9060, #2d7048); }
+
+/* =============================================
+   FOOTER
+============================================= */
+footer {
+  background: var(--lavender-mist);
+  color: rgba(0,0,0,0.5); padding: 5.5rem 5rem 2.5rem; position: relative; overflow: hidden;
+}
+footer::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(181,135,159,0.45), rgba(155,137,163,0.35), transparent);
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 3.5rem; margin-bottom: 4.5rem; padding-bottom: 4.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.footer-brand-name {
+  font-family: 'Italiana', serif; font-size: 1.9rem;
+  color: var(--dark); letter-spacing: 0.12em; margin-bottom: 1.1rem;
+  display: block; text-decoration: none;
+}
+.footer-brand-name em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.footer-brand p { font-size: 0.82rem; line-height: 1.85; max-width: 265px; color: rgba(0,0,0,0.55); }
+.footer-social { display: flex; gap: 0.55rem; margin-top: 1.8rem; }
+.fs-link {
+  width: 36px; height: 36px; border-radius: 9px; border: 1px solid rgba(0,0,0,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(0,0,0,0.45); text-decoration: none; font-size: 0.75rem; transition: all 0.3s;
+}
+.fs-link:hover { background: linear-gradient(135deg, var(--mauve-soft), var(--dusty-lavender)); border-color: transparent; color: white; transform: translateY(-3px); }
+.footer-col h5 { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dark); margin-bottom: 1.6rem; font-weight: 400; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.75rem; }
+.footer-col a { color: rgba(0,0,0,0.45); text-decoration: none; font-size: 0.82rem; transition: color 0.3s, padding-left 0.3s; display: inline-block; }
+.footer-col a:hover { color: var(--mauve-soft); padding-left: 4px; }
+.footer-contact-row { display: flex; gap: 0.75rem; margin-bottom: 0.9rem; font-size: 0.8rem; align-items: flex-start; color: rgba(0,0,0,0.55); }
+.footer-contact-row .icon { color: var(--mauve-soft); flex-shrink: 0; margin-top: 0.1rem; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: rgba(0,0,0,0.38); flex-wrap: wrap; gap: 0.8rem; }
+.footer-bottom a { color: var(--mauve-soft); text-decoration: none; transition: opacity 0.3s; }
+.footer-bottom a:hover { opacity: 0.7; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--lavender-pale); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--mauve-soft), var(--dusty-lavender)); border-radius: 4px; }
+::selection { background: rgba(181,135,159,0.15); }
+
+/* =============================================
+   MEDIA QUERIES — TABLET LANDSCAPE (1100px)
+============================================= */
+@media (max-width: 1100px) {
+  /* Navbar */
+  nav { padding: 1.2rem 2.5rem; }
+  nav.scrolled { padding: 0.9rem 2.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+
+  /* Hero */
+  #hero { padding: 7rem 2rem 5rem; }
+
+  /* Stats */
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item:nth-child(2)::after { display: none; }
+
+  /* Sections */
+  section { padding: 5rem 2.5rem; }
+
+  /* About */
+  #about { grid-template-columns: 1fr; gap: 4rem; padding: 5rem 2.5rem; }
+  .about-visual { max-width: 480px; margin: 0 auto; }
+  .about-float-tag { left: 0; }
+  .about-accent-img { right: 0; bottom: -1.5rem; width: 150px; }
+  .about-body { max-width: 100%; }
+  .about-content { padding: 0; }
+
+  /* Features */
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .feature-card.span-2 { grid-column: span 2; }
+  .features-intro { flex-direction: column; align-items: flex-start; }
+  .features-intro p { text-align: left; max-width: 100%; }
+
+  /* Pricing */
+  .pricing-cards { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .price-card.featured { transform: none; box-shadow: 0 10px 30px rgba(155,137,163,0.15); }
+  .price-card.featured:hover { transform: translateY(-10px); }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px 220px 220px;
+  }
+  .g-item:nth-child(1) { grid-column: 1/3; grid-row: 1/2; }
+  .g-item:nth-child(2) { grid-column: 1/2; grid-row: 2/3; }
+  .g-item:nth-child(3) { grid-column: 2/3; grid-row: 2/4; }
+  .g-item:nth-child(4) { grid-column: 1/2; grid-row: 3/4; }
+  .g-item:nth-child(5) { grid-column: 1/3; grid-row: 4/5; }
+  .gallery-intro { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+
+  /* Testimonials */
+  .testimonials-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .testimonials-sticky { position: static; }
+  .testi-stats { flex-direction: row; gap: 2.5rem; }
+  .testimonial-big-quote { font-size: 5rem; }
+
+  /* Booking */
+  #booking { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 2.5rem; }
+  .booking-contact p { max-width: 100%; }
+
+  /* Footer */
+  footer { padding: 4.5rem 2.5rem 2rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; padding-bottom: 3rem; }
+}
+
+/* =============================================
+   MEDIA QUERIES — TABLET PORTRAIT (768px)
+============================================= */
+@media (max-width: 768px) {
+  /* Navbar */
+  nav { padding: 1rem 1.8rem; }
+  nav.scrolled { padding: 0.8rem 1.8rem; }
+
+  /* Hero */
+  #hero { padding: 6.5rem 1.5rem 4.5rem; min-height: 100svh; }
+  .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); }
+  .hero-desc { font-size: 0.9rem; }
+  .hero-actions { flex-direction: column; align-items: center; width: 100%; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 280px; text-align: center; }
+  .orb-1 { width: 350px; height: 350px; top: -100px; left: -100px; }
+  .orb-2 { width: 280px; height: 280px; }
+  .orb-3 { display: none; }
+
+  /* Stats */
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 2rem 1rem; }
+
+  /* Sections */
+  section { padding: 4.5rem 1.8rem; }
+
+  /* About */
+  #about { padding: 4.5rem 1.8rem; gap: 3rem; }
+  .about-main-img { aspect-ratio: 3/4; }
+  .about-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .about-accent-img { display: none; }
+  .about-float-tag { left: 0; top: 1.2rem; font-size: 0.62rem; padding: 0.5rem 1rem; }
+
+  /* Features */
+  .features-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+  .feature-card.span-2 { grid-column: span 1; flex-direction: column; gap: 1.2rem; }
+  .feature-card.span-2 .feature-icon { margin-bottom: 0; }
+
+  /* Pricing */
+  .pricing-cards { max-width: 360px; }
+  .price-card { padding: 2.2rem 1.6rem; }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 180px 180px 180px 180px;
+  }
+
+  /* Testimonials */
+  .testi-card { padding: 1.8rem; }
+  .testi-stats { gap: 2rem; }
+
+  /* Booking */
+  #booking { padding: 4.5rem 1.8rem; }
+  .booking-form-card { padding: 2rem 1.5rem; }
+  .fg-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  footer { padding: 4rem 1.8rem 2rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+/* =============================================
+   MEDIA QUERIES — MOBILE (480px)
+============================================= */
+@media (max-width: 480px) {
+  /* Navbar */
+  nav { padding: 0.9rem 1.2rem; }
+  nav.scrolled { padding: 0.75rem 1.2rem; }
+  .nav-logo { font-size: 1.35rem; }
+
+  /* Sidebar */
+  .sidebar { padding: 2.5rem 1.8rem; }
+  .sidebar-nav a { font-size: 1.5rem; }
+
+  /* Hero */
+  #hero { padding: 5.5rem 1.2rem 4rem; }
+  .hero-eyebrow { font-size: 0.58rem; letter-spacing: 0.2em; padding: 0.42rem 1rem; }
+  .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
+  .hero-title { font-size: clamp(2.2rem, 9vw, 3rem); line-height: 1.15; }
+  .hero-desc { font-size: 0.86rem; max-width: 100%; }
+  .btn-primary, .btn-secondary { padding: 0.85rem 1.8rem; font-size: 0.72rem; max-width: 260px; }
+  .hero-scroll { display: none; }
+
+  /* Stats */
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 1.6rem 0.8rem; }
+  .stat-num { font-size: 2rem; }
+  .stat-label { font-size: 0.58rem; letter-spacing: 0.12em; }
+  .stat-item::after { display: none; }
+
+  /* Sections */
+  section { padding: 3.5rem 1.2rem; }
+
+  /* Section Labels & Titles */
+  .section-label { font-size: 0.6rem; letter-spacing: 0.22em; }
+  .section-title { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+
+  /* About */
+  #about { padding: 3.5rem 1.2rem; gap: 2.5rem; }
+  .about-visual { max-width: 100%; }
+  .about-main-img { aspect-ratio: 3/2; border-radius: 2px 16px 2px 16px; }
+  .about-main-img img { border-radius: 2px 16px 2px 16px; }
+  .about-float-tag { display: none; }
+  .about-body { font-size: 0.88rem; margin: 1.2rem 0 2rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-card { padding: 1rem; }
+  .about-card-icon { width: 38px; height: 38px; font-size: 1rem; }
+  .about-card strong { font-size: 0.82rem; }
+  .about-card p { font-size: 0.72rem; }
+
+  /* Features */
+  #features { padding: 3.5rem 1.2rem; }
+  .feature-card { padding: 1.8rem 1.4rem; border-radius: 14px; }
+  .feature-card.span-2 { padding: 1.8rem 1.4rem; }
+  .feature-icon { width: 44px; height: 44px; font-size: 1.1rem; margin-bottom: 1.1rem; border-radius: 11px; }
+  .feature-card h3 { font-size: 1.1rem; }
+  .feature-card p { font-size: 0.76rem; }
+  .feature-num { font-size: 2.2rem; }
+
+  /* Pricing */
+  #pricing { padding: 3.5rem 1.2rem; }
+  .pricing-cards { max-width: 100%; }
+  .price-card { padding: 2rem 1.4rem; border-radius: 18px; }
+  .price-amount { font-size: 3rem; }
+  .price-features li { font-size: 0.78rem; }
+  .pricing-tagline { font-size: 0.78rem; margin-bottom: 2.5rem; }
+
+  /* Gallery */
+  #gallery { padding: 3.5rem 1.2rem 0; }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 160px 160px 160px 200px;
+  }
+  .g-item:nth-child(1) { grid-column: 1; grid-row: 1/2; }
+  .g-item:nth-child(2) { grid-column: 1; grid-row: 2/3; }
+  .g-item:nth-child(3) { grid-column: 1; grid-row: 3/4; }
+  .g-item:nth-child(4) { grid-column: 1; grid-row: 4/5; }
+  .g-item:nth-child(5) { grid-column: 1; grid-row: 5/6; }
+  .g-label { font-size: 1rem; }
+  .gallery-filter { gap: 0.35rem; }
+  .filter-pill { font-size: 0.6rem; padding: 0.32rem 0.75rem; }
+
+  /* Testimonials */
+  #testimonials { padding: 3.5rem 1.2rem; }
+  .testimonial-big-quote { font-size: 4rem; }
+  .testi-stats { flex-direction: row; gap: 1.5rem; }
+  .testi-stat-num { font-size: 1.9rem; }
+  .testi-card { padding: 1.5rem; border-radius: 14px; }
+  .testi-text { font-size: 0.95rem; }
+  .testi-name { font-size: 0.82rem; }
+  .testi-role { font-size: 0.68rem; }
+  .testi-avatar { width: 38px; height: 38px; font-size: 0.95rem; }
+
+  /* Booking */
+  #booking { padding: 3.5rem 1.2rem; gap: 2.5rem; }
+  .booking-form-card { padding: 1.6rem 1.2rem; border-radius: 18px; }
+  .form-head { font-size: 1.7rem; }
+  .form-sub { font-size: 0.75rem; margin-bottom: 1.6rem; }
+  .fg input, .fg select, .fg textarea { padding: 0.75rem 0.9rem; font-size: 0.82rem; }
+  .ci { padding: 0.9rem; border-radius: 11px; }
+  .ci-icon { width: 36px; height: 36px; font-size: 0.95rem; border-radius: 9px; }
+  .ci-value { font-size: 0.82rem; }
+  .form-btn { padding: 0.95rem; font-size: 0.72rem; }
+  .booking-contact p { font-size: 0.88rem; margin: 1rem 0 2rem; }
+
+  /* Footer */
+  footer { padding: 3.5rem 1.2rem 2rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2.5rem; padding-bottom: 2.5rem; }
+  .footer-brand-name { font-size: 1.65rem; }
+  .footer-brand p { font-size: 0.78rem; max-width: 100%; }
+  .footer-social { gap: 0.45rem; }
+  .fs-link { width: 32px; height: 32px; font-size: 0.7rem; }
+  .footer-col h5 { font-size: 0.6rem; margin-bottom: 1.2rem; }
+  .footer-col a { font-size: 0.78rem; }
+  .footer-contact-row { font-size: 0.75rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; font-size: 0.68rem; }
+}
+
+/* =============================================
+   MEDIA QUERIES — SMALL MOBILE (360px)
+============================================= */
+@media (max-width: 360px) {
+  nav { padding: 0.85rem 1rem; }
+  .nav-logo { font-size: 1.2rem; }
+  #hero { padding: 5rem 1rem 3.5rem; }
+  .hero-title { font-size: 2rem; }
+  section { padding: 3rem 1rem; }
+  #about, #booking { padding: 3rem 1rem; }
+  .btn-primary, .btn-secondary { padding: 0.8rem 1.5rem; font-size: 0.68rem; max-width: 240px; }
+  .price-card { padding: 1.8rem 1.2rem; }
+  .booking-form-card { padding: 1.4rem 1rem; }
+  footer { padding: 3rem 1rem 1.8rem; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat-item { padding: 1.4rem 0.6rem; }
+  .stat-num { font-size: 1.7rem; }
+}
+
+/* =============================================
+   MEDIA QUERIES — LARGE DESKTOP (1400px+)
+============================================= */
+@media (min-width: 1400px) {
+  nav { padding: 1.6rem 7rem; }
+  nav.scrolled { padding: 1rem 7rem; }
+  section { padding: 9rem 7rem; }
+  #about, #booking { padding: 9rem 7rem; }
+  footer { padding: 7rem 7rem 3rem; }
+  .hero-title { font-size: 8rem; }
+  .hero-desc { font-size: 1.1rem; max-width: 500px; }
+  .features-grid { gap: 1.3rem; }
+  .pricing-cards { max-width: 1060px; }
+  .gallery-grid { grid-template-rows: 320px 320px; }
+  .footer-top { gap: 5rem; }
+}
+
+/* =============================================
+   MEDIA QUERIES — ULTRAWIDE (1920px+)
+============================================= */
+@media (min-width: 1920px) {
+  nav { padding: 1.8rem 10rem; }
+  nav.scrolled { padding: 1.1rem 10rem; }
+  section { padding: 10rem 10rem; }
+  #about, #booking { padding: 10rem 10rem; }
+  footer { padding: 8rem 10rem 3.5rem; }
+  .hero-title { font-size: 9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-wordmark">Aria <em>Residences</em></div>
+  <div class="loader-line-wrap"><div class="loader-line"></div></div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+  <ul class="sidebar-nav">
+    <li><a href="#hero"         onclick="closeSidebar()">Home</a></li>
+    <li><a href="#about"        onclick="closeSidebar()">About</a></li>
+    <li><a href="#features"     onclick="closeSidebar()">Amenities</a></li>
+    <li><a href="#pricing"      onclick="closeSidebar()">Pricing</a></li>
+    <li><a href="#gallery"      onclick="closeSidebar()">Gallery</a></li>
+    <li><a href="#testimonials" onclick="closeSidebar()">Reviews</a></li>
+    <li><a href="#booking"      onclick="closeSidebar()">Book a Visit</a></li>
+  </ul>
+  <div class="sidebar-social">
+    <a href="#">ig</a><a href="#">fb</a><a href="#">wa</a><a href="#">in</a>
+  </div>
+</aside>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Aria <em>Residences</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#features">Amenities</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book a Visit</button>
+  <button class="hamburger" id="hamburger" onclick="openSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Premium Women's PG — Est. 2026</span>
+    <h1 class="hero-title">
+      Safe, <span class="accent">Elegant</span><br>
+      Living for <span class="accent-light">Women</span>
+    </h1>
+    <p class="hero-desc">A sanctuary where modern comfort meets warm community — your perfect home away from home in the heart of the city.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary"><span>✦ Book Now</span></a>
+      <a href="#about" class="btn-secondary">Check Availability</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    <span class="scroll-word">Scroll</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item fade-up">
+    <div class="stat-num">200+</div>
+    <div class="stat-label">Happy Residents</div>
+  </div>
+  <div class="stat-item fade-up" style="transition-delay:0.1s">
+    <div class="stat-num">5★</div>
+    <div class="stat-label">Average Rating</div>
+  </div>
+  <div class="stat-item fade-up" style="transition-delay:0.2s">
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">Security & Support</div>
+  </div>
+  <div class="stat-item fade-up" style="transition-delay:0.3s">
+    <div class="stat-num">6+</div>
+    <div class="stat-label">Years of Excellence</div>
+  </div>
+</div>
+
+<!-- ABOUT (AWARD CARD REMOVED) -->
+<section id="about">
+  <div class="about-visual fade-left">
+    <div class="about-main-img">
+      <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=85" alt="Premium room"
+        onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(160deg,var(--lavender-light),var(--lavender-soft),var(--lavender-warm))'">
+    </div>
+    <div class="about-float-tag">✦ Premium PG</div>
+    <!-- The award card (🏆) has been removed as requested -->
+    <div class="about-accent-img fade-scale" style="transition-delay:0.5s">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Dining area"
+        onerror="this.style.display='none';this.parentNode.style.background='linear-gradient(135deg,var(--lavender-accent),var(--lavender-mist))'">
+    </div>
+  </div>
+  <div class="about-content fade-right">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">A Place That Feels<br>Like <em>Home</em></h2>
+    <p class="about-body">Aria Residences was built with one dream — to give every woman a safe, beautiful, and nurturing space to thrive. We blend the warmth of family with the sophistication of a boutique residence, creating an environment where you can study, work, and grow with absolute peace of mind.</p>
+    <div class="about-grid">
+      <div class="about-card fade-up" style="transition-delay:0.1s">
+        <div class="about-card-icon">🔒</div>
+        <div><strong>24/7 Security</strong><p>Biometric entry, CCTV & night guard</p></div>
+      </div>
+      <div class="about-card fade-up" style="transition-delay:0.15s">
+        <div class="about-card-icon">🍽️</div>
+        <div><strong>Home-style Food</strong><p>Fresh meals prepared daily by chef</p></div>
+      </div>
+      <div class="about-card fade-up" style="transition-delay:0.2s">
+        <div class="about-card-icon">📶</div>
+        <div><strong>300Mbps Fibre</strong><p>Seamless high-speed connectivity</p></div>
+      </div>
+      <div class="about-card fade-up" style="transition-delay:0.25s">
+        <div class="about-card-icon">✨</div>
+        <div><strong>Premium Interiors</strong><p>Thoughtfully designed & furnished</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="features-intro">
+    <div class="fade-up">
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Everything You Need,<br><em>Elegantly Provided</em></h2>
+    </div>
+    <p class="fade-right" style="transition-delay:0.15s">Every detail at Aria has been curated for the modern woman — safety, comfort, and community all in one place.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card dark span-2 fade-up" style="transition-delay:0.05s">
+      <div class="feature-icon" style="font-size:1.5rem;margin-bottom:0">🔐</div>
+      <div class="feature-body">
+        <div class="feature-num">01</div>
+        <div class="feature-tag">24/7</div>
+        <h3>Advanced Security System</h3>
+        <p>Biometric fingerprint entry, OTP-based access, HD CCTV across all areas and a dedicated night guard — because your safety is our first priority.</p>
+      </div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.1s">
+      <div class="feature-num">02</div><div class="feature-icon">🛋️</div>
+      <div class="feature-tag">Furnished</div>
+      <h3>Luxury Interiors</h3>
+      <p>Premium beds, wardrobes, study tables and ergonomic chairs in every room.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.15s">
+      <div class="feature-num">03</div><div class="feature-icon">📶</div>
+      <div class="feature-tag">300Mbps</div>
+      <h3>Superfast WiFi</h3>
+      <p>Dedicated high-speed fibre with unlimited data for seamless work and streaming.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.2s">
+      <div class="feature-num">04</div><div class="feature-icon">🍱</div>
+      <div class="feature-tag">Fresh Daily</div>
+      <h3>Home-style Meals</h3>
+      <p>Nutritious breakfast, lunch and dinner crafted with care by our in-house chef.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.25s">
+      <div class="feature-num">05</div><div class="feature-icon">🧺</div>
+      <div class="feature-tag">Daily</div>
+      <h3>Laundry Service</h3>
+      <p>Convenient in-house laundry with quick turnaround and premium detergents.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.3s">
+      <div class="feature-num">06</div><div class="feature-icon">🧹</div>
+      <div class="feature-tag">Daily</div>
+      <h3>Housekeeping</h3>
+      <p>Professional daily room cleaning and common area maintenance for a pristine space.</p>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.35s">
+      <div class="feature-num">07</div><div class="feature-icon">⚡</div>
+      <div class="feature-tag">Always On</div>
+      <h3>Power Backup</h3>
+      <p>100% inverter and generator backup ensuring uninterrupted power round the clock.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-bg"></div>
+  <div class="pricing-lines"></div>
+  <div class="section-label fade-up" style="justify-content:center;margin-bottom:0.8rem">Our Plans</div>
+  <h2 class="section-title fade-up" style="margin:0.4rem auto 0.6rem">Transparent<em>Pricing</em></h2>
+  <p class="pricing-tagline fade-up">All inclusive · No hidden charges · Ever</p>
+  <div class="pricing-cards">
+    <div class="price-card fade-up" style="transition-delay:0.1s">
+      <div class="price-type">Sharing Room</div>
+      <div class="price-amount"><sup>₹</sup>6,500</div>
+      <div class="price-period">per person / month</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li><span class="check">✦</span> 3-person sharing</li>
+        <li><span class="check">✦</span> Attached bathroom</li>
+        <li><span class="check">✦</span> WiFi included</li>
+        <li><span class="check">✦</span> 2 meals/day</li>
+        <li><span class="check">✦</span> Power backup</li>
+        <li><span class="check">✦</span> 24/7 security</li>
+      </ul>
+      <button class="price-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Get Started</button>
+    </div>
+    <div class="price-card featured fade-up" style="transition-delay:0.15s">
+      <div class="popular-pill">Most Popular</div>
+      <div class="price-type">Double Sharing</div>
+      <div class="price-amount"><sup>₹</sup>9,500</div>
+      <div class="price-period">per person / month</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li><span class="check">✦</span> 2-person sharing</li>
+        <li><span class="check">✦</span> Premium mattress & AC</li>
+        <li><span class="check">✦</span> WiFi included</li>
+        <li><span class="check">✦</span> 3 meals/day</li>
+        <li><span class="check">✦</span> Laundry service</li>
+        <li><span class="check">✦</span> Daily housekeeping</li>
+        <li><span class="check">✦</span> Power backup</li>
+      </ul>
+      <button class="price-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Choose Plan</button>
+    </div>
+    <div class="price-card fade-up" style="transition-delay:0.2s">
+      <div class="price-type">Single Premium</div>
+      <div class="price-amount"><sup>₹</sup>14,000</div>
+      <div class="price-period">per person / month</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li><span class="check">✦</span> Private room</li>
+        <li><span class="check">✦</span> Luxury furnishing & AC</li>
+        <li><span class="check">✦</span> Premium WiFi</li>
+        <li><span class="check">✦</span> 3 meals + snacks</li>
+        <li><span class="check">✦</span> Daily housekeeping</li>
+        <li><span class="check">✦</span> Full amenity access</li>
+        <li><span class="check">✦</span> Priority support</li>
+      </ul>
+      <button class="price-btn" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Go Premium</button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-intro">
+    <div class="fade-left">
+      <div class="section-label">Inside Aria</div>
+      <h2 class="section-title">Spaces That <em>Inspire</em></h2>
+    </div>
+    <div class="fade-right" style="transition-delay:0.1s">
+      <p>Every corner of Aria is crafted with intention — from the sunlit rooms to the serene study lounge.</p>
+      <div class="gallery-filter">
+        <button class="filter-pill active">All</button>
+        <button class="filter-pill">Rooms</button>
+        <button class="filter-pill">Common</button>
+        <button class="filter-pill">Dining</button>
+      </div>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item fade-scale" style="transition-delay:0.05s">
+      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85" alt="Bedroom">
+      <div class="g-overlay"><div class="g-label">Elegant Bedrooms</div></div>
+    </div>
+    <div class="g-item fade-scale" style="transition-delay:0.1s">
+      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=700&q=85" alt="Bathroom">
+      <div class="g-overlay"><div class="g-label">Modern Bathrooms</div></div>
+    </div>
+    <div class="g-item fade-scale" style="transition-delay:0.15s">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85" alt="Living">
+      <div class="g-overlay"><div class="g-label">Living & Lounge</div></div>
+    </div>
+    <div class="g-item fade-scale" style="transition-delay:0.2s">
+      <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=700&q=85" alt="Dining">
+      <div class="g-overlay"><div class="g-label">Dining Space</div></div>
+    </div>
+    <div class="g-item fade-scale" style="transition-delay:0.25s">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1100&q=85" alt="Study">
+      <div class="g-overlay"><div class="g-label">Study & Co-working</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-layout">
+    <div class="testimonials-sticky fade-left">
+      <div class="testimonial-big-quote">"</div>
+      <div class="section-label">What They Say</div>
+      <h2 class="section-title">Stories from Our <em>Residents</em></h2>
+      <div class="testimonials-info">
+        <p>Over 200 women have called Aria home. Here's what they have to say about their experience.</p>
+      </div>
+      <div class="testi-stats">
+        <div>
+          <div class="testi-stat-num">4.9/5</div>
+          <div class="testi-stat-label">Google Rating</div>
+        </div>
+        <div>
+          <div class="testi-stat-num">98%</div>
+          <div class="testi-stat-label">Recommend Us</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials-list">
+      <div class="testi-card fade-up" style="transition-delay:0.1s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Aria feels like my second home. The security is top-notch and the food is absolutely delicious. I've never felt safer away from my family in all my years living away."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div><div class="testi-name">Priya Sharma</div><div class="testi-role">Software Engineer, Infosys · Resident since 2022</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:0.15s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The rooms are beautifully designed and everything is maintained so impeccably. The staff is warm, helpful and always available. Best PG in the whole city — highly recommend!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍💼</div>
+          <div><div class="testi-name">Ananya Reddy</div><div class="testi-role">MBA Student, IIM Hyderabad · Resident since 2023</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:0.2s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The WiFi is incredible for my remote work. The single premium room gives me all the privacy I need and the community is so warm. Best decision I've ever made coming here!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩‍💻</div>
+          <div><div class="testi-name">Meera Krishnan</div><div class="testi-role">Freelance Designer · Resident since 2021</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-contact fade-left">
+    <div class="section-label">Enquire Now</div>
+    <h2 class="section-title">Let's Find Your<br><em>Perfect Room</em></h2>
+    <p>We'd love to show you around. Schedule a visit or send us a message — our team responds within 2 hours.</p>
+    <div class="contact-items">
+      <div class="ci fade-up" style="transition-delay:0.1s">
+        <div class="ci-icon">📍</div>
+        <div><div class="ci-label">Address</div><div class="ci-value">123, Rose Valley, Banjara Hills, Hyderabad — 500034</div></div>
+      </div>
+      <div class="ci fade-up" style="transition-delay:0.15s">
+        <div class="ci-icon">📞</div>
+        <div><div class="ci-label">Phone</div><div class="ci-value">+91 98765 43210</div></div>
+      </div>
+      <div class="ci fade-up" style="transition-delay:0.2s">
+        <div class="ci-icon">✉️</div>
+        <div><div class="ci-label">Email</div><div class="ci-value">hello@ariaresidences.in</div></div>
+      </div>
+      <div class="ci fade-up" style="transition-delay:0.25s">
+        <div class="ci-icon">🕐</div>
+        <div><div class="ci-label">Hours</div><div class="ci-value">Mon – Sun, 9 AM to 8 PM</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="booking-form-card fade-right">
+    <div class="form-head">Book a Visit</div>
+    <p class="form-sub">Fill in your details and we'll get back to you shortly</p>
+    <div class="fg-row">
+      <div class="fg"><label>Full Name</label><input type="text" placeholder="Your full name"></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 00000 00000"></div>
+    </div>
+    <div class="fg"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+    <div class="fg">
+      <label>Room Preference</label>
+      <select>
+        <option value="" disabled selected>Select a room type</option>
+        <option>Sharing Room — ₹6,500/month</option>
+        <option>Double Sharing — ₹9,500/month</option>
+        <option>Single Premium — ₹14,000/month</option>
+      </select>
+    </div>
+    <div class="fg"><label>Move-in Date</label><input type="date"></div>
+    <div class="fg"><label>Message (Optional)</label><textarea placeholder="Any specific requirements or questions?"></textarea></div>
+    <button class="form-btn" id="formBtn" onclick="handleSubmit()">Send Enquiry →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-brand-name">Aria <em>Residences</em></a>
+      <p>A premium women's PG offering safety, comfort, and community in the heart of Hyderabad. Where every resident feels truly at home.</p>
+      <div class="footer-social">
+        <a href="#" class="fs-link">ig</a>
+        <a href="#" class="fs-link">fb</a>
+        <a href="#" class="fs-link">wa</a>
+        <a href="#" class="fs-link">in</a>
+        <a href="#" class="fs-link">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#features">Amenities</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#booking">Book Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Amenities</h5>
+      <ul>
+        <li><a href="#">24/7 Security</a></li>
+        <li><a href="#">Home-style Food</a></li>
+        <li><a href="#">High-Speed WiFi</a></li>
+        <li><a href="#">Laundry Service</a></li>
+        <li><a href="#">Housekeeping</a></li>
+        <li><a href="#">Power Backup</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Get in Touch</h5>
+      <div class="footer-contact-row"><span class="icon">📍</span><span>123, Rose Valley, Banjara Hills, Hyderabad – 500034</span></div>
+      <div class="footer-contact-row"><span class="icon">📞</span><span>+91 98765 43210</span></div>
+      <div class="footer-contact-row"><span class="icon">✉️</span><span>hello@ariaresidences.in</span></div>
+      <div class="footer-contact-row"><span class="icon">🕐</span><span>Mon – Sun, 9AM to 8PM</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Aria Residences. All rights reserved.</span>
+    <span>Crafted with ♥ for Women's Safety & Comfort</span>
+    <span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const l = document.getElementById('loader');
+    l.classList.add('out');
+    setTimeout(() => l.remove(), 1100);
+  }, 1800);
+});
+
+// NAVBAR SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// SIDEBAR
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  document.getElementById('hamburger').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.getElementById('hamburger').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// SMOOTH SCROLL — all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// REVEAL ON SCROLL
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up, .fade-left, .fade-right, .fade-scale').forEach(el => revealObs.observe(el));
+
+// GALLERY FILTER
+document.querySelectorAll('.filter-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+// FORM SUBMIT
+function handleSubmit() {
+  const btn = document.getElementById('formBtn');
+  btn.textContent = '✓ Enquiry Sent! We\'ll call you soon.';
+  btn.classList.add('sent');
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Enquiry →';
+    btn.classList.remove('sent');
+    btn.disabled = false;
+  }, 4000);
+}
+
+// SUBTLE PARALLAX
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  document.querySelectorAll('.orb').forEach((orb, i) => {
+    orb.style.transform = `translateY(${y * (0.1 + i * 0.04)}px)`;
+  });
+});
+
+// CLOSE SIDEBAR ON ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeSidebar();
+});
+</script>
+</body>
+</html>
