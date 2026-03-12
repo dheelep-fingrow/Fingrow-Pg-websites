@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LuxStay PG — Premium Paying Guest Accommodation in HSR Layout, Bengaluru." />
+  <meta name="theme-color" content="#0a0a0f" />
+  <title>LuxStay PG | Premium Accommodation · HSR Layout, Bengaluru</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230a0a0f'/><text y='46' x='9' font-size='40'>🏠</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+ 
+
+
+</head>
+<style>
+/* ================================================================
+   LUXSTAY PG — Complete Premium Stylesheet
+   All 10 issues fixed. Clean rebuild.
+================================================================ */
+
+/* ── VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --bg:         #08080e;
+  --bg2:        #0f0f18;
+  --bg3:        #161620;
+  --bg4:        #1c1c28;
+  --gold:       #d4a843;
+  --gold2:      #f0c96a;
+  --gold3:      #b8892e;
+  --gold-glow:  rgba(212,168,67,.18);
+  --gold-rgba:  rgba(212,168,67,.08);
+  --white:      #ffffff;
+  --off:        #e4e4f0;
+  --g400:       #8888aa;
+  --g600:       #44445a;
+  --g700:       #2a2a3a;
+  --success:    #3ecf8e;
+  --danger:     #ef4444;
+  --ff-head:    'Montserrat', sans-serif;
+  --ff-body:    'Poppins', sans-serif;
+  --nav-h:      68px;
+  --r-sm:       8px;
+  --r-md:       14px;
+  --r-lg:       20px;
+  --r-xl:       28px;
+  --r-f:        9999px;
+  --sh-g:       0 8px 32px rgba(212,168,67,.28);
+  --sh-gl:      0 20px 64px rgba(212,168,67,.38);
+  --sh-d:       0 20px 60px rgba(0,0,0,.55);
+  --t-f:        .2s ease;
+  --t-m:        .35s ease;
+  --t-s:        .6s ease;
+}
+
+/* ── RESET ──────────────────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);font-size:16px}
+body{font-family:var(--ff-body);background:var(--bg);color:var(--off);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit;transition:var(--t-f)}
+ul{list-style:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,select,textarea{font-family:inherit}
+
+/* ── HELPERS ────────────────────────────────────────────────── */
+.container{max-width:1240px;margin:0 auto;padding:0 1.5rem}
+.section{padding:5.5rem 0}
+.sdark{background:var(--bg2)}
+
+/* Section labels / titles */
+.slabel{font-family:var(--ff-head);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;display:block}
+.stitle{font-family:var(--ff-head);font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:900;color:var(--white);line-height:1.2;margin-bottom:.8rem}
+.ssub{font-size:.92rem;color:var(--g400);max-width:520px;margin:0 auto}
+.sec-hdr{text-align:center;margin-bottom:3.5rem}
+
+/* ── LAZY BG SHIMMER ────────────────────────────────────────── */
+.lazy-bg{background-color:var(--bg4);position:relative;overflow:hidden}
+.lazy-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 25%,rgba(255,255,255,.05) 50%,transparent 75%);background-size:200% 100%;animation:shimmer 1.6s infinite;z-index:1;transition:opacity .5s}
+.lazy-bg.loaded::before{opacity:0;pointer-events:none}
+.lazy-bg.loaded{animation:fadeIn .5s ease both}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes fadeIn{from{opacity:.5}to{opacity:1}}
+
+/* ── SCROLL ANIMATIONS ──────────────────────────────────────── */
+.anim{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.anim.in{opacity:1;transform:translateY(0)}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.82rem 1.9rem;border-radius:var(--r-f);font-family:var(--ff-head);font-size:.85rem;font-weight:700;letter-spacing:.03em;transition:all var(--t-m);cursor:pointer;border:2px solid transparent;position:relative;overflow:hidden;white-space:nowrap}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.07);opacity:0;transition:opacity var(--t-f)}
+.btn:hover::after{opacity:1}
+.btn-g{background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--bg);border-color:var(--gold);box-shadow:var(--sh-g)}
+.btn-g:hover{box-shadow:var(--sh-gl);transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--white);border-color:rgba(255,255,255,.4)}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.btn-og{background:transparent;color:var(--gold);border:2px solid var(--gold);font-family:var(--ff-head);font-size:.85rem;font-weight:700;padding:.82rem 1.9rem;border-radius:var(--r-f);display:inline-flex;align-items:center;gap:.5rem;transition:all var(--t-m);cursor:pointer;width:100%;justify-content:center;margin-top:1rem}
+.btn-og:hover{background:var(--gold);color:var(--bg);box-shadow:var(--sh-g);transform:translateY(-2px)}
+.btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border-radius:var(--r-f);padding:.82rem 1.9rem;font-family:var(--ff-head);font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;transition:all var(--t-m);margin-top:1.5rem}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+
+/* ── NAVBAR ─────────────────────────────────────────────────── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);transition:background var(--t-m),box-shadow var(--t-m)}
+.navbar.on{background:rgba(8,8,14,.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 1px 30px rgba(0,0,0,.6);border-bottom:1px solid rgba(212,168,67,.12)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 1.5rem;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:.7rem;font-family:var(--ff-head);font-size:1.35rem;font-weight:900;color:var(--white)}
+.nav-logo em{color:var(--gold);font-style:normal}
+.logo-box{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--bg);font-size:.95rem}
+.nav-menu{display:flex;align-items:center;gap:.1rem}
+.nl{font-family:var(--ff-head);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.75);padding:.4rem .75rem;border-radius:var(--r-f);letter-spacing:.02em;transition:all var(--t-f);position:relative}
+.nl::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:var(--gold);border-radius:2px;transition:transform var(--t-f)}
+.nl:hover,.nl.active{color:var(--gold)}
+.nl:hover::after,.nl.active::after{transform:translateX(-50%) scaleX(1)}
+.nav-cta{font-family:var(--ff-head);font-size:.78rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--bg);padding:.48rem 1.2rem;border-radius:var(--r-f);margin-left:.4rem;display:flex;align-items:center;gap:.4rem;transition:all var(--t-f)}
+.nav-cta:hover{box-shadow:var(--sh-g);transform:translateY(-1px)}
+
+/* ── Burger ──────────────────────────────────────────────────── */
+.burger{display:none;flex-direction:column;gap:5px;width:28px;padding:3px 0;background:none;border:none;cursor:pointer}
+.burger span{display:block;width:100%;height:2px;background:var(--white);border-radius:2px;transition:all var(--t-f);transform-origin:left}
+.burger.on span:nth-child(1){transform:rotate(43deg) translateY(-1px)}
+.burger.on span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.on span:nth-child(3){transform:rotate(-43deg) translateY(1px)}
+
+/* ── Mobile Close Button ─────────────────────────────────────── */
+.nav-close-item{display:none}
+.nav-close{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;height:36px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(212,168,67,.25);
+  border-radius:50%;
+  cursor:pointer;
+  position:relative;
+  transition:background var(--t-f),border-color var(--t-f),transform var(--t-f)
+}
+.nav-close:hover{background:rgba(212,168,67,.15);border-color:rgba(212,168,67,.6);transform:rotate(90deg)}
+.nav-close span{
+  position:absolute;
+  width:16px;height:2px;
+  background:var(--white);
+  border-radius:2px;
+  transition:background var(--t-f)
+}
+.nav-close span:nth-child(1){transform:rotate(45deg)}
+.nav-close span:nth-child(2){transform:rotate(-45deg)}
+.nav-close:hover span{background:var(--gold)}
+
+/* ── Mobile Breakpoint ───────────────────────────────────────── */
+@media(max-width:768px){
+  .burger{display:flex}
+  .nav-close-item{display:flex;justify-content:flex-end;width:100%;padding:.5rem 0 .25rem}
+
+  .nav-menu{
+    position:fixed;top:0;right:0;
+    width:min(300px,80vw);height:100dvh;
+    flex-direction:column;align-items:flex-start;
+    gap:0;padding:1rem 1.5rem 2rem;
+    background:rgba(8,8,14,.97);
+    backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+    border-left:1px solid rgba(212,168,67,.15);
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+    overflow-y:auto;
+    box-shadow:-8px 0 40px rgba(0,0,0,.5)
+  }
+  .nav-menu.open{transform:translateX(0)}
+
+  .nav-menu li{width:100%}
+  .nl{
+    display:block;
+    width:100%;
+    font-size:.9rem;
+    padding:.75rem .5rem;
+    border-bottom:1px solid rgba(255,255,255,.05)
+  }
+  .nl::after{display:none}
+  .nl:hover,.nl.active{padding-left:1rem;color:var(--gold)}
+  .nav-cta{
+    margin:1.25rem 0 0;
+    width:100%;
+    justify-content:center;
+    padding:.65rem 1.2rem;
+    font-size:.85rem
+  }
+}
+
+/* ── Nav Social Icons ── */
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-left: .6rem;
+}
+
+.ns-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  transition: transform .2s, box-shadow .2s, background .2s;
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--white);
+  background: rgba(255,255,255,.06);
+}
+
+/* WhatsApp */
+.ns-wa:hover {
+  background: #25D366;
+  border-color: #25D366;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(37,211,102,.5);
+  transform: translateY(-2px);
+}
+
+/* Facebook */
+.ns-fb:hover {
+  background: #1877F2;
+  border-color: #1877F2;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(24,119,242,.5);
+  transform: translateY(-2px);
+}
+
+/* Twitter / X */
+.ns-tw:hover {
+  background: #000;
+  border-color: #555;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(255,255,255,.15);
+  transform: translateY(-2px);
+}
+
+/* Instagram */
+.ns-ig:hover {
+  background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  border-color: #e6683c;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(220,39,67,.4);
+  transform: translateY(-2px);
+}
+
+/* Hide on small screens — show inside mobile menu instead */
+@media(max-width: 768px) {
+  .nav-socials { display: none }
+
+  /* Show social icons inside mobile drawer at bottom */
+  .nav-menu .mob-socials {
+    display: flex !important;
+    justify-content: center;
+    gap: .6rem;
+    padding: 1.2rem 0 .5rem;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,.08);
+    margin-top: .5rem;
+  }
+  .nav-menu .mob-socials .ns-icon {
+    width: 38px;
+    height: 38px;
+    font-size: .95rem;
+  }
+}
+
+/* ── Nav Social Icons ── */
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-left: .6rem;
+}
+
+.ns-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  transition: transform .2s, box-shadow .2s;
+  color: #fff;
+}
+
+.ns-wa { background: #25D366 }
+.ns-fb { background: #1877F2 }
+.ns-tw { background: #000 }
+.ns-ig { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888) }
+
+.ns-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+
+@media(max-width: 768px) {
+  .nav-socials { display: none }
+
+  .nav-menu .mob-socials {
+    display: flex !important;
+    justify-content: center;
+    gap: .6rem;
+    padding: 1.2rem 0 .5rem;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,.08);
+    margin-top: .5rem;
+  }
+  .nav-menu .mob-socials .ns-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* ── Floating Side Icons ── */
+.float-socials {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.fl-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #fff;
+  transition: width .25s, box-shadow .25s, transform .25s;
+  border-radius: 8px 0 0 8px;
+}
+
+.fl-wa { background: #25D366 }
+.fl-ig { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888) }
+.fl-fb { background: #1877F2 }
+
+.fl-icon:hover {
+  width: 52px;
+  transform: translateX(-4px);
+  box-shadow: -4px 0 16px rgba(0,0,0,.3);
+}
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:var(--bg4);background-size:cover;background-position:center;background-attachment:fixed;z-index:0;transition:background-image .5s ease}
+.hero-fog{position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,5,12,.93) 0%,rgba(8,8,18,.84) 50%,rgba(12,8,6,.9) 100%);z-index:1}
+.hero-body{position:relative;z-index:2;max-width:800px;padding:0 1.5rem;padding-top:var(--nav-h);display:flex;flex-direction:column;align-items:center;gap:.1rem}
+/* Fixed hero layout — everything stacked with proper spacing */
+.hero-eyebrow{font-family:var(--ff-head);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.75rem;margin-bottom:1.2rem;animation:up .9s ease both .1s}
+.hero-eyebrow span{display:inline-block;width:28px;height:1.5px;background:var(--gold);border-radius:2px}
+.hero-h1{font-family:var(--ff-head);font-size:clamp(2.4rem,6.5vw,5rem);font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-.03em;margin-bottom:1.2rem;animation:up .9s ease both .25s}
+.hero-h1 mark{background:none;color:var(--gold);-webkit-text-stroke:0}
+.hero-p{font-size:clamp(.9rem,1.8vw,1.08rem);color:rgba(255,255,255,.72);max-width:580px;line-height:1.75;margin-bottom:2rem;animation:up .9s ease both .4s}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;animation:up .9s ease both .55s}
+/* Stats bar */
+.hero-stats{display:flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.04);backdrop-filter:blur(20px);border:1px solid rgba(212,168,67,.2);border-radius:var(--r-xl);padding:1.1rem 2rem;flex-wrap:wrap;justify-content:center;animation:up .9s ease both .7s}
+.hs{display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.hs b{font-family:var(--ff-head);font-size:1.5rem;font-weight:900;color:var(--gold)}
+.hs small{font-size:.68rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.hs-div{width:1px;height:38px;background:rgba(212,168,67,.25)}
+/* Scroll indicator — absolute bottom, does NOT overlap stats */
+.hero-scroll-cta{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;cursor:pointer;animation:bob 2.5s ease-in-out infinite}
+.hsc-text{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);font-family:var(--ff-head);font-weight:600}
+.hsc-ring{width:38px;height:38px;border:1.5px solid rgba(212,168,67,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;transition:all var(--t-f)}
+.hero-scroll-cta:hover .hsc-ring{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ABOUT ──────────────────────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{width:100%;height:460px;border-radius:var(--r-lg);box-shadow:var(--sh-d);position:relative;z-index:1}
+.ab-badge{position:absolute;bottom:-1.2rem;right:-1.2rem;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--bg);border-radius:var(--r-md);padding:1.1rem 1.4rem;text-align:center;z-index:2;box-shadow:var(--sh-gl)}
+.ab-badge b{display:block;font-family:var(--ff-head);font-size:1.9rem;font-weight:900;line-height:1}
+.ab-badge small{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.ab-border{position:absolute;top:-.8rem;left:-.8rem;right:.8rem;bottom:.8rem;border:2px solid rgba(212,168,67,.28);border-radius:var(--r-lg);z-index:0}
+.adesc{color:var(--g400);margin-bottom:1.8rem;line-height:1.8}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.8rem}
+.acard{display:flex;align-items:flex-start;gap:.75rem;background:var(--bg3);border:1px solid rgba(212,168,67,.1);border-radius:var(--r-md);padding:.9rem;transition:all var(--t-f)}
+.acard:hover{border-color:rgba(212,168,67,.3);background:var(--bg4)}
+.acard i{color:var(--gold);font-size:1rem;margin-top:.1rem;flex-shrink:0}
+.acard b{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--g400);font-weight:600;margin-bottom:.15rem}
+.acard span{display:block;font-size:.84rem;font-weight:600;color:var(--white)}
+
+/* ── ACCORDION ROOMS ────────────────────────────────────────── */
+.ac-list{display:flex;flex-direction:column;gap:.85rem}
+.ac-item{background:var(--bg3);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-lg);overflow:hidden;transition:border-color var(--t-f),box-shadow var(--t-f)}
+.ac-item:hover{border-color:rgba(212,168,67,.28)}
+.ac-item.ac-feat{border-color:rgba(212,168,67,.3);box-shadow:var(--sh-g)}
+.ac-item.open{border-color:rgba(212,168,67,.45);box-shadow:var(--sh-gl)}
+/* Trigger row */
+.ac-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;cursor:pointer;gap:1rem;user-select:none;transition:background var(--t-f)}
+.ac-head:hover{background:rgba(255,255,255,.025)}
+.ac-hl{display:flex;align-items:center;gap:1.2rem;flex:1;min-width:0}
+.ac-thumb{width:88px;height:66px;border-radius:var(--r-sm);background-size:cover;background-position:center;flex-shrink:0;transition:transform var(--t-f)}
+.ac-head:hover .ac-thumb{transform:scale(1.04)}
+.ac-hinfo{flex:1;min-width:0}
+.ac-tags{display:flex;gap:.4rem;margin-bottom:.3rem;flex-wrap:wrap}
+.ac-hinfo h3{font-family:var(--ff-head);font-size:1rem;font-weight:800;color:var(--white);margin-bottom:.3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ac-hmeta{display:flex;flex-wrap:wrap;gap:.6rem}
+.ac-hmeta span{font-size:.74rem;color:var(--g400);display:flex;align-items:center;gap:.3rem}
+.ac-hmeta span i{color:var(--gold);font-size:.68rem}
+.ac-hr{display:flex;align-items:center;gap:1.25rem;flex-shrink:0}
+.ac-pricetag{display:flex;align-items:baseline;gap:.15rem}
+.acp{font-family:var(--ff-head);font-size:1.45rem;font-weight:900;color:var(--off);line-height:1}
+.acp.gold{color:var(--gold)}
+.acm{font-size:.72rem;color:var(--g400)}
+.ac-chev{width:34px;height:34px;border-radius:50%;background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;transition:all var(--t-m);flex-shrink:0}
+.ac-item.open .ac-chev{background:var(--gold);color:var(--bg);transform:rotate(180deg)}
+/* Badges */
+.tag-av{background:rgba(62,207,142,.88);color:#fff;font-family:var(--ff-head);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.18rem .6rem;border-radius:var(--r-f)}
+.tag-pop{background:rgba(212,168,67,.92);color:var(--bg);font-family:var(--ff-head);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.18rem .6rem;border-radius:var(--r-f)}
+.tag-fire{background:rgba(239,68,68,.15);color:#f87171;border:1px solid rgba(239,68,68,.3);font-family:var(--ff-head);font-size:.62rem;font-weight:700;padding:.18rem .55rem;border-radius:var(--r-f);display:flex;align-items:center;gap:.25rem}
+.tag-ltd{background:rgba(245,158,11,.88);color:#fff;font-family:var(--ff-head);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.18rem .6rem;border-radius:var(--r-f)}
+.tag-eco{background:rgba(99,102,241,.88);color:#fff;font-family:var(--ff-head);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.18rem .6rem;border-radius:var(--r-f)}
+/* Panel */
+.ac-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1)}
+.ac-item.open .ac-body{max-height:1200px}
+.ac-body-in{border-top:1px solid rgba(212,168,67,.14);padding:2rem 1.5rem}
+.ac-2col{display:grid;grid-template-columns:320px 1fr;gap:2rem;align-items:start}
+.ac-bigimg{width:100%;height:260px;border-radius:var(--r-md);background-size:cover;background-position:center}
+.ac-desc{font-size:.87rem;color:var(--g400);line-height:1.75;margin-bottom:1.25rem}
+.ac-stitle{font-family:var(--ff-head);font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:1rem 0 .6rem;display:flex;align-items:center;gap:.45rem}
+.ac-hl-list{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin:0}
+.ac-hl-list li{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--off);padding:.45rem .7rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:var(--r-sm)}
+.ac-hl-list li i{color:var(--gold);font-size:.65rem;flex-shrink:0}
+.ac-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.ac-chips span{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:600;color:var(--off);background:rgba(212,168,67,.07);border:1px solid rgba(212,168,67,.18);border-radius:var(--r-f);padding:.28rem .75rem}
+.ac-chips span i{color:var(--gold);font-size:.68rem}
+.ac-ptable{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.aptr{display:flex;justify-content:space-between;align-items:center;padding:.55rem .85rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-sm);gap:.5rem}
+.aptr.gold{background:rgba(212,168,67,.08);border-color:rgba(212,168,67,.25)}
+.aptr span{font-size:.76rem;color:var(--g400)}
+.aptr b{font-family:var(--ff-head);font-size:.82rem;font-weight:800;color:var(--white);white-space:nowrap}
+.ac-rules{display:flex;flex-direction:column;gap:.35rem}
+.ac-rules li{display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--off);padding:.42rem .75rem;border-left:2.5px solid rgba(212,168,67,.45);background:rgba(255,255,255,.02);border-radius:0 var(--r-sm) var(--r-sm) 0}
+.ac-rules li i{color:var(--gold);font-size:.68rem;flex-shrink:0}
+.ac-bookbtn{margin-top:1.25rem;width:100%;justify-content:center}
+
+/* ── FACILITIES ─────────────────────────────────────────────── */
+.fac-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.fac-card{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-md);padding:1.75rem 1.35rem;text-align:center;transition:all var(--t-m);cursor:default;position:relative}
+.fac-card:hover{transform:translateY(-6px);border-color:rgba(212,168,67,.35);box-shadow:var(--sh-g)}
+.fc-icon{width:60px;height:60px;background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.22);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;transition:all var(--t-m)}
+.fc-icon i{font-size:1.4rem;color:var(--gold)}
+.fac-card:hover .fc-icon{background:rgba(212,168,67,.22);transform:scale(1.1) rotate(-6deg)}
+.fac-card h3{font-family:var(--ff-head);font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.fac-card p{font-size:.77rem;color:var(--g400);line-height:1.55}
+/* Popup tooltip */
+.fc-popup{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) scale(.92) translateY(6px);background:var(--bg4);border:1px solid rgba(212,168,67,.3);border-radius:var(--r-md);padding:.85rem 1rem;width:220px;pointer-events:none;opacity:0;transition:all .25s ease;box-shadow:var(--sh-d);z-index:10;text-align:left}
+.fc-popup::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(212,168,67,.3)}
+.fac-card:hover .fc-popup{opacity:1;transform:translateX(-50%) scale(1) translateY(0)}
+.fc-popup b{display:block;font-family:var(--ff-head);font-size:.78rem;font-weight:800;color:var(--gold);margin-bottom:.35rem}
+.fc-popup span{font-size:.76rem;color:var(--g400);line-height:1.6}
+
+/* ── PRICING ────────────────────────────────────────────────── */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;align-items:start}
+.pc{background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-lg);padding:1.75rem;transition:all var(--t-m);position:relative}
+.pc:hover{transform:translateY(-6px);box-shadow:var(--sh-d);border-color:rgba(212,168,67,.2)}
+.pc-pop{background:linear-gradient(160deg,rgba(212,168,67,.07),var(--bg3));border-color:rgba(212,168,67,.45);box-shadow:var(--sh-g);transform:scale(1.03)}
+.pc-pop:hover{transform:scale(1.03) translateY(-6px);box-shadow:var(--sh-gl)}
+.pc-badge-top{position:absolute;top:-.75rem;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--bg);font-family:var(--ff-head);font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;padding:.25rem .9rem;border-radius:var(--r-f);white-space:nowrap;display:flex;align-items:center;gap:.3rem}
+.pc-top{margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.pc-name{font-family:var(--ff-head);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:.6rem}
+.pc-pr{display:flex;align-items:baseline;gap:.2rem}
+.pc-pr span{font-size:1.3rem;font-weight:700;color:var(--g400)}
+.pc-pr b{font-family:var(--ff-head);font-size:2.4rem;font-weight:900;color:var(--white);line-height:1}
+.pc-pr small{font-size:.78rem;color:var(--g400)}
+.pc-list{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.5rem}
+.pc-list li{display:flex;align-items:center;gap:.65rem;font-size:.83rem;color:var(--off)}
+.pc-list li i.fa-check{color:var(--gold);font-size:.72rem;flex-shrink:0}
+.pc-list li i.fa-xmark{color:var(--g600);font-size:.72rem;flex-shrink:0}
+.pc-list li.no{color:var(--g600)}
+.pnote{text-align:center;margin-top:2rem;font-size:.82rem;color:var(--g400);display:flex;align-items:center;justify-content:center;gap:.5rem}
+.pnote i{color:var(--gold)}
+
+/* ── GALLERY ────────────────────────────────────────────────── */
+.gal-wrap{position:relative;margin-top:1.5rem;overflow:hidden}
+.gal-track{display:flex;gap:1.2rem;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding:.5rem 2rem 1.5rem;cursor:grab;scroll-snap-type:x mandatory}
+.gal-track::-webkit-scrollbar{display:none}
+.gal-track:active{cursor:grabbing}
+.gal-slide{flex:0 0 360px;scroll-snap-align:start;position:relative}
+.gal-img{height:270px;border-radius:var(--r-lg);background-size:cover;background-position:center;cursor:pointer;position:relative;overflow:hidden;transition:transform var(--t-m);box-shadow:var(--sh-d)}
+.gal-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 55%);z-index:1}
+.gal-img:hover{transform:scale(1.02)}
+/* Zoom icon on hover */
+.gal-img::before{content:'\f00e';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:52px;height:52px;background:rgba(212,168,67,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--bg);z-index:2;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.gal-img:hover::before{transform:translate(-50%,-50%) scale(1)}
+.gal-cap{position:absolute;bottom:.85rem;left:1rem;font-family:var(--ff-head);font-size:.78rem;font-weight:700;color:var(--white);z-index:2;letter-spacing:.06em}
+.gal-btn{position:absolute;top:50%;transform:translateY(-60%);width:46px;height:46px;border-radius:50%;background:rgba(212,168,67,.9);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:.95rem;z-index:5;box-shadow:var(--sh-g);transition:all var(--t-f)}
+.gal-btn:hover{background:var(--gold);transform:translateY(-60%) scale(1.1)}
+.gprev{left:.75rem}.gnext{right:.75rem}
+.gal-dots{display:flex;justify-content:center;gap:.5rem;padding-top:.5rem}
+.gal-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all var(--t-f);border:none}
+.gal-dot.on{background:var(--gold);width:24px;border-radius:4px}
+
+/* ── LIGHTBOX ───────────────────────────────────────────────── */
+.lb{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.96);backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.lb.show{opacity:1;visibility:visible}
+.lb-x{position:absolute;top:1.25rem;right:1.25rem;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--t-f);z-index:10}
+.lb-x:hover{background:var(--gold);color:var(--bg);transform:rotate(90deg) scale(1.1)}
+.lb-imgw{max-width:min(90vw,1100px);max-height:78vh;display:flex;align-items:center}
+.lb-imgw img{max-width:min(90vw,1100px);max-height:78vh;border-radius:var(--r-md);box-shadow:var(--sh-d);transform:scale(.9);transition:transform .4s cubic-bezier(.34,1.3,.64,1);object-fit:contain}
+.lb.show .lb-imgw img{transform:scale(1)}
+.lb-pv,.lb-nx{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(212,168,67,.15);border:1px solid rgba(212,168,67,.4);color:var(--gold);font-size:1.05rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s ease;z-index:10}
+.lb-pv:hover,.lb-nx:hover{background:var(--gold);color:var(--bg);transform:translateY(-50%) scale(1.1)}
+.lb-pv{left:1.25rem}.lb-nx{right:1.25rem}
+.lb-cap{font-family:var(--ff-head);font-size:.9rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-top:1rem}
+.lb-cnt{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.1em;margin-top:.3rem}
+
+/* ── LOCATION ───────────────────────────────────────────────── */
+.loc-grid{display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:start}
+.map-box{border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(212,168,67,.2);box-shadow:var(--sh-d)}
+.loc-h{font-family:var(--ff-head);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:1.25rem}
+.nearby{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.5rem}
+.nearby li{display:flex;align-items:center;gap:.9rem;padding:.8rem 1rem;background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-md);transition:all var(--t-f)}
+.nearby li:hover{border-color:rgba(212,168,67,.25);transform:translateX(4px)}
+.nb-ic{width:38px;height:38px;background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.22);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nb-ic i{color:var(--gold);font-size:.9rem}
+.nearby li div b{display:block;font-size:.84rem;font-weight:600;color:var(--white)}
+.nearby li div span{font-size:.72rem;color:var(--g400)}
+.loc-addr{display:flex;flex-direction:column;gap:.65rem;background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.2);border-radius:var(--r-md);padding:1.1rem 1.25rem}
+.la-row{display:flex;align-items:flex-start;gap:.75rem}
+.la-row i{color:var(--gold);font-size:.9rem;margin-top:.18rem;flex-shrink:0;width:16px}
+.la-row b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400);font-weight:600;margin-bottom:.1rem}
+.la-row span,.la-row a{font-size:.82rem;color:var(--off);line-height:1.5}
+.la-row a:hover{color:var(--gold)}
+
+/* ── BOOKING ────────────────────────────────────────────────── */
+.booking{position:relative;padding:5.8rem 0;overflow:hidden}
+.bk-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.bk-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,14,.95) 40%,rgba(8,8,14,.82));z-index:1}
+.bk-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
+.bk-sub{color:var(--g400);margin:.75rem 0 1.25rem;font-size:.9rem;line-height:1.7}
+.bk-perks{display:flex;flex-direction:column;gap:.65rem}
+.bk-perks li{display:flex;align-items:center;gap:.7rem;font-size:.87rem;color:var(--off)}
+.bk-perks li i{color:var(--gold);font-size:.95rem;width:18px;flex-shrink:0}
+.glass-form{background:rgba(255,255,255,.04);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);border:1px solid rgba(212,168,67,.2);border-radius:var(--r-xl);padding:2.25rem;box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06)}
+.gf-h{font-family:var(--ff-head);font-size:1.15rem;font-weight:800;color:var(--white);margin-bottom:1.5rem;padding-bottom:.9rem;border-bottom:1px solid rgba(212,168,67,.18);display:flex;align-items:center;gap:.6rem}
+.gf-h i{color:var(--gold)}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.25rem}
+.fg label{font-size:.72rem;font-weight:600;color:var(--g400);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:.38rem}
+.fg label i{color:var(--gold);font-size:.68rem}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:.78rem 1rem;color:var(--white);font-size:.88rem;transition:all var(--t-f);outline:none;width:100%}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--g600)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);background:rgba(212,168,67,.05);box-shadow:0 0 0 3px rgba(212,168,67,.1)}
+.fg select option{background:var(--bg3)}
+.fg textarea{resize:vertical;min-height:80px}
+
+/* ── REVIEWS ────────────────────────────────────────────────── */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+.rev-card{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-lg);padding:1.85rem;transition:all var(--t-m);position:relative;overflow:hidden}
+.rev-card::before{content:'"';position:absolute;top:1rem;right:1.5rem;font-family:Georgia,serif;font-size:4.5rem;color:rgba(212,168,67,.08);line-height:1}
+.rev-card:hover{transform:translateY(-4px);border-color:rgba(212,168,67,.25);box-shadow:var(--sh-g)}
+.rev-s{display:flex;gap:.25rem;margin-bottom:.85rem}
+.rev-s i{color:var(--gold);font-size:.82rem}
+.rev-card p{font-size:.87rem;color:var(--g400);line-height:1.75;font-style:italic;margin-bottom:1.3rem}
+.rev-auth{display:flex;align-items:center;gap:.9rem;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.06)}
+.rev-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--ff-head);font-size:.8rem;font-weight:800;flex-shrink:0}
+.rev-auth b{display:block;font-size:.87rem;font-weight:700;color:var(--white)}
+.rev-auth small{font-size:.72rem;color:var(--g400)}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+.footer{background:var(--bg2);border-top:1px solid rgba(212,168,67,.14)}
+.ft-top{padding:4.5rem 0 3rem}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1.5fr 1.5fr;gap:3rem}
+.ft-brand .nav-logo{margin-bottom:1.1rem}
+.ft-brand p{font-size:.83rem;color:var(--g400);line-height:1.7;max-width:290px;margin:.85rem 0 1.5rem}
+.ft-socials{display:flex;gap:.6rem}
+.ft-socials a{width:38px;height:38px;border-radius:50%;background:var(--bg3);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--g400);font-size:.85rem;transition:all var(--t-f)}
+.ft-socials a:hover{background:var(--gold);color:var(--bg);border-color:var(--gold);transform:translateY(-3px)}
+.ft-col h4{font-family:var(--ff-head);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:1.1rem}
+.ft-col ul li{margin-bottom:.5rem}
+.ft-col ul a{font-size:.83rem;color:var(--g400);transition:all var(--t-f)}
+.ft-col ul a:hover{color:var(--gold)}
+.ft-contact li{display:flex;align-items:flex-start;gap:.65rem;font-size:.82rem;color:var(--g400);margin-bottom:.7rem}
+.ft-contact li i{color:var(--gold);font-size:.82rem;margin-top:.15rem;flex-shrink:0;width:14px}
+.ft-contact a{color:var(--g400)}.ft-contact a:hover{color:var(--gold)}
+.ft-why li{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:var(--g400);margin-bottom:.5rem}
+.ft-why li i{color:var(--gold);font-size:.72rem}
+.ft-bot{border-top:1px solid rgba(255,255,255,.05);padding:1.4rem 0}
+.ft-bot .container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.ft-bot p{font-size:.78rem;color:var(--g600)}
+.ft-bot i{color:var(--danger)}
+.ftbl{display:flex;gap:1.1rem}
+.ftbl a{font-size:.76rem;color:var(--g600);transition:color var(--t-f)}
+.ftbl a:hover{color:var(--gold)}
+
+/* ── SCROLL TOP ─────────────────────────────────────────────── */
+.scrolltop{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold3));color:var(--bg);font-size:.95rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--sh-g);cursor:pointer;z-index:900;opacity:0;transform:translateY(20px);transition:all var(--t-m);border:none}
+.scrolltop.show{opacity:1;transform:translateY(0)}
+.scrolltop:hover{transform:translateY(-4px);box-shadow:var(--sh-gl)}
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media(max-width:1100px){
+  .price-grid{grid-template-columns:repeat(2,1fr)}
+  .fac-grid{grid-template-columns:repeat(3,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .ft-brand{grid-column:1/-1}
+}
+@media(max-width:1024px){
+  /* Nav mobile */
+  .burger{display:flex}
+  .nav-menu{position:fixed;top:0;right:-100%;width:min(340px,100vw);height:100vh;background:rgba(8,8,14,.97);backdrop-filter:blur(30px);flex-direction:column;align-items:flex-start;padding:calc(var(--nav-h)+2rem) 2rem 2rem;gap:.15rem;border-left:1px solid rgba(212,168,67,.14);transition:right var(--t-m);z-index:999;overflow-y:auto}
+  .nav-menu.open{right:0}
+  .nl{width:100%;padding:.85rem 1rem;font-size:.92rem}
+  .nav-cta{width:100%;margin:.5rem 0 0;padding:.85rem 1rem;justify-content:center}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-img{height:360px}
+  .loc-grid{grid-template-columns:1fr}
+  .bk-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .rev-grid{grid-template-columns:1fr}
+  .ac-2col{grid-template-columns:1fr}
+  .ac-bigimg{height:220px}
+}
+@media(max-width:768px){
+  :root{--nav-h:60px}
+  html{font-size:15px}
+  .section{padding:4rem 0}
+  .fac-grid{grid-template-columns:repeat(2,1fr)}
+  .price-grid{grid-template-columns:1fr}
+  .pc-pop{transform:scale(1)}
+  .pc-pop:hover{transform:translateY(-6px)}
+  .hero-stats{flex-direction:column;gap:.85rem}
+  .hs-div{width:50px;height:1.5px}
+  .about-cards{grid-template-columns:1fr}
+  .ac-ptable{grid-template-columns:1fr}
+  .ac-hl-list{grid-template-columns:1fr}
+  .gal-slide{flex:0 0 280px}
+  .gal-img{height:220px}
+  .fg-row{grid-template-columns:1fr}
+  .glass-form{padding:1.5rem 1.25rem}
+  .ft-grid{grid-template-columns:1fr}
+  .ft-bot .container{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .fac-grid{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+  .hero-btns .btn{width:100%;max-width:280px;justify-content:center}
+  .ac-head{padding:.9rem 1rem}
+  .ac-thumb{width:68px;height:52px}
+  .acp{font-size:1.2rem}
+  .ac-pricetag{display:none}
+}
+@media(min-width:1440px){
+  .gal-slide{flex:0 0 420px}
+  .gal-img{height:310px}
+}
+
+/* ================================================================
+   NEW ADDITIONS — Preloader, Room Cards, Modal, Map Strip,
+   Extra Premium Styles
+================================================================ */
+
+/* ── PRELOADER ─────────────────────────────────────────────── */
+.preloader{position:fixed;inset:0;z-index:99999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .7s ease,visibility .7s ease}
+.preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+.pl-inner{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.pl-logo{display:flex;align-items:center;gap:1rem;margin-bottom:.5rem;animation:plPop .8s cubic-bezier(.34,1.56,.64,1) both}
+.pl-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--bg);box-shadow:var(--sh-gl);animation:plRotate 2s ease-in-out infinite}
+.pl-brand{font-family:var(--ff-head);font-size:2.5rem;font-weight:900;color:var(--white);letter-spacing:-.03em}
+.pl-brand em{color:var(--gold);font-style:normal}
+.pl-tag{font-family:var(--ff-head);font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);animation:plFadeIn 1s ease .4s both}
+.pl-bar{width:280px;height:3px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;margin-top:.5rem}
+.pl-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold3),var(--gold),var(--gold2));border-radius:3px;transition:width .1s linear}
+.pl-pct{font-family:var(--ff-head);font-size:.78rem;font-weight:700;color:var(--gold);letter-spacing:.06em}
+/* Orbs */
+.pl-orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.pl-orb1{width:300px;height:300px;background:rgba(212,168,67,.12);top:-80px;left:-100px;animation:orbFloat 6s ease-in-out infinite}
+.pl-orb2{width:200px;height:200px;background:rgba(212,168,67,.08);bottom:-60px;right:-80px;animation:orbFloat 8s ease-in-out infinite reverse}
+.pl-orb3{width:150px;height:150px;background:rgba(120,80,200,.06);top:50%;right:20%;animation:orbFloat 5s ease-in-out 1s infinite}
+@keyframes plPop{from{opacity:0;transform:scale(.6) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes plFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes plRotate{0%,100%{transform:rotate(0deg) scale(1)}50%{transform:rotate(8deg) scale(1.05)}}
+@keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+/* ── HERO PARTICLES ─────────────────────────────────────────── */
+.hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hp{position:absolute;width:3px;height:3px;background:var(--gold);border-radius:50%;opacity:0;animation:hpAnim var(--d,6s) ease-in-out var(--dl,0s) infinite}
+@keyframes hpAnim{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.6}80%{opacity:.3}100%{opacity:0;transform:translateY(-120px) scale(1.5)}}
+
+/* ── ROOM CARDS — 4-col grid ────────────────────────────────── */
+.room-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.room-card{background:var(--bg3);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-lg);overflow:hidden;transition:all var(--t-m);display:flex;flex-direction:column}
+.room-card:hover{transform:translateY(-8px);box-shadow:var(--sh-d);border-color:rgba(212,168,67,.3)}
+.room-card.rc-featured{border-color:rgba(212,168,67,.4);box-shadow:var(--sh-g)}
+.rc-img{height:220px;background-size:cover;background-position:center;position:relative;overflow:hidden;cursor:pointer}
+.rc-badge{position:absolute;top:.85rem;left:.85rem;font-family:var(--ff-head);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .7rem;border-radius:var(--r-f);z-index:2}
+/* Hover overlay on image */
+.rc-overlay{position:absolute;inset:0;background:rgba(212,168,67,.15);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity var(--t-m);z-index:3}
+.room-card:hover .rc-overlay{opacity:1}
+.rc-view-btn{background:rgba(212,168,67,.95);color:var(--bg);font-family:var(--ff-head);font-size:.78rem;font-weight:700;padding:.6rem 1.2rem;border-radius:var(--r-f);display:flex;align-items:center;gap:.4rem;cursor:pointer;border:none;transform:translateY(8px);transition:transform .25s ease}
+.room-card:hover .rc-view-btn{transform:translateY(0)}
+/* Card body */
+.rc-body{padding:1.25rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.rc-body h3{font-family:var(--ff-head);font-size:1rem;font-weight:800;color:var(--white)}
+.rc-meta{display:flex;flex-wrap:wrap;gap:.5rem}
+.rc-meta span{font-size:.72rem;color:var(--g400);display:flex;align-items:center;gap:.3rem}
+.rc-meta span i{color:var(--gold);font-size:.65rem}
+.rc-feats{display:flex;flex-wrap:wrap;gap:.35rem}
+.rc-feats span{font-size:.7rem;color:var(--off);background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.15);border-radius:var(--r-f);padding:.2rem .6rem;display:flex;align-items:center;gap:.3rem}
+.rc-feats span i{color:var(--gold);font-size:.62rem}
+.rc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.06)}
+.rc-price{display:flex;align-items:baseline;gap:.15rem}
+.rc-price span{font-family:var(--ff-head);font-size:1.4rem;font-weight:900;color:var(--off)}
+.rc-price small{font-size:.72rem;color:var(--g400)}
+.rc-price.gold span{color:var(--gold)}
+.rc-open{font-size:.75rem;padding:.5rem 1rem;gap:.3rem}
+
+/* ── ROOM MODAL ─────────────────────────────────────────────── */
+.rm-modal{position:fixed;inset:0;z-index:8000;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease}
+.rm-modal.show{opacity:1;visibility:visible}
+.rm-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);cursor:pointer}
+.rm-box{position:relative;z-index:1;background:var(--bg2);border:1px solid rgba(212,168,67,.22);border-radius:var(--r-xl);width:100%;max-width:920px;max-height:92vh;overflow-y:auto;box-shadow:0 40px 120px rgba(0,0,0,.7);scrollbar-width:thin;scrollbar-color:rgba(212,168,67,.2) transparent;animation:rmSlideUp .4s cubic-bezier(.34,1.3,.64,1) both}
+.rm-modal.show .rm-box{animation:rmSlideUp .4s cubic-bezier(.34,1.3,.64,1)}
+@keyframes rmSlideUp{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.rm-close{position:sticky;top:1rem;left:calc(100% - 3.5rem);float:right;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--off);font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--t-f);z-index:10;margin:1rem 1rem -1rem auto}
+.rm-close:hover{background:var(--danger);color:#fff;transform:rotate(90deg)}
+/* Steps */
+.rm-steps{display:flex;align-items:center;padding:1.5rem 2rem .5rem;gap:0}
+.rm-step{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+.rm-step-num{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.15);color:var(--g400);font-family:var(--ff-head);font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.rm-step-lbl{font-family:var(--ff-head);font-size:.72rem;font-weight:700;color:var(--g400);text-transform:uppercase;letter-spacing:.08em;transition:color .3s}
+.rm-step.active .rm-step-num{background:var(--gold);border-color:var(--gold);color:var(--bg);box-shadow:var(--sh-g)}
+.rm-step.active .rm-step-lbl{color:var(--gold)}
+.rm-step.done .rm-step-num{background:var(--success);border-color:var(--success);color:#fff}
+.rm-step-line{flex:1;height:2px;background:rgba(255,255,255,.08);margin:0 .75rem;min-width:30px}
+/* Pages */
+.rm-page{padding:1.5rem 2rem 2rem}
+.hidden{display:none!important}
+.rm-detail-grid{display:grid;grid-template-columns:360px 1fr;gap:2rem;margin-bottom:1.5rem}
+.rm-img{width:100%;height:280px;border-radius:var(--r-md);background-size:cover;background-position:center;flex-shrink:0}
+.rm-info-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.85rem}
+.rm-tags{display:flex;gap:.4rem;margin-bottom:.4rem;flex-wrap:wrap}
+.rm-title{font-family:var(--ff-head);font-size:1.4rem;font-weight:900;color:var(--white);margin-bottom:.4rem}
+.rm-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem}
+.rm-meta span{font-size:.75rem;color:var(--g400);display:flex;align-items:center;gap:.3rem}
+.rm-meta span i{color:var(--gold);font-size:.68rem}
+.rm-price-big{text-align:right;flex-shrink:0}
+.rm-price-big .rp-amt{font-family:var(--ff-head);font-size:2.2rem;font-weight:900;color:var(--gold);line-height:1;display:block}
+.rm-price-big .rp-mo{font-size:.78rem;color:var(--g400)}
+.rm-desc{font-size:.85rem;color:var(--g400);line-height:1.75;margin-bottom:1rem}
+.rm-stitle{font-family:var(--ff-head);font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin:.85rem 0 .5rem;display:flex;align-items:center;gap:.4rem}
+.rm-hl{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.rm-hl li{display:flex;align-items:center;gap:.5rem;font-size:.79rem;color:var(--off);padding:.4rem .65rem;background:rgba(255,255,255,.03);border-radius:var(--r-sm)}
+.rm-hl li i{color:var(--gold);font-size:.65rem}
+.rm-chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.rm-chips span{font-size:.7rem;font-weight:600;color:var(--off);background:rgba(212,168,67,.07);border:1px solid rgba(212,168,67,.18);border-radius:var(--r-f);padding:.22rem .65rem;display:inline-flex;align-items:center;gap:.3rem}
+.rm-chips span i{color:var(--gold);font-size:.65rem}
+.rm-ptable{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.rm-ptr{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;background:rgba(255,255,255,.03);border-radius:var(--r-sm)}
+.rm-ptr.gold{background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2)}
+.rm-ptr span{font-size:.74rem;color:var(--g400)}
+.rm-ptr b{font-family:var(--ff-head);font-size:.8rem;font-weight:800;color:var(--white)}
+.rm-rules{display:flex;flex-direction:column;gap:.3rem}
+.rm-rules li{display:flex;align-items:center;gap:.55rem;font-size:.78rem;color:var(--off);padding:.38rem .7rem;border-left:2px solid rgba(212,168,67,.4);background:rgba(255,255,255,.02);border-radius:0 var(--r-sm) var(--r-sm) 0}
+.rm-rules li i{color:var(--gold);font-size:.65rem}
+.rm-actions{display:flex;gap:.85rem;justify-content:flex-end;border-top:1px solid rgba(255,255,255,.06);padding-top:1.25rem;margin-top:.5rem;flex-wrap:wrap}
+/* Step 2 form */
+.rm-page-h{font-family:var(--ff-head);font-size:1.2rem;font-weight:800;color:var(--white);display:flex;align-items:center;gap:.6rem;margin-bottom:.25rem}
+.rm-page-h i{color:var(--gold)}
+.rm-page-sub{font-size:.83rem;color:var(--g400);margin-bottom:1.4rem}
+.rm-page-sub strong{color:var(--gold)}
+.rm-form{display:flex;flex-direction:column;gap:.85rem}
+.rf-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.rf-group{display:flex;flex-direction:column;gap:.3rem}
+.rf-group label{font-size:.7rem;font-weight:700;color:var(--g400);text-transform:uppercase;letter-spacing:.08em;display:flex;align-items:center;gap:.35rem}
+.rf-group label i{color:var(--gold);font-size:.65rem}
+.rf-group input,.rf-group select,.rf-group textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:.72rem .95rem;color:var(--white);font-size:.87rem;outline:none;transition:all var(--t-f);width:100%}
+.rf-group input::placeholder,.rf-group textarea::placeholder{color:var(--g600)}
+.rf-group input:focus,.rf-group select:focus,.rf-group textarea:focus{border-color:var(--gold);background:rgba(212,168,67,.05);box-shadow:0 0 0 3px rgba(212,168,67,.1)}
+.rf-group select option{background:var(--bg3)}
+.rf-group textarea{resize:vertical;min-height:70px}
+/* Step 3 confirm */
+.rm-confirm-grid{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(212,168,67,.15);border-radius:var(--r-md);padding:1.25rem;margin:1rem 0}
+.rm-confirm-room{display:flex;align-items:center;gap:.9rem}
+.rc-sm-img{width:90px;height:68px;border-radius:var(--r-sm);background-size:cover;background-position:center;flex-shrink:0}
+.rc-sm-name{font-family:var(--ff-head);font-size:.9rem;font-weight:800;color:var(--white);margin-bottom:.2rem}
+.rc-sm-price{font-family:var(--ff-head);font-size:1.3rem;font-weight:900;color:var(--gold)}
+.rm-confirm-details{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.rcd-item{display:flex;flex-direction:column;gap:.1rem}
+.rcd-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400);font-weight:600}
+.rcd-val{font-size:.84rem;color:var(--white);font-weight:600}
+/* TnC */
+.rm-tnc{margin:.75rem 0 0}
+.tnc-check{display:flex;align-items:flex-start;gap:.7rem;cursor:pointer;font-size:.82rem;color:var(--g400)}
+.tnc-check input{accent-color:var(--gold);width:16px;height:16px;flex-shrink:0;margin-top:.15rem}
+.tnc-check a{color:var(--gold);text-decoration:underline}
+/* Success */
+.rm-success{text-align:center;padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.rm-success-icon{width:80px;height:80px;background:rgba(62,207,142,.15);border:2px solid var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--success);animation:plPop .6s cubic-bezier(.34,1.56,.64,1)}
+.rm-success h3{font-family:var(--ff-head);font-size:1.5rem;font-weight:900;color:var(--white)}
+.rm-success p{font-size:.9rem;color:var(--g400);max-width:380px;line-height:1.7}
+.rm-success-ref{background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.25);border-radius:var(--r-md);padding:.65rem 1.2rem;font-family:var(--ff-head);font-size:.82rem;color:var(--gold)}
+.rm-success-actions{display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center}
+
+/* ── MAP STRIP ──────────────────────────────────────────────── */
+.map-strip{display:flex;align-items:center;background:linear-gradient(135deg,var(--bg3),var(--bg4));border:1px solid rgba(212,168,67,.2);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg);padding:1rem 1.5rem;gap:1rem}
+.ms-item{display:flex;align-items:center;gap:.75rem;flex:1;text-decoration:none;color:inherit;transition:all var(--t-f);padding:.4rem}
+.ms-item:hover{color:var(--gold)}
+.ms-item i{font-size:1.3rem;color:var(--gold);flex-shrink:0;width:22px;text-align:center}
+.ms-item.ms-wa i{color:#25d366}
+.ms-item div small{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g400);font-weight:600}
+.ms-item div b{display:block;font-family:var(--ff-head);font-size:.84rem;font-weight:700;color:var(--white)}
+.ms-item:hover div b{color:var(--gold)}
+.ms-sep{width:1px;height:40px;background:rgba(255,255,255,.08);flex-shrink:0}
+
+/* ── LOCATION BOOK BTN ──────────────────────────────────────── */
+.loc-book-btn{margin-top:1.2rem;width:100%;justify-content:center}
+
+/* ── EXTRA PREMIUM STYLES ───────────────────────────────────── */
+/* Glowing section dividers */
+.section::after{display:none}
+.sdark{position:relative}
+.sdark::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:160px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,168,67,.5),transparent)}
+
+/* Gold number counter animation */
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* About image shimmer border */
+.about-img-wrap::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100% + 2px);height:calc(100% + 2px);border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(212,168,67,.3),transparent,rgba(212,168,67,.15));z-index:0;pointer-events:none}
+
+/* Floating WhatsApp button */
+.wa-float{position:fixed;bottom:5.5rem;right:2rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 24px rgba(37,211,102,.4);z-index:899;transition:all var(--t-m);text-decoration:none}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 10px 32px rgba(37,211,102,.5)}
+.wa-float-pulse{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waPulse 2s ease infinite}
+@keyframes waPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:0}}
+
+
+/* Section number decoration */
+.sec-hdr{position:relative}
+
+/* Card tilt effect on hover (JS-driven but CSS transition) */
+.room-card,.fac-card,.rev-card{will-change:transform}
+
+/* Gold gradient text utility */
+.g-text{background:linear-gradient(135deg,var(--gold2),var(--gold),var(--gold3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Pricing card ribbon */
+.pc-pop::after{content:'BEST DEAL';position:absolute;top:20px;right:-14px;background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;font-family:var(--ff-head);font-size:.52rem;font-weight:800;letter-spacing:.1em;padding:.2rem .9rem;transform:rotate(45deg);transform-origin:center}
+
+/* ── RESPONSIVE — NEW ───────────────────────────────────────── */
+@media(max-width:1100px){
+  .room-grid{grid-template-columns:repeat(2,1fr)}
+  .rm-detail-grid{grid-template-columns:1fr}
+  .rm-img{height:220px}
+}
+@media(max-width:768px){
+  .room-grid{grid-template-columns:repeat(2,1fr)}
+  .rm-box{max-height:96vh}
+  .rm-detail-grid{grid-template-columns:1fr}
+  .rm-ptable{grid-template-columns:1fr}
+  .rm-hl{grid-template-columns:1fr}
+  .rf-row{grid-template-columns:1fr}
+  .rm-confirm-grid{grid-template-columns:1fr}
+  .map-strip{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .ms-sep{display:none}
+}
+@media(max-width:480px){
+  .room-grid{grid-template-columns:1fr}
+  .rm-page{padding:1rem 1rem 1.5rem}
+  .rm-steps{padding:1rem 1rem .25rem;gap:0}
+  .rm-step-lbl{display:none}
+}
+</style>
+
+<body>
+
+<!-- ══════════════ PRELOADER ══════════════ -->
+<div class="preloader" id="preloader">
+  <div class="pl-inner">
+    <div class="pl-logo">
+      <div class="pl-icon"><i class="fa-solid fa-building-columns"></i></div>
+      <div class="pl-brand">LuxStay<em>PG</em></div>
+    </div>
+    <p class="pl-tag">Premium Paying Guest Accommodation</p>
+    <div class="pl-bar"><div class="pl-fill" id="plFill"></div></div>
+    <p class="pl-pct" id="plPct">0%</p>
+  </div>
+  <div class="pl-orb pl-orb1"></div>
+  <div class="pl-orb pl-orb2"></div>
+  <div class="pl-orb pl-orb3"></div>
+</div>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="logo-box"><i class="fa-solid fa-building-columns"></i></div>
+      <span>LuxStay<em>PG</em></span>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+
+      <!-- CLOSE BUTTON -->
+      <li class="nav-close-item">
+        <button class="nav-close" id="navClose" aria-label="Close Menu">
+          <span></span><span></span>
+        </button>
+      </li>
+
+      <li><center><a href="#home"       class="nl active">Home</a></center></li>
+      <li><center><a href="#about"      class="nl">About</a></center></li>
+      <li><center><a href="#rooms"      class="nl">Rooms</a></center></li>
+      <li><center><a href="#facilities" class="nl">Facilities</a></center></li>
+      <li><center><a href="#pricing"    class="nl">Pricing</a></center></li>
+      <li><center><a href="#gallery"    class="nl">Gallery</a></center></li>
+      <li><center><a href="#reviews"    class="nl">Reviews</a></center></li>
+      <li><center><a href="#contact"    class="nl">Contact</a></center></li>
+      <li><center><a href="#booking"    class="nav-cta"><i class="fa-solid fa-calendar-check"></i> Book Now</a></center></li>
+
+      <!-- MOBILE SOCIAL ICONS -->
+      <li class="mob-socials" style="display:none">
+        <a href="https://wa.me/919876543210"          class="ns-icon ns-wa" target="_blank" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://facebook.com/YOUR_PAGE"      class="ns-icon ns-fb" target="_blank" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/YOUR_HANDLE"     class="ns-icon ns-tw" target="_blank" aria-label="Twitter">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="https://instagram.com/YOUR_HANDLE"   class="ns-icon ns-ig" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </li>
+
+    </ul>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-fog"></div>
+  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-body">
+    <p class="hero-eyebrow"><span></span>Premium Paying Guest Accommodation<span></span></p>
+    <h1 class="hero-h1">Your <mark>Home</mark><br>Away From Home</h1>
+    <p class="hero-p">Experience comfort, safety &amp; community at LuxStay PG. Modern amenities, vibrant atmosphere, zero compromise.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn btn-g"><i class="fa-solid fa-calendar-check"></i>Book Now</a>
+      <a href="#rooms"   class="btn btn-o"><i class="fa-solid fa-door-open"></i>View Rooms</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><b>250+</b><small>Happy Residents</small></div>
+      <div class="hs-div"></div>
+      <div class="hs"><b>8+</b><small>Years of Trust</small></div>
+      <div class="hs-div"></div>
+      <div class="hs"><b>4.9★</b><small>Avg Rating</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap anim">
+        <div class="about-img lazy-bg" data-bg="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&q=75"></div>
+        <div class="ab-badge"><b>8+</b><small>Years of Excellence</small></div>
+        <div class="ab-border"></div>
+      </div>
+      <div class="about-txt anim">
+        <p class="slabel">About LuxStay PG</p>
+        <h2 class="stitle">A Premium Living Experience Since 2016</h2>
+        <p class="adesc">LuxStay PG is a premium paying-guest accommodation for working professionals, students, and graduates who value comfort, safety, and a thriving community. We accommodate <strong>both male and female</strong> residents in separate, fully secured wings.</p>
+        <div class="about-cards">
+          <div class="acard"><i class="fa-solid fa-venus-mars"></i><div><b>Accommodation Type</b><span>Boys &amp; Girls (Separate Wings)</span></div></div>
+          <div class="acard"><i class="fa-solid fa-calendar-days"></i><div><b>Established</b><span>2016 — 8+ Years of Trust</span></div></div>
+          <div class="acard"><i class="fa-solid fa-location-dot"></i><div><b>Location</b><span>HSR Layout, Bengaluru — 560102</span></div></div>
+          <div class="acard"><i class="fa-solid fa-phone"></i><div><b>Owner — Rajesh Kumar</b><span>+91 98765 43210</span></div></div>
+        </div>
+        <a href="#contact" class="btn btn-g"><i class="fa-solid fa-envelope"></i>Get In Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ROOMS — CARD GRID + POPUP MODAL ══════════════ -->
+<section class="rooms section sdark" id="rooms">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="slabel">Our Rooms</p>
+      <h2 class="stitle">Comfortable Rooms for Every Need</h2>
+      <p class="ssub">Click any room card to view full details &amp; book instantly.</p>
+    </div>
+
+    <!-- 4-column card grid — 1 row -->
+    <div class="room-grid">
+
+      <!-- SINGLE -->
+      <div class="room-card anim" data-room="single">
+        <div class="rc-img lazy-bg" data-bg="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=75">
+          <span class="rc-badge tag-av">Available</span>
+          <div class="rc-overlay">
+            <button class="rc-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="rc-body">
+          <h3>Single Sharing</h3>
+          <div class="rc-meta">
+            <span><i class="fa-solid fa-ruler-combined"></i>180 sq.ft</span>
+            <span><i class="fa-solid fa-user"></i>1 Person</span>
+            <span><i class="fa-solid fa-snowflake"></i>AC</span>
+          </div>
+          <div class="rc-feats">
+            <span><i class="fa-solid fa-check"></i>Attached Bath</span>
+            <span><i class="fa-solid fa-check"></i>WiFi</span>
+            <span><i class="fa-solid fa-check"></i>Meals</span>
+          </div>
+          <div class="rc-footer">
+            <div class="rc-price"><span>₹12,000</span><small>/mo</small></div>
+            <button class="btn btn-g rc-open" data-room="single"><i class="fa-solid fa-calendar-check"></i>Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOUBLE -->
+      <div class="room-card rc-featured anim" data-room="double">
+        <div class="rc-img lazy-bg" data-bg="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=75">
+          <span class="rc-badge tag-pop">⭐ Most Popular</span>
+          <div class="rc-overlay">
+            <button class="rc-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="rc-body">
+          <h3>Double Sharing</h3>
+          <div class="rc-meta">
+            <span><i class="fa-solid fa-ruler-combined"></i>240 sq.ft</span>
+            <span><i class="fa-solid fa-user-group"></i>2 People</span>
+            <span><i class="fa-solid fa-snowflake"></i>AC</span>
+          </div>
+          <div class="rc-feats">
+            <span><i class="fa-solid fa-check"></i>Attached Bath</span>
+            <span><i class="fa-solid fa-check"></i>WiFi</span>
+            <span><i class="fa-solid fa-check"></i>Free Laundry</span>
+          </div>
+          <div class="rc-footer">
+            <div class="rc-price gold"><span>₹8,000</span><small>/mo</small></div>
+            <button class="btn btn-g rc-open" data-room="double"><i class="fa-solid fa-calendar-check"></i>Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRIPLE -->
+      <div class="room-card anim" data-room="triple">
+        <div class="rc-img lazy-bg" data-bg="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=75">
+          <span class="rc-badge tag-ltd">Limited</span>
+          <div class="rc-overlay">
+            <button class="rc-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="rc-body">
+          <h3>Triple Sharing</h3>
+          <div class="rc-meta">
+            <span><i class="fa-solid fa-ruler-combined"></i>300 sq.ft</span>
+            <span><i class="fa-solid fa-users"></i>3 People</span>
+            <span><i class="fa-solid fa-fan"></i>Fan+Cooler</span>
+          </div>
+          <div class="rc-feats">
+            <span><i class="fa-solid fa-check"></i>Attached Bath</span>
+            <span><i class="fa-solid fa-check"></i>WiFi</span>
+            <span><i class="fa-solid fa-check"></i>Locker</span>
+          </div>
+          <div class="rc-footer">
+            <div class="rc-price"><span>₹5,500</span><small>/mo</small></div>
+            <button class="btn btn-g rc-open" data-room="triple"><i class="fa-solid fa-calendar-check"></i>Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOUR -->
+      <div class="room-card anim" data-room="four">
+        <div class="rc-img lazy-bg" data-bg="https://images.unsplash.com/photo-1598928636135-d146006ff4be?w=600&q=75">
+          <span class="rc-badge tag-eco">Best Value</span>
+          <div class="rc-overlay">
+            <button class="rc-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="rc-body">
+          <h3>Four Sharing</h3>
+          <div class="rc-meta">
+            <span><i class="fa-solid fa-ruler-combined"></i>360 sq.ft</span>
+            <span><i class="fa-solid fa-users"></i>4 People</span>
+            <span><i class="fa-solid fa-fan"></i>Fan+Cooler</span>
+          </div>
+          <div class="rc-feats">
+            <span><i class="fa-solid fa-check"></i>Attached Bath</span>
+            <span><i class="fa-solid fa-check"></i>WiFi</span>
+            <span><i class="fa-solid fa-check"></i>Locker</span>
+          </div>
+          <div class="rc-footer">
+            <div class="rc-price"><span>₹4,000</span><small>/mo</small></div>
+            <button class="btn btn-g rc-open" data-room="four"><i class="fa-solid fa-calendar-check"></i>Book Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ROOM DETAIL POPUP MODAL ══════════════ -->
+<div class="rm-modal" id="rmModal">
+  <div class="rm-backdrop" id="rmBackdrop"></div>
+  <div class="rm-box">
+    <button class="rm-close" id="rmClose"><i class="fa-solid fa-xmark"></i></button>
+    <!-- Steps bar -->
+    <div class="rm-steps">
+      <div class="rm-step active" data-step="1"><span class="rm-step-num">1</span><span class="rm-step-lbl">Room Details</span></div>
+      <div class="rm-step-line"></div>
+      <div class="rm-step" data-step="2"><span class="rm-step-num">2</span><span class="rm-step-lbl">Your Details</span></div>
+      <div class="rm-step-line"></div>
+      <div class="rm-step" data-step="3"><span class="rm-step-num">3</span><span class="rm-step-lbl">Confirm</span></div>
+    </div>
+
+    <!-- STEP 1: Room Details -->
+    <div class="rm-page" id="rmPage1">
+      <div class="rm-detail-grid">
+        <div class="rm-img lazy-bg" id="rmImg"></div>
+        <div class="rm-info">
+          <div class="rm-info-head">
+            <div>
+              <div class="rm-tags" id="rmTags"></div>
+              <h2 class="rm-title" id="rmTitle"></h2>
+              <div class="rm-meta" id="rmMeta"></div>
+            </div>
+            <div class="rm-price-big" id="rmPriceBig"></div>
+          </div>
+          <p class="rm-desc" id="rmDesc"></p>
+
+          <p class="rm-stitle"><i class="fa-solid fa-list-check"></i>Room Highlights</p>
+          <ul class="rm-hl" id="rmHL"></ul>
+
+          <p class="rm-stitle"><i class="fa-solid fa-star"></i>Included Facilities</p>
+          <div class="rm-chips" id="rmChips"></div>
+
+          <p class="rm-stitle"><i class="fa-solid fa-indian-rupee-sign"></i>Pricing</p>
+          <div class="rm-ptable" id="rmPtable"></div>
+
+          <p class="rm-stitle"><i class="fa-solid fa-shield-halved"></i>House Rules</p>
+          <ul class="rm-rules" id="rmRules"></ul>
+        </div>
+      </div>
+      <div class="rm-actions">
+        <button class="btn btn-o" onclick="closeRoomModal()">Maybe Later</button>
+        <button class="btn btn-g" id="rmToStep2"><i class="fa-solid fa-arrow-right"></i>Proceed to Book</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Customer Details -->
+    <div class="rm-page hidden" id="rmPage2">
+      <h3 class="rm-page-h"><i class="fa-solid fa-user-pen"></i>Enter Your Details</h3>
+      <p class="rm-page-sub">Booking for: <strong id="rmBookingRoom">—</strong></p>
+      <form id="rmBookingForm" class="rm-form">
+        <div class="rf-row">
+          <div class="rf-group">
+            <label><i class="fa-solid fa-user"></i>Full Name *</label>
+            <input type="text" id="rfName" placeholder="Rahul Sharma" required />
+          </div>
+          <div class="rf-group">
+            <label><i class="fa-solid fa-phone"></i>Phone Number *</label>
+            <input type="tel" id="rfPhone" placeholder="+91 98765 43210" required />
+          </div>
+        </div>
+        <div class="rf-group">
+          <label><i class="fa-solid fa-envelope"></i>Email Address *</label>
+          <input type="email" id="rfEmail" placeholder="rahul@example.com" required />
+        </div>
+        <div class="rf-row">
+          <div class="rf-group">
+            <label><i class="fa-solid fa-calendar"></i>Move-in Date *</label>
+            <input type="date" id="rfDate" required />
+          </div>
+          <div class="rf-group">
+            <label><i class="fa-solid fa-clock"></i>Stay Duration</label>
+            <select id="rfDur">
+              <option value="3months">3 Months</option>
+              <option value="6months" selected>6 Months</option>
+              <option value="1year">1 Year</option>
+              <option value="flexible">Flexible</option>
+            </select>
+          </div>
+        </div>
+        <div class="rf-row">
+          <div class="rf-group">
+            <label><i class="fa-solid fa-venus-mars"></i>Gender</label>
+            <select id="rfGender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="rf-group">
+            <label><i class="fa-solid fa-briefcase"></i>Occupation</label>
+            <select id="rfOcc">
+              <option value="student">Student</option>
+              <option value="working">Working Professional</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="rf-group">
+          <label><i class="fa-solid fa-comment"></i>Special Requirements (Optional)</label>
+          <textarea id="rfMsg" rows="2" placeholder="Any dietary needs, preferences or questions..."></textarea>
+        </div>
+      </form>
+      <div class="rm-actions">
+        <button class="btn btn-o" id="rmBack1"><i class="fa-solid fa-arrow-left"></i>Back</button>
+        <button class="btn btn-g" id="rmToStep3"><i class="fa-solid fa-arrow-right"></i>Review &amp; Confirm</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Confirm -->
+    <div class="rm-page hidden" id="rmPage3">
+      <div id="rmConfirmBody">
+        <h3 class="rm-page-h"><i class="fa-solid fa-clipboard-check"></i>Confirm Your Booking</h3>
+        <div class="rm-confirm-grid">
+          <div class="rm-confirm-room">
+            <div class="rc-sm-img lazy-bg" id="rmConfirmImg"></div>
+            <div>
+              <p class="rc-sm-name" id="rmConfirmRoomName"></p>
+              <p class="rc-sm-price" id="rmConfirmPrice"></p>
+            </div>
+          </div>
+          <div class="rm-confirm-details" id="rmConfirmDetails"></div>
+        </div>
+        <div class="rm-tnc">
+          <label class="tnc-check">
+            <input type="checkbox" id="tncCheck" />
+            <span>I agree to the <a href="#" onclick="return false">Terms &amp; Conditions</a> and <a href="#" onclick="return false">House Rules</a> of LuxStay PG.</span>
+          </label>
+        </div>
+        <div class="rm-actions">
+          <button class="btn btn-o" id="rmBack2"><i class="fa-solid fa-arrow-left"></i>Back</button>
+          <button class="btn btn-g" id="rmSubmit"><i class="fa-solid fa-paper-plane"></i>Confirm Booking</button>
+        </div>
+      </div>
+      <!-- Success State -->
+      <div class="rm-success hidden" id="rmSuccess">
+        <div class="rm-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <h3>Booking Confirmed! 🎉</h3>
+        <p>Thank you! Our team will call you within <strong>2 hours</strong> to confirm your room.</p>
+        <div class="rm-success-ref">Booking Ref: <strong id="rmRef"></strong></div>
+        <div class="rm-success-actions">
+          <a href="https://wa.me/919876543210" class="btn btn-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i>Chat on WhatsApp</a>
+          <button class="btn btn-o" onclick="closeRoomModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FACILITIES ══════════════ -->
+<section class="facilities section" id="facilities">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="slabel">What We Offer</p>
+      <h2 class="stitle">World-Class Facilities</h2>
+      <p class="ssub">Hover or tap any card for more details.</p>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-card anim" data-title="High-Speed WiFi" data-info="100 Mbps dedicated fiber internet per room. 24/7 uptime with backup router. Stream, work, game — zero buffering guaranteed."><div class="fc-icon"><i class="fa-solid fa-wifi"></i></div><h3>High-Speed WiFi</h3><p>100 Mbps dedicated fiber, 24/7 uptime.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Air Conditioning" data-info="Inverter split ACs with individual temperature control. Serviced every 3 months. Set your own comfort level anytime."><div class="fc-icon"><i class="fa-solid fa-snowflake"></i></div><h3>Air Conditioning</h3><p>Split AC with individual temp control.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Homestyle Food" data-info="3 home-cooked meals daily. Breakfast 7–9 AM, Lunch 12–2 PM, Dinner 7–9 PM. Veg &amp; non-veg. Special diets accommodated."><div class="fc-icon"><i class="fa-solid fa-utensils"></i></div><h3>Homestyle Food</h3><p>3 home-cooked meals daily, veg &amp; non-veg.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Laundry Service" data-info="Washing machines &amp; dryers accessible 24/7. Detergent provided. Dedicated laundry room on each floor."><div class="fc-icon"><i class="fa-solid fa-shirt"></i></div><h3>Laundry Service</h3><p>Machines &amp; dryers accessible 24/7.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="CCTV Surveillance" data-info="360° CCTV on all common areas, corridors &amp; parking. 30-day footage retention. Monitored 24/7 by on-site security staff."><div class="fc-icon"><i class="fa-solid fa-video"></i></div><h3>CCTV Surveillance</h3><p>360° coverage monitored 24/7 by security.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Parking" data-info="Covered parking for 2-wheelers, open for 4-wheelers. CCTV monitored. No extra charge for one vehicle per resident."><div class="fc-icon"><i class="fa-solid fa-car"></i></div><h3>Parking</h3><p>Covered &amp; open parking with 24/7 CCTV.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Power Backup" data-info="Full inverter &amp; generator backup. Zero downtime during power cuts. Entire building covered — rooms, lifts, security systems."><div class="fc-icon"><i class="fa-solid fa-bolt"></i></div><h3>Power Backup</h3><p>Full inverter backup — zero downtime.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Housekeeping" data-info="Daily room cleaning &amp; bed-making. Common areas cleaned 3× daily. Fresh linen every week. Bathrooms sanitized daily."><div class="fc-icon"><i class="fa-solid fa-broom"></i></div><h3>Housekeeping</h3><p>Daily room &amp; common area cleaning.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Study Room" data-info="AC study &amp; work room open 24/7. High-speed WiFi, comfortable chairs, whiteboards. Perfect for WFH &amp; students."><div class="fc-icon"><i class="fa-solid fa-book-open"></i></div><h3>Study Room</h3><p>AC study room open 24/7 for residents.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="RO Purified Water" data-info="24/7 purified RO drinking water on all floors. Hot &amp; cold water dispensers. Monthly water quality testing done."><div class="fc-icon"><i class="fa-solid fa-droplet"></i></div><h3>RO Water</h3><p>24/7 purified RO water every floor.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Recreation Area" data-info="TV lounge, carom, chess &amp; table tennis. Rooftop terrace. Monthly movie nights &amp; community events."><div class="fc-icon"><i class="fa-solid fa-gamepad"></i></div><h3>Recreation Area</h3><p>TV lounge, games &amp; rooftop terrace.</p><div class="fc-popup"><b></b><span></span></div></div>
+      <div class="fac-card anim" data-title="Medical Support" data-info="First-aid kit on every floor. Tie-up with Fortis Hospital. On-call doctor contact. Monthly health camp."><div class="fc-icon"><i class="fa-solid fa-kit-medical"></i></div><h3>Medical Support</h3><p>First aid on every floor, hospital tie-up.</p><div class="fc-popup"><b></b><span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PRICING ══════════════ -->
+<section class="pricing section sdark" id="pricing">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="slabel">Transparent Pricing</p>
+      <h2 class="stitle">Simple, Honest Plans</h2>
+      <p class="ssub">No hidden charges. What you see is what you pay.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pc anim"><div class="pc-top"><p class="pc-name">Single Sharing</p><div class="pc-pr"><span>₹</span><b>12,000</b><small>/mo</small></div></div><ul class="pc-list"><li><i class="fa-solid fa-check"></i>Rent: ₹12,000/mo</li><li><i class="fa-solid fa-check"></i>Deposit: ₹24,000</li><li><i class="fa-solid fa-check"></i>Food: ₹3,500/mo</li><li><i class="fa-solid fa-check"></i>AC Room, Attached Bath</li><li><i class="fa-solid fa-check"></i>High-Speed WiFi</li><li><i class="fa-solid fa-check"></i>Daily Housekeeping</li><li class="no"><i class="fa-solid fa-xmark"></i>Complimentary Laundry</li></ul><button class="btn btn-og" onclick="openRoomModal('single')">Book Single</button></div>
+      <div class="pc pc-pop anim"><div class="pc-badge-top"><i class="fa-solid fa-crown"></i> Most Popular</div><div class="pc-top"><p class="pc-name">Double Sharing</p><div class="pc-pr"><span>₹</span><b>8,000</b><small>/mo</small></div></div><ul class="pc-list"><li><i class="fa-solid fa-check"></i>Rent: ₹8,000/mo</li><li><i class="fa-solid fa-check"></i>Deposit: ₹16,000</li><li><i class="fa-solid fa-check"></i>Food: ₹3,000/mo</li><li><i class="fa-solid fa-check"></i>AC Room, Attached Bath</li><li><i class="fa-solid fa-check"></i>High-Speed WiFi</li><li><i class="fa-solid fa-check"></i>Daily Housekeeping</li><li><i class="fa-solid fa-check"></i>Complimentary Laundry</li></ul><button class="btn btn-g" onclick="openRoomModal('double')">Book Double</button></div>
+      <div class="pc anim"><div class="pc-top"><p class="pc-name">Triple Sharing</p><div class="pc-pr"><span>₹</span><b>5,500</b><small>/mo</small></div></div><ul class="pc-list"><li><i class="fa-solid fa-check"></i>Rent: ₹5,500/mo</li><li><i class="fa-solid fa-check"></i>Deposit: ₹11,000</li><li><i class="fa-solid fa-check"></i>Food: ₹2,500/mo</li><li><i class="fa-solid fa-check"></i>Fan + Cooler Room</li><li><i class="fa-solid fa-check"></i>High-Speed WiFi</li><li><i class="fa-solid fa-check"></i>Daily Housekeeping</li><li class="no"><i class="fa-solid fa-xmark"></i>Complimentary Laundry</li></ul><button class="btn btn-og" onclick="openRoomModal('triple')">Book Triple</button></div>
+      <div class="pc anim"><div class="pc-top"><p class="pc-name">Four Sharing</p><div class="pc-pr"><span>₹</span><b>4,000</b><small>/mo</small></div></div><ul class="pc-list"><li><i class="fa-solid fa-check"></i>Rent: ₹4,000/mo</li><li><i class="fa-solid fa-check"></i>Deposit: ₹8,000</li><li><i class="fa-solid fa-check"></i>Food: ₹2,000/mo</li><li><i class="fa-solid fa-check"></i>Fan + Cooler Room</li><li><i class="fa-solid fa-check"></i>High-Speed WiFi</li><li><i class="fa-solid fa-check"></i>Daily Housekeeping</li><li class="no"><i class="fa-solid fa-xmark"></i>Complimentary Laundry</li></ul><button class="btn btn-og" onclick="openRoomModal('four')">Book 4-Sharing</button></div>
+    </div>
+    <p class="pnote"><i class="fa-solid fa-circle-info"></i> All plans include free electricity, water &amp; parking. Food is optional.</p>
+  </div>
+</section>
+
+<!-- ══════════════ GALLERY ══════════════ -->
+<section class="gallery section" id="gallery">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="slabel">Photo Gallery</p>
+      <h2 class="stitle">Life at LuxStay PG</h2>
+      <p class="ssub">Click any image to zoom. Auto-scrolls every 4 seconds.</p>
+    </div>
+  </div>
+  <div class="gal-wrap">
+    <div class="gal-track" id="galTrack">
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=75" data-cap="Single Room"></div><span class="gal-cap">Single Room</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=75" data-cap="Double Sharing"></div><span class="gal-cap">Double Sharing</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=75" data-cap="Modern Kitchen"></div><span class="gal-cap">Modern Kitchen</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=75" data-cap="Common Area"></div><span class="gal-cap">Common Area</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=75" data-cap="Study Lounge"></div><span class="gal-cap">Study Lounge</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=75" data-cap="Triple Room"></div><span class="gal-cap">Triple Room</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1571508601891-ca5e7a713859?w=600&q=75" data-cap="Terrace Garden"></div><span class="gal-cap">Terrace Garden</span></div>
+      <div class="gal-slide"><div class="gal-img lazy-bg" data-bg="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=75" data-cap="Building Exterior"></div><span class="gal-cap">Building Exterior</span></div>
+    </div>
+    <button class="gal-btn gprev" id="gPrev" aria-label="Prev"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="gal-btn gnext" id="gNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="gal-dots" id="gDots"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-x" id="lbX"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lb-pv" id="lbPv"><i class="fa-solid fa-chevron-left"></i></button>
+  <div class="lb-imgw"><img id="lbImg" src="" alt="" /></div>
+  <button class="lb-nx" id="lbNx"><i class="fa-solid fa-chevron-right"></i></button>
+  <p class="lb-cap" id="lbCap"></p>
+  <p class="lb-cnt" id="lbCnt"></p>
+</div>
+
+<!-- ══════════════ LOCATION ══════════════ -->
+<section class="location section sdark" id="location">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="slabel">Find Us</p>
+      <h2 class="stitle">Perfectly Located in HSR Layout</h2>
+      <p class="ssub">Close to IT parks, colleges, metro &amp; everything that matters.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="map-box anim">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15556.08744621898!2d77.63636!3d12.91398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1490e5d1e32f%3A0x3c6b2d3e62a0ebb1!2sHSR%20Layout%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000"
+          width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" title="LuxStay PG"></iframe>
+        <!-- Below map — quick contact strip -->
+        <div class="map-strip">
+          <a href="tel:+919876543210" class="ms-item">
+            <i class="fa-solid fa-phone"></i>
+            <div><small>Call Us Now</small><b>+91 98765 43210</b></div>
+          </a>
+          <div class="ms-sep"></div>
+          <a href="https://wa.me/919876543210" target="_blank" class="ms-item ms-wa">
+            <i class="fa-brands fa-whatsapp"></i>
+            <div><small>WhatsApp</small><b>Chat Now →</b></div>
+          </a>
+          <div class="ms-sep"></div>
+          <div class="ms-item">
+            <i class="fa-solid fa-clock"></i>
+            <div><small>Office Hours</small><b>Mon–Sat 9 AM – 8 PM</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="loc-right anim">
+        <h3 class="loc-h">Nearby Landmarks</h3>
+        <ul class="nearby">
+          <li><div class="nb-ic"><i class="fa-solid fa-bus"></i></div><div><b>HSR Layout Bus Stand</b><span>3 min walk · 250m</span></div></li>
+          <li><div class="nb-ic"><i class="fa-solid fa-graduation-cap"></i></div><div><b>Christ University</b><span>10 min drive · 4km</span></div></li>
+          <li><div class="nb-ic"><i class="fa-solid fa-laptop-code"></i></div><div><b>Salarpuria IT Park</b><span>8 min drive · 3.5km</span></div></li>
+          <li><div class="nb-ic"><i class="fa-solid fa-train-subway"></i></div><div><b>Agara Metro Station</b><span>12 min walk · 1km</span></div></li>
+          <li><div class="nb-ic"><i class="fa-solid fa-cart-shopping"></i></div><div><b>Forum Mall</b><span>15 min drive · 6km</span></div></li>
+          <li><div class="nb-ic"><i class="fa-solid fa-hospital"></i></div><div><b>Fortis Hospital</b><span>10 min drive · 4.5km</span></div></li>
+        </ul>
+        <div class="loc-addr">
+          <div class="la-row"><i class="fa-solid fa-map-pin"></i><div><b>Address</b><span>42, 14th Cross, Sector 4, HSR Layout, Bengaluru — 560102</span></div></div>
+          <div class="la-row"><i class="fa-solid fa-phone"></i><div><b>Call Us</b><a href="tel:+919876543210">+91 98765 43210</a></div></div>
+          <div class="la-row"><i class="fa-brands fa-whatsapp"></i><div><b>WhatsApp</b><a href="https://wa.me/919876543210" target="_blank">Chat Now →</a></div></div>
+        </div>
+        <!-- Quick CTA below address -->
+        <a href="#booking" class="loc-book-btn btn btn-g"><i class="fa-solid fa-calendar-check"></i>Book a Room Today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BOOKING ══════════════ -->
+<section class="booking section" id="booking">
+  <div class="bk-bg lazy-bg" data-bg="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=55"></div>
+  <div class="bk-ov"></div>
+  <div class="container">
+    <div class="bk-wrap">
+      <div class="bk-left anim">
+        <p class="slabel">Quick Booking</p>
+        <h2 class="stitle">Reserve Your Spot Today</h2>
+        <p class="bk-sub">Fill in the form and our team will contact you within 2 hours.</p>
+        <ul class="bk-perks">
+          <li><i class="fa-solid fa-shield-halved"></i>100% Secure Booking</li>
+          <li><i class="fa-solid fa-clock-rotate-left"></i>Instant Confirmation</li>
+          <li><i class="fa-solid fa-phone"></i>24/7 Support Available</li>
+          <li><i class="fa-solid fa-hand-holding-heart"></i>Zero Hidden Charges</li>
+        </ul>
+        <a href="https://wa.me/919876543210" class="btn btn-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i>WhatsApp Us Now</a>
+      </div>
+      <div class="glass-form anim">
+        <h3 class="gf-h"><i class="fa-solid fa-calendar-check"></i>Book Your Room</h3>
+        <form id="bookingForm">
+          <div class="fg-row">
+            <div class="fg"><label for="fn"><i class="fa-solid fa-user"></i>Full Name</label><input type="text" id="fn" placeholder="Rahul Sharma" required /></div>
+            <div class="fg"><label for="fp"><i class="fa-solid fa-phone"></i>Phone</label><input type="tel" id="fp" placeholder="+91 98765 43210" required /></div>
+          </div>
+          <div class="fg"><label for="fe"><i class="fa-solid fa-envelope"></i>Email</label><input type="email" id="fe" placeholder="rahul@example.com" required /></div>
+          <div class="fg-row">
+            <div class="fg">
+              <label for="fr"><i class="fa-solid fa-door-open"></i>Room Type</label>
+              <select id="fr" required>
+                <option value="" disabled selected>Select room type</option>
+                <option>Single Sharing — ₹12,000/mo</option>
+                <option>Double Sharing — ₹8,000/mo</option>
+                <option>Triple Sharing — ₹5,500/mo</option>
+                <option>Four Sharing — ₹4,000/mo</option>
+              </select>
+            </div>
+            <div class="fg"><label for="fd"><i class="fa-solid fa-calendar"></i>Move-in Date</label><input type="date" id="fd" required /></div>
+          </div> 
+          <div class="fg"><label for="fm"><i class="fa-solid fa-comment"></i>Message (Optional)</label><textarea id="fm" rows="3" placeholder="Any special requirements..."></textarea></div>
+          <br>
+          <button type="submit" class="btn btn-g" style="width:100%;justify-content:center"><i class="fa-solid fa-paper-plane"></i>Submit Booking Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REVIEWS ══════════════ -->
+<section class="reviews section sdark" id="reviews">
+  <div class="container">
+    <div class="sec-hdr">
+      <p class="slabel">What Residents Say</p>
+      <h2 class="stitle">Real Reviews, Real People</h2>
+      <p class="ssub">Join 250+ happy residents who call LuxStay PG their home.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card anim"><div class="rev-s"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"Best PG I've lived in. The food is absolutely homestyle and delicious, WiFi is blazing fast, and the staff is super helpful. Feels like a real home away from home!"</p><div class="rev-auth"><div class="rev-av">PS</div><div><b>Priya Sharma</b><small>Software Engineer, 2 years resident</small></div></div></div>
+      <div class="rev-card anim"><div class="rev-s"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"Rooms are spacious, clean and well-maintained. I especially love the power backup — never missed a deadline! Highly recommend LuxStay to all working professionals."</p><div class="rev-auth"><div class="rev-av">AK</div><div><b>Arjun Kumar</b><small>Data Analyst, 1 year resident</small></div></div></div>
+      <div class="rev-card anim"><div class="rev-s"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p>"Security is top-notch with CCTV everywhere. As a girl, I feel completely safe here. The management is responsive and the location is super convenient. 10/10!"</p><div class="rev-auth"><div class="rev-av">NG</div><div><b>Neha Gupta</b><small>MBA Student, 8 months resident</small></div></div></div>
+      <div class="rev-card anim"><div class="rev-s"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"Moved in for 3 months and ended up staying for a year. The community vibe is unmatched — made lifelong friends here. Pricing is very fair for Bengaluru!"</p><div class="rev-auth"><div class="rev-av">VR</div><div><b>Vikram Rao</b><small>Product Designer, 1+ year resident</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer" id="contact">
+  <div class="ft-top">
+    <div class="container">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <a href="#home" class="nav-logo"><div class="logo-box"><i class="fa-solid fa-building-columns"></i></div><span>LuxStay<em>PG</em></span></a>
+          <p>Premium PG accommodation for those who value comfort, safety &amp; community. Your second home in Bengaluru.</p>
+          <div class="ft-socials">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://wa.me/919876543210" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="ft-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#rooms">Rooms</a></li><li><a href="#facilities">Facilities</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li></ul></div>
+        <div class="ft-col"><h4>Contact Us</h4><ul class="ft-contact"><li><i class="fa-solid fa-location-dot"></i><span>42, 14th Cross, Sector 4,<br>HSR Layout, Bengaluru — 560102</span></li><li><i class="fa-solid fa-phone"></i><a href="tel:+919876543210">+91 98765 43210</a></li><li><i class="fa-solid fa-envelope"></i><a href="mailto:stay@luxstaypg.com">stay@luxstaypg.com</a></li><li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/919876543210" target="_blank">Chat on WhatsApp</a></li><li><i class="fa-solid fa-clock"></i><span>Mon–Sat: 9 AM – 8 PM</span></li></ul></div>
+        <div class="ft-col"><h4>Why LuxStay?</h4><ul class="ft-why"><li><i class="fa-solid fa-circle-check"></i>No Brokerage</li><li><i class="fa-solid fa-circle-check"></i>Transparent Billing</li><li><i class="fa-solid fa-circle-check"></i>24/7 Security</li><li><i class="fa-solid fa-circle-check"></i>Homestyle Meals</li><li><i class="fa-solid fa-circle-check"></i>Flexible Move-In</li><li><i class="fa-solid fa-circle-check"></i>Zero Hidden Charges</li><li><i class="fa-solid fa-circle-check"></i>Pet Friendly Building</li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="container">
+      <p>© 2025 LuxStay PG. All rights reserved. Crafted with <i class="fa-solid fa-heart"></i> in Bengaluru.</p>
+      <div class="ftbl"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Refunds</a></div>
+    </div>
+  </div>
+</footer>
+
+<button class="scrolltop" id="scrollTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+</body>
+
+<script>
+        /* ================================================================
+   LUXSTAY PG — script.js  (Complete Rebuild)
+   1. Preloader with progress animation
+   2. Hero particles
+   3. Navbar scroll + hamburger
+   4. Lazy BG images
+   5. Scroll animations
+   6. Active nav link
+   7. Facilities tooltip
+   8. Gallery auto-scroll + dots + lightbox
+   9. Room Modal — 3-step booking
+   10. Booking form (section)
+   11. Scroll to top
+   12. Floating WhatsApp button
+================================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   1. PRELOADER
+══════════════════════════════════════════════════════════════ */
+const preloader = document.getElementById('preloader');
+const plFill    = document.getElementById('plFill');
+const plPct     = document.getElementById('plPct');
+
+let pct = 0;
+const plInterval = setInterval(() => {
+  pct += Math.random() * 12 + 3;
+  if (pct >= 100) { pct = 100; clearInterval(plInterval); }
+  plFill.style.width = pct + '%';
+  plPct.textContent  = Math.floor(pct) + '%';
+  if (pct === 100) {
+    setTimeout(() => {
+      preloader.classList.add('done');
+      document.body.style.overflow = '';
+    }, 300);
+  }
+}, 80);
+document.body.style.overflow = 'hidden';
+
+/* ══════════════════════════════════════════════════════════════
+   2. HERO PARTICLES
+══════════════════════════════════════════════════════════════ */
+(function createParticles() {
+  const container = document.getElementById('heroParticles');
+  if (!container) return;
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'hp';
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${60 + Math.random()*40}%;
+      --d:${4 + Math.random()*6}s;
+      --dl:${Math.random()*5}s;
+      width:${1+Math.random()*3}px;
+      height:${1+Math.random()*3}px;
+      opacity:${0.3+Math.random()*0.4}
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   3. NAVBAR
+══════════════════════════════════════════════════════════════ */
+const navbar   = document.getElementById('navbar');
+const burger   = document.getElementById('burger');
+const navMenu  = document.getElementById('navMenu');
+const navClose = document.getElementById('navClose');  // ← NEW
+
+window.addEventListener('scroll', onScroll, { passive: true });
+
+function onScroll() {
+  navbar.classList.toggle('on', window.scrollY > 50);
+  updateActive();
+  document.getElementById('scrollTop')?.classList.toggle('show', window.scrollY > 500);
+}
+
+burger.addEventListener('click', () => {
+  const open = navMenu.classList.toggle('open');
+  burger.classList.toggle('on', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+// ✕ Close button inside the mobile drawer
+navClose.addEventListener('click', closeNav);
+
+navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+document.addEventListener('click', e => {
+  if (!navbar.contains(e.target) && navMenu.classList.contains('open')) closeNav();
+});
+
+function closeNav() {
+  navMenu.classList.remove('open');
+  burger.classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   4. LAZY BG LOADER
+══════════════════════════════════════════════════════════════ */
+// Load hero bg
+(function() {
+  const bg = document.getElementById('heroBg');
+  const url = 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=1920&q=70';
+  const tmp = new Image();
+  tmp.onload = () => {
+    bg.style.backgroundImage = `url('${url}')`;
+    bg.style.backgroundSize = 'cover';
+    bg.style.backgroundPosition = 'center';
+    bg.style.backgroundAttachment = 'fixed';
+    bg.classList.add('loaded');
+  };
+  tmp.src = url;
+})();
+
+// Universal lazy loader
+const lazyIO = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    loadBg(entry.target);
+    obs.unobserve(entry.target);
+  });
+}, { rootMargin: '350px 0px' });
+
+function loadBg(el) {
+  const url = el.dataset.bg;
+  if (!url || el.classList.contains('loaded')) return;
+  const tmp = new Image();
+  tmp.onload = () => {
+    el.style.backgroundImage = `url('${url}')`;
+    el.style.backgroundSize = 'cover';
+    el.style.backgroundPosition = 'center';
+    el.classList.add('loaded');
+  };
+  tmp.src = url;
+}
+
+document.querySelectorAll('.lazy-bg:not(#heroBg)').forEach(el => {
+  if (el.classList.contains('rc-img') || el.classList.contains('rc-thumb')) {
+    loadBg(el); // cards always visible — load immediately
+  } else {
+    lazyIO.observe(el);
+  }
+});
+
+/* ══════════════════════════════════════════════════════════════
+   5. SCROLL ANIMATIONS
+══════════════════════════════════════════════════════════════ */
+const animIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const group = entry.target.parentElement;
+    const siblings = group ? [...group.querySelectorAll('.anim')] : [];
+    const delay = siblings.indexOf(entry.target) * 80;
+    setTimeout(() => entry.target.classList.add('in'), delay);
+    animIO.unobserve(entry.target);
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.anim').forEach(el => animIO.observe(el));
+
+/* ══════════════════════════════════════════════════════════════
+   6. ACTIVE NAV LINK
+══════════════════════════════════════════════════════════════ */
+function updateActive() {
+  const y = window.scrollY + 100;
+  document.querySelectorAll('section[id],footer[id]').forEach(sec => {
+    const link = navMenu.querySelector(`a[href="#${sec.id}"]`);
+    if (!link) return;
+    if (y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight) {
+      navMenu.querySelectorAll('.nl').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. FACILITIES TOOLTIP
+══════════════════════════════════════════════════════════════ */
+document.querySelectorAll('.fac-card').forEach(card => {
+  const popup = card.querySelector('.fc-popup');
+  if (!popup) return;
+  popup.querySelector('b').textContent    = card.dataset.title || '';
+  popup.querySelector('span').textContent = card.dataset.info  || '';
+});
+
+/* ══════════════════════════════════════════════════════════════
+   8. GALLERY
+══════════════════════════════════════════════════════════════ */
+const track  = document.getElementById('galTrack');
+const dotsW  = document.getElementById('gDots');
+const slides = track ? [...track.querySelectorAll('.gal-slide')] : [];
+let galIdx = 0, galTimer = null, galPaused = false;
+
+slides.forEach((_, i) => {
+  const d = document.createElement('button');
+  d.className = 'gal-dot' + (i === 0 ? ' on' : '');
+  d.setAttribute('aria-label', `Slide ${i+1}`);
+  d.addEventListener('click', () => galGoTo(i));
+  dotsW?.appendChild(d);
+});
+
+function galGoTo(idx) {
+  if (idx < 0) idx = slides.length - 1;
+  if (idx >= slides.length) idx = 0;
+  galIdx = idx;
+  const slide = slides[idx];
+  if (!slide) return;
+  loadBg(slide.querySelector('.lazy-bg'));
+  track.scrollTo({ left: slide.offsetLeft - 40, behavior: 'smooth' });
+  dotsW?.querySelectorAll('.gal-dot').forEach((d,i) => d.classList.toggle('on', i===idx));
+}
+
+function startAuto() {
+  clearInterval(galTimer);
+  galTimer = setInterval(() => { if (!galPaused) galGoTo(galIdx + 1); }, 1500);
+}
+startAuto();
+
+track?.addEventListener('mouseenter', () => galPaused = true);
+track?.addEventListener('mouseleave', () => galPaused = false);
+document.getElementById('gPrev')?.addEventListener('click', () => { galGoTo(galIdx-1); startAuto(); });
+document.getElementById('gNext')?.addEventListener('click', () => { galGoTo(galIdx+1); startAuto(); });
+
+// Touch swipe gallery
+let gtx = 0;
+track?.addEventListener('touchstart', e => gtx = e.changedTouches[0].screenX, { passive:true });
+track?.addEventListener('touchend',   e => { const d=gtx-e.changedTouches[0].screenX; if(Math.abs(d)>40){d>0?galGoTo(galIdx+1):galGoTo(galIdx-1);startAuto();} }, {passive:true});
+
+// Preload first 3
+slides.slice(0, 3).forEach(s => loadBg(s.querySelector('.lazy-bg')));
+
+// LIGHTBOX
+const lb    = document.getElementById('lb');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+const lbCnt = document.getElementById('lbCnt');
+let lbIdx   = 0;
+
+const galImgs = slides.map(s => ({
+  src: s.querySelector('.lazy-bg')?.dataset.bg || '',
+  cap: s.querySelector('.lazy-bg')?.dataset.cap || s.querySelector('.gal-cap')?.textContent || ''
+}));
+
+function lbOpen(i) {
+  lbIdx = i;
+  lbImg.src = galImgs[i].src;
+  lbImg.alt = galImgs[i].cap;
+  lbCap.textContent = galImgs[i].cap;
+  lbCnt.textContent = `${i+1} / ${galImgs.length}`;
+  lb.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function lbClose() { lb.classList.remove('show'); document.body.style.overflow = ''; }
+function lbGo(d) { lbIdx = (lbIdx+d+galImgs.length)%galImgs.length; lbOpen(lbIdx); }
+
+slides.forEach((s,i) => s.querySelector('.gal-img')?.addEventListener('click', () => lbOpen(i)));
+document.getElementById('lbX')?.addEventListener('click', lbClose);
+document.getElementById('lbPv')?.addEventListener('click', e => { e.stopPropagation(); lbGo(-1); });
+document.getElementById('lbNx')?.addEventListener('click', e => { e.stopPropagation(); lbGo(1); });
+lb?.addEventListener('click', e => { if (e.target===lb) lbClose(); });
+document.addEventListener('keydown', e => {
+  if (!lb?.classList.contains('show')) return;
+  if (e.key==='ArrowLeft') lbGo(-1);
+  if (e.key==='ArrowRight') lbGo(1);
+  if (e.key==='Escape') lbClose();
+});
+
+/* ══════════════════════════════════════════════════════════════
+   9. ROOM MODAL — 3-STEP BOOKING
+══════════════════════════════════════════════════════════════ */
+const ROOMS = {
+  single: {
+    title: 'Single Sharing',
+    img:   'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=75',
+    tags:  '<span class="tag-av">Available</span>',
+    meta:  '<span><i class="fa-solid fa-ruler-combined"></i>180 sq.ft</span><span><i class="fa-solid fa-user"></i>1 Person</span><span><i class="fa-solid fa-snowflake"></i>AC</span>',
+    price: '₹12,000',
+    desc:  'Oru private, fully furnished single room — attached bathroom, wardrobe, study table, AC, and a comfortable bed. Privacy velaikum, peaceful environment velaikum idhu best choice.',
+    highlights: ['Private attached bathroom','King-size bed with mattress','Built-in wardrobe with locker','Study table & ergonomic chair','Large window with city view','Bedside lamp & dual charging'],
+    chips: ['<i class="fa-solid fa-snowflake"></i>AC Room','<i class="fa-solid fa-wifi"></i>100 Mbps WiFi','<i class="fa-solid fa-utensils"></i>3 Meals/Day','<i class="fa-solid fa-bolt"></i>Power Backup','<i class="fa-solid fa-video"></i>CCTV','<i class="fa-solid fa-broom"></i>Daily Cleaning','<i class="fa-solid fa-shirt"></i>Laundry','<i class="fa-solid fa-car"></i>Parking'],
+    pricing: [['Monthly Rent','₹12,000',true],['Security Deposit','₹24,000',false],['Food (Optional)','₹3,500/mo',false],['WiFi + Power + Water','Free',false]],
+    rules: ['No guests after 10:00 PM','No smoking inside rooms','Quiet hours: 11 PM – 6 AM','ID proof mandatory at move-in']
+  },
+  double: {
+    title: 'Double Sharing',
+    img:   'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=800&q=75',
+    tags:  '<span class="tag-pop">Most Popular</span><span class="tag-fire"><i class="fa-solid fa-fire"></i>Best Value</span>',
+    meta:  '<span><i class="fa-solid fa-ruler-combined"></i>240 sq.ft</span><span><i class="fa-solid fa-user-group"></i>2 People</span><span><i class="fa-solid fa-snowflake"></i>AC</span>',
+    price: '₹8,000',
+    desc:  'Most popular choice! Rendu perukkum sari aagura spacious room — two separate beds, individual wardrobes, two study tables. Friendly community atmosphere!',
+    highlights: ['Two separate single beds','Individual wardrobes per resident','Two study desks with shelves','Attached bath (private to room)','Common balcony access','Dual charging ports per bed'],
+    chips: ['<i class="fa-solid fa-snowflake"></i>AC Room','<i class="fa-solid fa-wifi"></i>100 Mbps WiFi','<i class="fa-solid fa-utensils"></i>3 Meals/Day','<i class="fa-solid fa-bolt"></i>Power Backup','<i class="fa-solid fa-video"></i>CCTV','<i class="fa-solid fa-broom"></i>Daily Cleaning','<i class="fa-solid fa-shirt"></i>Free Laundry','<i class="fa-solid fa-car"></i>Parking'],
+    pricing: [['Monthly Rent','₹8,000',true],['Security Deposit','₹16,000',false],['Food (Optional)','₹3,000/mo',false],['WiFi + Power + Water','Free',false]],
+    rules: ['Mutual respect between roommates','No smoking inside rooms','Quiet hours: 11 PM – 6 AM','ID proof mandatory at move-in']
+  },
+  triple: {
+    title: 'Triple Sharing',
+    img:   'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=800&q=75',
+    tags:  '<span class="tag-ltd">Limited</span>',
+    meta:  '<span><i class="fa-solid fa-ruler-combined"></i>300 sq.ft</span><span><i class="fa-solid fa-users"></i>3 People</span><span><i class="fa-solid fa-fan"></i>Fan+Cooler</span>',
+    price: '₹5,500',
+    desc:  'Budget-friendly triple sharing — bunk beds, personal lockers, shared attached bath. Students & freshers ku most affordable option with community feel!',
+    highlights: ['Bunk beds with safety guardrails','Personal locker per resident','Shared study area — 3 seats','Attached bath within room','Personal shelf & storage','Ceiling fan + desert cooler'],
+    chips: ['<i class="fa-solid fa-fan"></i>Fan+Cooler','<i class="fa-solid fa-wifi"></i>100 Mbps WiFi','<i class="fa-solid fa-utensils"></i>3 Meals/Day','<i class="fa-solid fa-bolt"></i>Power Backup','<i class="fa-solid fa-video"></i>CCTV','<i class="fa-solid fa-broom"></i>Daily Cleaning','<i class="fa-solid fa-lock"></i>Personal Locker','<i class="fa-solid fa-car"></i>Parking'],
+    pricing: [['Monthly Rent','₹5,500',true],['Security Deposit','₹11,000',false],['Food (Optional)','₹2,500/mo',false],['WiFi + Power + Water','Free',false]],
+    rules: ['No guests after 9:30 PM','No smoking inside building','Quiet hours: 10:30 PM – 6 AM','Common area etiquette required']
+  },
+  four: {
+    title: 'Four Sharing',
+    img:   'https://images.unsplash.com/photo-1598928636135-d146006ff4be?w=800&q=75',
+    tags:  '<span class="tag-eco">Most Economical</span>',
+    meta:  '<span><i class="fa-solid fa-ruler-combined"></i>360 sq.ft</span><span><i class="fa-solid fa-users"></i>4 People</span><span><i class="fa-solid fa-fan"></i>Fan+Cooler</span>',
+    price: '₹4,000',
+    desc:  'Most economical option — 4-bed dormitory style with bunk beds and privacy curtains. Ideal for student groups, freshers & budget-conscious residents.',
+    highlights: ['4 bunk beds with privacy curtains','Personal locker per resident','Shared study table & chairs','Common attached bathroom','Individual shelf & hanging space','2 ceiling fans + desert cooler'],
+    chips: ['<i class="fa-solid fa-fan"></i>Fan+Cooler','<i class="fa-solid fa-wifi"></i>100 Mbps WiFi','<i class="fa-solid fa-utensils"></i>3 Meals/Day','<i class="fa-solid fa-bolt"></i>Power Backup','<i class="fa-solid fa-video"></i>CCTV','<i class="fa-solid fa-broom"></i>Daily Cleaning','<i class="fa-solid fa-lock"></i>Personal Locker','<i class="fa-solid fa-car"></i>Parking'],
+    pricing: [['Monthly Rent','₹4,000',true],['Security Deposit','₹8,000',false],['Food (Optional)','₹2,000/mo',false],['WiFi + Power + Water','Free',false]],
+    rules: ['No guests after 9:00 PM','No smoking inside building','Quiet hours: 10 PM – 6 AM','Respect all roommates privacy']
+  }
+};
+
+let currentRoom = null;
+
+function openRoomModal(roomKey) {
+  currentRoom = ROOMS[roomKey];
+  if (!currentRoom) return;
+
+  const r = currentRoom;
+  // Fill Step 1
+  const rmImg = document.getElementById('rmImg');
+  rmImg.dataset.bg = r.img;
+  loadBg(rmImg);
+
+  document.getElementById('rmTags').innerHTML    = r.tags;
+  document.getElementById('rmTitle').textContent = r.title;
+  document.getElementById('rmMeta').innerHTML    = r.meta;
+  document.getElementById('rmPriceBig').innerHTML = `<span class="rp-amt">${r.price}</span><span class="rp-mo">/month</span>`;
+  document.getElementById('rmDesc').textContent  = r.desc;
+
+  document.getElementById('rmHL').innerHTML = r.highlights.map(h =>
+    `<li><i class="fa-solid fa-check"></i>${h}</li>`).join('');
+
+  document.getElementById('rmChips').innerHTML = r.chips.map(c =>
+    `<span>${c}</span>`).join('');
+
+  document.getElementById('rmPtable').innerHTML = r.pricing.map(([label,val,gold]) =>
+    `<div class="rm-ptr${gold?' gold':''}"><span>${label}</span><b>${val}</b></div>`).join('');
+
+  document.getElementById('rmRules').innerHTML = r.rules.map(rule =>
+    `<li><i class="fa-solid fa-circle-dot"></i>${rule}</li>`).join('');
+
+  // Confirm img reference
+  const confImg = document.getElementById('rmConfirmImg');
+  if (confImg) { confImg.dataset.bg = r.img; }
+
+  // Room name in step 2
+  document.getElementById('rmBookingRoom').textContent = r.title + ' — ' + r.price + '/month';
+
+  // Reset steps
+  goToStep(1);
+
+  // Show modal
+  document.getElementById('rmModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+window.openRoomModal = openRoomModal;
+
+function closeRoomModal() {
+  document.getElementById('rmModal').classList.remove('show');
+  document.body.style.overflow = '';
+  // Reset success state
+  document.getElementById('rmSuccess')?.classList.add('hidden');
+  document.getElementById('rmConfirmBody')?.classList.remove('hidden');
+}
+window.closeRoomModal = closeRoomModal;
+
+function goToStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById(`rmPage${i}`)?.classList.toggle('hidden', i!==n);
+    const step = document.querySelector(`.rm-step[data-step="${i}"]`);
+    if (!step) return;
+    step.classList.toggle('active', i===n);
+    step.classList.toggle('done', i<n);
+  });
+}
+
+// Modal event listeners
+document.getElementById('rmClose')?.addEventListener('click', closeRoomModal);
+document.getElementById('rmBackdrop')?.addEventListener('click', closeRoomModal);
+
+document.getElementById('rmToStep2')?.addEventListener('click', () => goToStep(2));
+
+document.getElementById('rmBack1')?.addEventListener('click', () => goToStep(1));
+
+document.getElementById('rmToStep3')?.addEventListener('click', () => {
+  // Validate step 2 form
+  const name  = document.getElementById('rfName')?.value.trim();
+  const phone = document.getElementById('rfPhone')?.value.trim();
+  const email = document.getElementById('rfEmail')?.value.trim();
+  const date  = document.getElementById('rfDate')?.value;
+  if (!name||!phone||!email||!date) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  // Fill confirm page
+  const r = currentRoom;
+  const confImg = document.getElementById('rmConfirmImg');
+  if (confImg) { confImg.dataset.bg = r.img; loadBg(confImg); }
+  document.getElementById('rmConfirmRoomName').textContent = r.title;
+  document.getElementById('rmConfirmPrice').textContent    = r.price + '/month';
+
+  document.getElementById('rmConfirmDetails').innerHTML = `
+    <div class="rcd-item"><div class="rcd-lbl">Name</div><div class="rcd-val">${name}</div></div>
+    <div class="rcd-item"><div class="rcd-lbl">Phone</div><div class="rcd-val">${phone}</div></div>
+    <div class="rcd-item"><div class="rcd-lbl">Email</div><div class="rcd-val">${email}</div></div>
+    <div class="rcd-item"><div class="rcd-lbl">Move-in Date</div><div class="rcd-val">${date}</div></div>
+    <div class="rcd-item"><div class="rcd-lbl">Duration</div><div class="rcd-val">${document.getElementById('rfDur')?.value||'—'}</div></div>
+    <div class="rcd-item"><div class="rcd-lbl">Occupation</div><div class="rcd-val">${document.getElementById('rfOcc')?.value||'—'}</div></div>
+  `;
+  goToStep(3);
+});
+
+document.getElementById('rmBack2')?.addEventListener('click', () => goToStep(2));
+
+document.getElementById('rmSubmit')?.addEventListener('click', () => {
+  const tnc = document.getElementById('tncCheck');
+  if (!tnc?.checked) { alert('Please agree to Terms & Conditions to proceed.'); return; }
+  const btn = document.getElementById('rmSubmit');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+  btn.disabled = true;
+  setTimeout(() => {
+    const ref = 'LUX' + Date.now().toString().slice(-6).toUpperCase();
+    document.getElementById('rmRef').textContent = ref;
+    document.getElementById('rmConfirmBody').classList.add('hidden');
+    document.getElementById('rmSuccess').classList.remove('hidden');
+  }, 1800);
+});
+
+// Room card & pricing button open modal
+document.querySelectorAll('.rc-open').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    openRoomModal(btn.dataset.room);
+  });
+});
+document.querySelectorAll('.room-card').forEach(card => {
+  card.querySelector('.rc-view-btn')?.addEventListener('click', e => {
+    e.stopPropagation();
+    openRoomModal(card.dataset.room);
+  });
+});
+
+// Keyboard close
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeRoomModal();
+});
+
+/* ══════════════════════════════════════════════════════════════
+   10. BOOKING FORM (main section)
+══════════════════════════════════════════════════════════════ */
+document.getElementById('bookingForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Booking Sent! We\'ll call you soon.';
+    btn.style.background = 'linear-gradient(135deg,#3ecf8e,#128c7e)';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.disabled = false;
+      this.reset();
+    }, 3500);
+  }, 1600);
+});
+
+/* ══════════════════════════════════════════════════════════════
+   11. SCROLL TO TOP
+══════════════════════════════════════════════════════════════ */
+document.getElementById('scrollTop')?.addEventListener('click', () =>
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+);
+
+/* ══════════════════════════════════════════════════════════════
+   12. FLOATING WHATSAPP + SMOOTH ANCHORS
+══════════════════════════════════════════════════════════════ */
+
+// Inject floating WhatsApp button
+const waBtn = document.createElement('a');
+waBtn.href = 'https://wa.me/919876543210';
+waBtn.target = '_blank';
+waBtn.className = 'wa-float';
+waBtn.setAttribute('aria-label', 'Chat on WhatsApp');
+waBtn.innerHTML = '<i class="fa-brands fa-whatsapp"></i><span class="wa-float-pulse"></span>';
+document.body.appendChild(waBtn);
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Init
+onScroll();
+</script>
+</html>
