@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gens PG — Premium Men's Accommodation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p1:#7c3aed;
+  --p2:#9d5cf0;
+  --p3:#c4b5fd;
+  --p4:#ede9fe;
+  --p5:#f5f3ff;
+  --p6:#4c1d95;
+
+  --a1:#f59e0b;
+  --a2:#fbbf24;
+  --a3:#fef3c7;
+
+  --r1:#ef4444;
+  --g1:#10b981;
+  --b1:#3b82f6;
+
+  --txt:#1e1b4b;
+  --txt2:#4338ca;
+  --txt3:#7c7bb0;
+  --txtm:#a09eca;
+
+  --bg:#f5f3ff;
+  --bg2:#ede9fe;
+  --bg3:#e9e4ff;
+
+  --card:rgba(255,255,255,0.75);
+  --bdr:rgba(124,58,237,0.15);
+  --bdr2:rgba(124,58,237,0.25);
+  --sh:0 8px 40px rgba(76,29,149,0.13);
+  --sh2:0 20px 60px rgba(76,29,149,0.2);
+
+  --rad:20px;
+  --rads:12px;
+  --tr:0.32s cubic-bezier(.4,0,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(124,58,237,0.2)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--p1),var(--p2));border-radius:4px}
+
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* ══ NAVBAR ══ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:16px 0;transition:all .4s;
+}
+#nav.solid{
+  background:rgba(245,243,255,0.93);
+  backdrop-filter:blur(22px);
+  box-shadow:0 2px 24px rgba(76,29,149,0.1);
+  border-bottom:1px solid var(--bdr);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.65rem;font-weight:800;letter-spacing:-0.5px;
+  text-decoration:none;color:var(--txt);
+}
+.logo span{
+  background:linear-gradient(135deg,var(--p1),var(--a1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-ul{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-ul a{
+  font-size:.88rem;font-weight:700;color:var(--txt3);
+  text-decoration:none;position:relative;transition:color var(--tr);
+}
+.nav-ul a::after{
+  content:'';position:absolute;left:0;bottom:-3px;width:0;height:2px;
+  background:linear-gradient(90deg,var(--p1),var(--a1));
+  border-radius:2px;transition:width var(--tr);
+}
+.nav-ul a:hover{color:var(--p1)}
+.nav-ul a:hover::after{width:100%}
+.nav-cta{
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;padding:10px 26px;border-radius:50px;
+  text-decoration:none;font-size:.85rem;font-weight:800;
+  box-shadow:0 4px 18px rgba(124,58,237,0.38);transition:var(--tr);
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,0.5)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:5px}
+.ham span{display:block;height:2.5px;background:var(--txt);border-radius:2px;transition:var(--tr)}
+.ham span:nth-child(1){width:24px}
+.ham span:nth-child(2){width:18px;margin-left:auto}
+.ham span:nth-child(3){width:24px}
+.ham.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);width:24px}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+.mob-nav{
+  display:none;position:fixed;inset:0;background:rgba(245,243,255,.97);
+  z-index:899;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+}
+.mob-nav.open{display:flex;animation:mobIn .3s ease}
+@keyframes mobIn{from{opacity:0}to{opacity:1}}
+.mob-nav a{font-size:1.9rem;font-weight:800;color:var(--txt);text-decoration:none;transition:color var(--tr)}
+.mob-nav a:hover{color:var(--p1)}
+
+/* ══ HERO ══ */
+#hero{
+  min-height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+  padding-top:80px;
+}
+
+/* Left side — content */
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 48px 120px 0;
+  position:relative;z-index:2;
+}
+
+/* Hero bg gradient */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 0% 50%, rgba(196,181,253,0.35) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(245,158,11,0.1) 0%,transparent 55%),
+    linear-gradient(160deg,#f5f3ff 0%,#ede9fe 40%,#e9e4ff 100%);
+  z-index:0;
+}
+
+/* Dot grid */
+#hero::after{
+  content:'';position:absolute;inset:0;z-index:0;opacity:.3;
+  background-image:radial-gradient(circle,rgba(124,58,237,.25) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:radial-gradient(ellipse 60% 100% at 20% 50%,black,transparent);
+}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(124,58,237,.1);border:1.5px solid rgba(124,58,237,.2);
+  border-radius:50px;padding:8px 18px;margin-bottom:26px;
+  width:fit-content;
+  animation:fadeUp .9s .1s both;
+}
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--p1);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero-eyebrow span{font-size:.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--p1)}
+
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,5vw,4.4rem);
+  font-weight:800;line-height:1.1;
+  color:var(--txt);margin-bottom:20px;
+  animation:fadeUp .9s .2s both;
+}
+.hero-h1 .grad{
+  background:linear-gradient(135deg,var(--p1) 0%,var(--a1) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;
+}
+
+.hero-p{
+  font-size:1rem;font-weight:500;color:var(--txt3);
+  max-width:460px;line-height:1.85;margin-bottom:38px;
+  animation:fadeUp .9s .35s both;
+}
+
+.hero-btns{
+  display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px;
+  animation:fadeUp .9s .5s both;
+}
+.btn-grad{
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;padding:14px 32px;border-radius:50px;
+  text-decoration:none;font-size:.9rem;font-weight:800;
+  box-shadow:0 6px 22px rgba(124,58,237,.38);transition:var(--tr);
+  border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(124,58,237,.5)}
+.btn-amber{
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  color:var(--txt);padding:14px 32px;border-radius:50px;
+  text-decoration:none;font-size:.9rem;font-weight:800;
+  box-shadow:0 6px 22px rgba(245,158,11,.3);transition:var(--tr);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-amber:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(245,158,11,.45)}
+
+/* Mini stats row */
+.hero-stats-row{
+  display:flex;gap:28px;flex-wrap:wrap;
+  animation:fadeUp .9s .65s both;
+}
+.hstat{
+  display:flex;flex-direction:column;
+  padding-left:16px;border-left:2px solid var(--p3);
+}
+.hstat-n{
+  font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:800;
+  background:linear-gradient(135deg,var(--p1),var(--a1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;
+}
+.hstat-l{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--txtm);margin-top:3px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* Right side — stacked images */
+.hero-right{
+  position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:80px 0 80px 20px;
+}
+
+/* Image collage */
+.hero-img-collage{
+  position:relative;width:100%;max-width:520px;height:520px;
+}
+.himg{
+  position:absolute;border-radius:var(--rad);overflow:hidden;
+  box-shadow:var(--sh2);
+}
+.himg img{width:100%;height:100%;object-fit:cover;display:block}
+
+.himg-main{
+  width:100%;height:100%;
+  top:0;right:0;
+  animation:imgFloat 8s ease-in-out infinite;
+}
+
+@keyframes imgFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+.himg-2{animation-name:imgFloat2}
+@keyframes imgFloat2{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* Floating badge on hero img */
+.hero-float-badge{
+  position:absolute;top:30px;left:0;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;padding:14px 18px;border-radius:var(--rads);
+  box-shadow:0 12px 32px rgba(124,58,237,.4);z-index:5;
+  text-align:center;min-width:120px;
+  animation:fadeUp .9s .8s both;
+}
+.hero-float-badge .big{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;line-height:1;display:block}
+.hero-float-badge small{font-size:.62rem;font-weight:700;opacity:.85;letter-spacing:1.5px;text-transform:uppercase}
+
+.hero-float-tag{
+  position:absolute;bottom:20px;right:0;
+  background:linear-gradient(135deg,var(--a1),var(--a2));
+  color:var(--txt);padding:12px 18px;border-radius:var(--rads);
+  box-shadow:0 8px 24px rgba(245,158,11,.35);z-index:5;
+  font-size:.78rem;font-weight:800;letter-spacing:.5px;
+  display:flex;align-items:center;gap:8px;
+  animation:fadeUp .9s 1s both;
+}
+
+
+/* ══ SECTIONS ══ */
+section{padding:100px 0}
+.sec-tag{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sec-tag::before{content:'';width:24px;height:2px;background:linear-gradient(90deg,var(--p1),var(--a1));border-radius:2px}
+.sec-tag span{font-size:.7rem;font-weight:800;letter-spacing:3.5px;text-transform:uppercase;color:var(--p1)}
+.sec-h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:800;line-height:1.2;
+  color:var(--txt);margin-bottom:14px;
+}
+.sec-h2 span{color:var(--p1)}
+.sec-h2 em{font-style:italic;color:var(--a1)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s cubic-bezier(.4,0,.2,1),transform .8s cubic-bezier(.4,0,.2,1)}
+.rv.in{opacity:1;transform:translateY(0)}
+.rvl{opacity:0;transform:translateX(-44px);transition:opacity .8s ease,transform .8s ease}
+.rvl.in{opacity:1;transform:translateX(0)}
+.rvr{opacity:0;transform:translateX(44px);transition:opacity .8s ease,transform .8s ease}
+.rvr.in{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+/* ══ ABOUT ══ */
+#about{background:var(--bg2);position:relative}
+#about::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p1),var(--a1),var(--p2))}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-img-wrap{position:relative}
+.about-main-img{
+  width:100%;aspect-ratio:4/5;border-radius:var(--rad);overflow:hidden;
+  box-shadow:var(--sh2);position:relative;
+}
+.about-main-img img{width:100%;height:100%;object-fit:cover;display:block}
+.about-main-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(76,29,149,.55) 100%)}
+.about-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;padding:20px 22px;border-radius:var(--rads);
+  box-shadow:0 14px 36px rgba(124,58,237,.4);text-align:center;z-index:2;
+}
+.about-badge .n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;line-height:1;display:block}
+.about-badge small{font-size:.6rem;font-weight:700;opacity:.82;letter-spacing:1.5px;text-transform:uppercase}
+.corner-d{position:absolute;pointer-events:none}
+.ctop{top:-12px;left:-12px;width:42px;height:42px;border-top:3px solid var(--a1);border-left:3px solid var(--a1);border-radius:4px 0 0 0}
+.cbot{bottom:-12px;right:-12px;width:42px;height:42px;border-bottom:3px solid var(--p3);border-right:3px solid var(--p3);border-radius:0 0 4px 0;bottom:calc(-12px + 18px);right:calc(-12px + 18px)}
+
+.about-text{display:flex;flex-direction:column;gap:16px}
+.about-text p{font-size:.93rem;font-weight:500;color:var(--txt3);line-height:1.85}
+.about-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.chip{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 16px;border-radius:50px;font-size:.8rem;font-weight:700;
+  border:1.5px solid;transition:var(--tr);cursor:default;
+}
+.chip:hover{transform:translateY(-2px)}
+.chip-p{background:var(--p4);border-color:var(--bdr);color:var(--p1)}
+.chip-a{background:var(--a3);border-color:rgba(245,158,11,.25);color:#92400e}
+.chip-g{background:#d1fae5;border-color:rgba(16,185,129,.25);color:#065f46}
+.chip-b{background:#dbeafe;border-color:rgba(59,130,246,.25);color:#1e40af}
+.chip-r{background:#fee2e2;border-color:rgba(239,68,68,.25);color:#991b1b}
+
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.scard{
+  background:var(--card);border:1.5px solid var(--bdr);
+  border-radius:var(--rads);padding:18px 12px;text-align:center;
+  transition:var(--tr);backdrop-filter:blur(10px);
+}
+.scard:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(124,58,237,.14)}
+.scard .n{
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;
+  background:linear-gradient(135deg,var(--p1),var(--a1));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;
+}
+.scard .l{font-size:.66rem;font-weight:700;color:var(--txtm);margin-top:5px;letter-spacing:1px}
+
+/* ══ BENEFITS ══ */
+#benefits{
+  background:linear-gradient(150deg,var(--bg3) 0%,var(--bg2) 60%,var(--bg3) 100%);
+  position:relative;overflow:hidden;
+}
+#benefits::before{
+  content:'';position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,.08) 0%,transparent 70%);
+}
+.ben-hdr{text-align:center;margin-bottom:56px}
+.ben-hdr .sec-tag{justify-content:center}
+.ben-hdr .sec-tag::before{display:none}
+
+.ben-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.ben-grid{grid-template-columns:repeat(2,1fr)}}
+
+.bcard{
+  background:var(--card);border:1.5px solid var(--bdr);
+  border-radius:var(--rad);padding:30px 24px;
+  position:relative;overflow:hidden;transition:var(--tr);
+  backdrop-filter:blur(10px);cursor:default;
+}
+.bcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  transform:scaleX(0);transform-origin:left;transition:transform var(--tr);
+}
+.bcard:hover{transform:translateY(-8px);box-shadow:var(--sh2);border-color:var(--bdr2)}
+.bcard:hover::before{transform:scaleX(1)}
+
+/* Color variety per card */
+.bc1::before{background:linear-gradient(90deg,var(--p1),var(--p2))}
+.bc2::before{background:linear-gradient(90deg,var(--a1),var(--a2))}
+.bc3::before{background:linear-gradient(90deg,var(--g1),#34d399)}
+.bc4::before{background:linear-gradient(90deg,var(--b1),#60a5fa)}
+.bc5::before{background:linear-gradient(90deg,var(--r1),#f87171)}
+.bc6::before{background:linear-gradient(90deg,#ec4899,#f472b6)}
+.bc7::before{background:linear-gradient(90deg,#14b8a6,#2dd4bf)}
+.bc8::before{background:linear-gradient(90deg,var(--p1),var(--a1))}
+
+.bcard-icon{
+  font-size:2.2rem;margin-bottom:16px;display:block;
+  transition:transform var(--tr);
+}
+.bcard:hover .bcard-icon{transform:scale(1.18) rotate(-6deg)}
+.bcard h3{font-size:.95rem;font-weight:800;margin-bottom:9px;color:var(--txt)}
+.bcard p{font-size:.8rem;font-weight:500;color:var(--txt3);line-height:1.7}
+
+/* ══ GALLERY — Masonry / Magazine layout ══ */
+#gallery{background:var(--bg4,var(--bg));position:relative}
+#gallery::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p1),var(--a1),var(--p2))}
+.gal-hdr{text-align:center;margin-bottom:50px}
+.gal-hdr .sec-tag{justify-content:center}
+.gal-hdr .sec-tag::before{display:none}
+
+/* Masonry magazine grid */
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:repeat(3,200px);
+  gap:12px;
+  max-width:1200px;margin:0 auto;
+}
+.gcell{
+  border-radius:var(--rads);overflow:hidden;position:relative;cursor:pointer;
+}
+.gcell img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .7s cubic-bezier(.4,0,.2,1);
+}
+.gcell:hover img{transform:scale(1.06)}
+
+/* Layout assignments */
+.gc1{grid-column:1/5;grid-row:1/3}   /* tall left */
+.gc2{grid-column:5/8;grid-row:1/2}   /* mid top */
+.gc3{grid-column:8/13;grid-row:1/3}  /* tall right */
+.gc4{grid-column:5/8;grid-row:2/3}   /* mid bottom */
+.gc5{grid-column:1/6;grid-row:3/4}   /* bottom wide left */
+.gc6{grid-column:6/9;grid-row:3/4}   /* bottom mid */
+.gc7{grid-column:9/13;grid-row:3/4}  /* bottom right */
+
+/* Caption overlay */
+.gcell-over{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(30,27,75,.82) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:18px;opacity:0;transition:opacity .4s;
+}
+.gcell:hover .gcell-over{opacity:1}
+.gcell-tag{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--p1),var(--a1));
+  color:#fff;padding:3px 12px;border-radius:50px;
+  font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:6px;width:fit-content;
+}
+.gcell-over h4{color:#fff;font-size:.9rem;font-weight:800}
+.gcell-over p{color:rgba(255,255,255,.65);font-size:.72rem;font-weight:500;margin-top:2px}
+
+/* Always-visible label on first cell */
+.gcell-label{
+  position:absolute;top:14px;left:14px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;padding:5px 14px;border-radius:50px;
+  font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  box-shadow:0 4px 14px rgba(124,58,237,.35);
+}
+
+/* ══ CONTACT / FORM ══ */
+#contact{
+  background:linear-gradient(150deg,var(--bg2) 0%,var(--bg3) 100%);
+  position:relative;overflow:hidden;
+}
+#contact::before{
+  content:'';position:absolute;top:-100px;right:-80px;width:450px;height:450px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,58,237,.09) 0%,transparent 70%);
+}
+.con-inner{
+  display:grid;grid-template-columns:1fr 1.15fr;gap:90px;align-items:start;
+}
+.con-left .sec-h2{margin-bottom:18px}
+.con-desc{font-size:.93rem;font-weight:500;color:var(--txt3);line-height:1.85;margin-bottom:42px}
+
+.con-infos{display:flex;flex-direction:column;gap:0}
+.cinfo{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid var(--bdr);
+}
+.cinfo:first-of-type{border-top:1px solid var(--bdr)}
+.cinfo-icon{
+  width:40px;height:40px;flex-shrink:0;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+}
+.ci-p{background:var(--p4);border:1.5px solid var(--bdr)}
+.ci-a{background:var(--a3);border:1.5px solid rgba(245,158,11,.2)}
+.ci-g{background:#d1fae5;border:1.5px solid rgba(16,185,129,.2)}
+.ci-b{background:#dbeafe;border:1.5px solid rgba(59,130,246,.2)}
+.cinfo-txt h5{font-size:.66rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--txtm);margin-bottom:3px}
+.cinfo-txt p{font-size:.88rem;font-weight:600;color:var(--txt2)}
+
+/* Form box */
+.form-box{
+  background:rgba(255,255,255,.82);
+  border:1.5px solid var(--bdr);
+  border-radius:var(--rad);
+  overflow:hidden;
+  box-shadow:var(--sh2);
+  backdrop-filter:blur(20px);
+  position:relative;
+}
+.form-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--p1),var(--a1),var(--g1),var(--b1));
+  background-size:200%;animation:gradShift 4s linear infinite;
+}
+@keyframes gradShift{0%{background-position:0%}100%{background-position:200%}}
+
+.fbox-hdr{padding:32px 36px 0}
+.fbox-hdr h3{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:800;color:var(--txt);margin-bottom:5px}
+.fbox-hdr p{font-size:.8rem;font-weight:500;color:var(--txtm)}
+.fbox-body{padding:24px 36px 36px}
+
+.fg{margin-bottom:18px}
+.fg label{
+  display:block;font-size:.68rem;font-weight:800;letter-spacing:2px;
+  text-transform:uppercase;color:var(--txt3);margin-bottom:7px;
+}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:var(--bg);
+  border:1.5px solid var(--bdr);border-radius:var(--rads);
+  color:var(--txt);padding:13px 15px;
+  font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;
+  outline:none;transition:var(--tr);-webkit-appearance:none;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--txtm)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:var(--p1);background:var(--p5);
+  box-shadow:0 0 0 3px rgba(124,58,237,.12);
+}
+.fg select option{background:#fff;color:var(--txt)}
+.fg textarea{resize:none;height:90px}
+
+/* 2-col form row */
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.btn-submit{
+  width:100%;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#fff;border:none;border-radius:50px;padding:15px;
+  font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:800;
+  cursor:pointer;transition:var(--tr);margin-top:6px;
+  box-shadow:0 6px 22px rgba(124,58,237,.38);
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,58,237,.5)}
+.success-msg{
+  display:none;margin-top:14px;padding:14px 18px;
+  background:var(--p4);border:1.5px solid var(--bdr2);
+  border-radius:var(--rads);color:var(--p1);
+  font-weight:800;font-size:.9rem;text-align:center;
+}
+
+/* ══ FOOTER ══ */
+footer{
+  background:linear-gradient(150deg,#1e1b4b 0%,#2d2369 50%,#1e1b4b 100%);
+  color:rgba(255,255,255,.7);padding:72px 0 30px;position:relative;overflow:hidden;
+}
+footer::before{
+  content:'';position:absolute;top:-100px;right:-80px;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,181,253,.07) 0%,transparent 70%);
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.8fr 1fr 1fr;
+  gap:50px;margin-bottom:50px;position:relative;z-index:1;
+}
+.fbrand .logo{color:#fff}
+.fbrand p{color:rgba(255,255,255,.45);font-size:.86rem;font-weight:500;margin-top:14px;max-width:280px;line-height:1.85}
+.fsocials{display:flex;gap:10px;margin-top:22px}
+.fsoc{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;color:rgba(255,255,255,.55);font-size:.85rem;font-weight:800;transition:var(--tr);
+}
+.fsoc:hover{background:var(--p1);color:#fff;border-color:var(--p1)}
+
+.fcol h4{font-size:.68rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--p3);margin-bottom:20px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fcol a{
+  color:rgba(255,255,255,.45);text-decoration:none;font-size:.86rem;font-weight:500;
+  transition:color var(--tr);display:flex;align-items:center;gap:7px;
+}
+.fcol a::before{content:'';width:0;height:1px;background:var(--p3);transition:width var(--tr);flex-shrink:0}
+.fcol a:hover{color:var(--p3)}
+.fcol a:hover::before{width:14px}
+.fci{display:flex;gap:10px;align-items:flex-start;color:rgba(255,255,255,.45);font-size:.84rem;margin-bottom:12px;font-weight:500}
+.fci-icon{color:var(--a2);flex-shrink:0;margin-top:1px}
+
+.fdiv{height:1px;background:linear-gradient(90deg,transparent,rgba(196,181,253,.18),transparent);margin-bottom:24px;position:relative;z-index:1}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.fbot p{color:rgba(255,255,255,.28);font-size:.76rem;font-weight:500}
+.fbot span{color:var(--p3)}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  #hero{grid-template-columns:1fr;padding-top:80px}
+  .hero-left{padding:50px 0 80px;text-align:center;align-items:center}
+  .hero-right{display:none}
+  .hero-stats-row{justify-content:center}
+  .hero-scroll{display:none}
+  .about-grid{grid-template-columns:1fr;gap:50px}
+  .about-img-wrap{max-width:420px}
+  .con-inner{grid-template-columns:1fr;gap:50px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .fbrand{grid-column:1/-1}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gcell{aspect-ratio:4/3}
+  .gc1,.gc2,.gc3,.gc4,.gc5,.gc6,.gc7{grid-column:auto;grid-row:auto}
+}
+@media(max-width:768px){
+  .nav-ul,.nav-cta{display:none}
+  .ham{display:flex}
+  section{padding:72px 0}
+  .ben-grid{grid-template-columns:1fr 1fr}
+  .fg-row{grid-template-columns:1fr}
+  .fbox-hdr,.fbox-body{padding-left:22px;padding-right:22px}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .fbot{flex-direction:column;text-align:center}
+}
+@media(max-width:540px){
+  .ben-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr}
+  .hero-h1{font-size:2.4rem}
+  .hero-stats-row{gap:18px}
+  .about-stats{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+  <div class="container nav-in">
+    <a href="#" class="logo">Gens<span>PG</span></a>
+    <ul class="nav-ul">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Now</a>
+    <button class="ham" id="ham"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <a href="#hero" onclick="closeM()">Home</a>
+  <a href="#about" onclick="closeM()">About</a>
+  <a href="#benefits" onclick="closeM()">Benefits</a>
+  <a href="#gallery" onclick="closeM()">Gallery</a>
+  <a href="#contact" onclick="closeM()">Contact</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <!-- Left Content -->
+  <div class="hero-left container-left" style="padding-left:max(28px, calc((100vw - 1200px)/2 + 28px))">
+    <div class="hero-eyebrow">
+      <div class="dot"></div>
+      <span>Premium Men's PG · Nellore</span>
+    </div>
+    <h1 class="hero-h1">
+      Premium Living<br>
+      <span class="grad">For Gents.</span>
+    </h1>
+    <p class="hero-p">Experience comfort, security, and community in Nellore's finest paying guest accommodation crafted exclusively for men.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-grad">📋 Book a Room</a>
+      <a href="#gallery" class="btn-amber">📸 View Gallery</a>
+    </div>
+    <div class="hero-stats-row">
+      <div class="hstat">
+        <span class="hstat-n">50+</span>
+        <span class="hstat-l">Rooms</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n">200+</span>
+        <span class="hstat-l">Residents</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n">4.9★</span>
+        <span class="hstat-l">Rating</span>
+      </div>
+      <div class="hstat">
+        <span class="hstat-n">5 Yrs</span>
+        <span class="hstat-l">Trusted</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Images -->
+  <div class="hero-right">
+    <div class="hero-img-collage">
+      <div class="himg himg-main">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85" alt="Premium Room">
+      </div>
+      
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap rvl">
+        <div class="corner-d ctop"></div>
+        <div class="corner-d cbot"></div>
+        <div class="about-main-img">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=85" alt="Gens PG Room">
+        </div>
+        
+      </div>
+      <div class="about-text rvr">
+        <div>
+          <div class="sec-tag"><span>About Us</span></div>
+          <h2 class="sec-h2">Your Home <span>Away From Home</span></h2>
+        </div>
+        <p>At Gens PG, we've crafted a premium living experience tailored exclusively for working professionals and students. Our facility combines modern aesthetics with all the comforts you'd expect from a luxury residence.</p>
+        <p>Located in the heart of Nellore, we offer fully furnished private and shared rooms, nourishing meals, blazing-fast internet, and round-the-clock security.</p>
+       
+        <div class="about-stats">
+          <div class="scard"><div class="n">50+</div><div class="l">Rooms</div></div>
+          <div class="scard"><div class="n">200+</div><div class="l">Residents</div></div>
+          <div class="scard"><div class="n">5 Yrs</div><div class="l">Of Trust</div></div>
+        </div>
+        <a href="#contact" class="btn-grad" style="width:fit-content">Get in Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENEFITS ══ -->
+<section id="benefits">
+  <div class="container">
+    <div class="ben-hdr rv">
+      <div class="sec-tag"><span>Why Choose Us</span></div>
+      <h2 class="sec-h2">Everything You <span>Need & More</span></h2>
+    </div>
+    <div class="ben-grid">
+      <div class="bcard bc1 rv"><span class="bcard-icon">🛋️</span><h3>Furnished Rooms</h3><p>Move in with just your bags. Beds, wardrobes, study tables all included.</p></div>
+      <div class="bcard bc2 rv d1"><span class="bcard-icon">⚡</span><h3>High-Speed WiFi</h3><p>200 Mbps fibre broadband. Stream, work, or game with zero buffering.</p></div>
+      <div class="bcard bc3 rv d2"><span class="bcard-icon">🍱</span><h3>Healthy Food</h3><p>Three home-cooked meals daily by our in-house chef. Always fresh.</p></div>
+      <div class="bcard bc4 rv d3"><span class="bcard-icon">🔒</span><h3>24/7 Security</h3><p>CCTV, biometric access, and on-site security staff round the clock.</p></div>
+      <div class="bcard bc5 rv d1"><span class="bcard-icon">🧺</span><h3>Laundry Service</h3><p>Washing machines, dryers, and professional ironing on request.</p></div>
+      <div class="bcard bc6 rv d2"><span class="bcard-icon">❄️</span><h3>Air Conditioning</h3><p>Individual AC units with precise control for ultimate sleep comfort.</p></div>
+      <div class="bcard bc7 rv d3"><span class="bcard-icon">🅿️</span><h3>Secure Parking</h3><p>Covered parking for bikes and cars with CCTV monitoring.</p></div>
+      <div class="bcard bc8 rv d4"><span class="bcard-icon">🏋️</span><h3>Common Lounge</h3><p>TV, indoor games, and a cozy reading corner to unwind after work.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section id="gallery">
+  <div class="container">
+    <div class="gal-hdr rv">
+      <div class="sec-tag"><span>Our Space</span></div>
+      <h2 class="sec-h2">Take a <span>Look Inside</span></h2>
+    </div>
+    <div class="gal-grid rv d1">
+
+      <div class="gcell gc1">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=85" alt="Premium Room">
+        <span class="gcell-label">Featured</span>
+        <div class="gcell-over">
+          <span class="gcell-tag">Rooms</span>
+          <h4>Premium Private Room</h4>
+          <p>Spacious, AC with luxury bedding</p>
+        </div>
+      </div>
+
+      <div class="gcell gc2">
+        <img src="https://content.jdmagicbox.com/v2/comp/bangalore/p6/080pxx80.xx80.240523020940.k4p6/catalogue/elite-premium-co-living-studio-rooms-pg-silver-springs-layout-bangalore-paying-guest-accommodations-cx6zp5n0e1-250.jpg" alt="Dining">
+        <div class="gcell-over">
+          <span class="gcell-tag">Dining</span>
+          <h4>Modern Dining Area</h4>
+          <p>3 meals freshly prepared daily</p>
+        </div>
+      </div>
+
+      <div class="gcell gc3">
+        <img src="https://www.reclinersindia.com/wp-content/uploads/2023/07/Perugia-Two-Seater-Recliner-with-Lounger-600x600.webp" alt="Lounge">
+        <div class="gcell-over">
+          <span class="gcell-tag">Lounge</span>
+          <h4>Relaxation Lounge</h4>
+          <p>Unwind in our cozy common area</p>
+        </div>
+      </div>
+
+      <div class="gcell gc4">
+        <img src="https://img.cofynd.com/images/original/d4dc46fefba7f045c0031cb375cc2957fb6a442d.jpg" alt="Study">
+        <div class="gcell-over">
+          <span class="gcell-tag">Work</span>
+          <h4>Co-Working Space</h4>
+          <p>High-speed WiFi throughout</p>
+        </div>
+      </div>
+
+      <div class="gcell gc5">
+        <img src="https://asset-cdn.stanzaliving.com/stanza-living/image/upload/f_auto,q_auto,w_600/e_improve/e_sharpen:10/e_saturation:10/f_auto,q_auto/v1657107863/Website/CMS-Uploads/ncyypbjpoietykqfilde.jpg" alt="Bathroom">
+        <div class="gcell-over">
+          <span class="gcell-tag">Bathroom</span>
+          <h4>Clean Modern Bathroom</h4>
+          <p>Hot water 24/7</p>
+        </div>
+      </div>
+
+      <div class="gcell gc6">
+        <img src="https://www.safehousepg.in/owner/uploads/blog06062021124726.jpg" alt="Gym">
+        <div class="gcell-over">
+          <span class="gcell-tag">Fitness</span>
+          <h4>Gym & Fitness</h4>
+          <p>Stay fit right at home</p>
+        </div>
+      </div>
+
+      <div class="gcell gc7">
+        <img src="https://asset-cdn.stanzaliving.com/stanza-living/image/upload/f_auto,q_auto,w_600/e_improve/e_sharpen:10/e_saturation:10/v1682425368/Website/CMS-Uploads/Hero_Image_oiaxli.jpg" alt="Common">
+        <div class="gcell-over">
+          <span class="gcell-tag">Common</span>
+          <h4>Furnished Common Area</h4>
+          <p>Connect with fellow residents</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="con-inner">
+      <!-- Left info -->
+      <div class="con-left rv">
+        <div class="sec-tag"><span>Get In Touch</span></div>
+        <h2 class="sec-h2">Book Your <span>Stay</span> <em>Today</em></h2>
+        <p class="con-desc">Fill the form and we'll reach out within 24 hours with room options and pricing tailored for you.</p>
+        <div class="con-infos">
+          <div class="cinfo">
+            <div class="cinfo-icon ci-p">📍</div>
+            <div class="cinfo-txt"><h5>Address</h5><p>123 Main Road, Nellore, AP — 524001</p></div>
+          </div>
+          <div class="cinfo">
+            <div class="cinfo-icon ci-a">📞</div>
+            <div class="cinfo-txt"><h5>Phone</h5><p>+91 98765 43210</p></div>
+          </div>
+          <div class="cinfo">
+            <div class="cinfo-icon ci-g">✉️</div>
+            <div class="cinfo-txt"><h5>Email</h5><p>hello@genspg.in</p></div>
+          </div>
+          <div class="cinfo">
+            <div class="cinfo-icon ci-b">🕐</div>
+            <div class="cinfo-txt"><h5>Office Hours</h5><p>9 AM – 8 PM Daily</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right form — 4 fields only -->
+      <div class="form-box rv d2">
+        <div class="fbox-hdr">
+          <h3>Reserve Your Room</h3>
+          <p>Quick enquiry — takes less than a minute</p>
+        </div>
+        <div class="fbox-body">
+          <form id="bookForm" onsubmit="handleForm(event)">
+            <div class="fg-row">
+              <div class="fg">
+                <label>Your Name</label>
+                <input type="text" placeholder="Ravi Kumar" required>
+              </div>
+              <div class="fg">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+            <div class="fg">
+              <label>Room Type</label>
+              <select required>
+                <option value="">Select a room type…</option>
+                <option>Single Occupancy</option>
+                <option>Double Sharing</option>
+                <option>Triple Sharing</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Message / Requirements</label>
+              <textarea placeholder="Move-in date, budget, any special requirements…"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">✉️ &nbsp; Send Enquiry Now</button>
+            <div class="success-msg" id="okMsg">✅ Thank you! We'll call you within 24 hours.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="fbrand">
+        <a href="#" class="logo">Gens<span style="-webkit-text-fill-color:var(--p3)">PG</span></a>
+        <p>Premium paying guest accommodation for men in Nellore. Comfort, safety, and community — all in one place.</p>
+        <div class="fsocials">
+          <a href="#" class="fsoc">f</a>
+          <a href="#" class="fsoc">in</a>
+          <a href="#" class="fsoc">𝕏</a>
+          <a href="#" class="fsoc">W</a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Contact Info</h4>
+        <div class="fci"><span class="fci-icon">📍</span><span>123 Main Road, Nellore, AP — 524001</span></div>
+        <div class="fci"><span class="fci-icon">📞</span><span>+91 98765 43210</span></div>
+        <div class="fci"><span class="fci-icon">✉️</span><span>hello@genspg.in</span></div>
+        <div class="fci"><span class="fci-icon">🕐</span><span>9 AM – 8 PM Daily</span></div>
+      </div>
+    </div>
+    <div class="fdiv"></div>
+    <div class="fbot">
+      <p>© 2025 <span>Gens PG</span>. All rights reserved. Crafted with ❤️ in Nellore.</p>
+      <p>Privacy Policy &nbsp;|&nbsp; Terms of Service</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('solid',scrollY>50));
+
+// Hamburger
+const ham=document.getElementById('ham'),mob=document.getElementById('mobNav');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':''});
+function closeM(){ham.classList.remove('open');mob.classList.remove('open');document.body.style.overflow=''}
+
+// Scroll reveal
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in')}})},{threshold:0.1});
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el));
+
+// Form
+function handleForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.btn-submit');
+  btn.textContent='Sending…';btn.disabled=true;
+  setTimeout(()=>{
+    e.target.reset();btn.textContent='✉️  Send Enquiry Now';btn.disabled=false;
+    const ok=document.getElementById('okMsg');
+    ok.style.display='block';setTimeout(()=>ok.style.display='none',5000);
+  },1300);
+}
+</script>
+</body>
+</html>
