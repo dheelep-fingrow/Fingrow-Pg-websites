@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Premium Paying Guest accommodation with luxury amenities, safety, and comfort. Book your dream stay today.">
+<title>Elysian Residences — Luxury PG Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #FAF7F2;
+  --warm-white: #FFFEFB;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #9B7B2E;
+  --charcoal: #1A1814;
+  --ink: #2D2A24;
+  --muted: #7A7060;
+  --border: rgba(201,168,76,0.25);
+  --shadow: 0 20px 60px rgba(26,24,20,0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 5%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+}
+nav.scrolled {
+  background: rgba(250,247,242,0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--warm-white);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+nav.scrolled .logo { color: var(--charcoal); }
+.logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+nav.scrolled .nav-links a { color: var(--muted); }
+nav.scrolled .nav-links a:hover { color: var(--charcoal); }
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--charcoal) !important;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2px;
+  font-weight: 500 !important;
+  transition: background 0.3s, transform 0.2s !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold-dark) !important; transform: translateY(-1px); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+nav.scrolled .hamburger span { background: var(--charcoal); }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--charcoal);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.mobile-menu.open { opacity: 1; pointer-events: all; display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(26,24,20,0.75) 0%, rgba(26,24,20,0.4) 60%, rgba(201,168,76,0.15) 100%),
+    url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=80') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 12s ease-out forwards;
+}
+@keyframes heroZoom { to { transform: scale(1); } }
+
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  padding-top: 72px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-tag::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: white;
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  max-width: 480px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s forwards;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.1s forwards;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--charcoal);
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+.btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+
+.hero-stats {
+  position: absolute;
+  bottom: 3rem;
+  right: 5%;
+  display: flex;
+  gap: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.3s forwards;
+}
+.stat { text-align: center; color: white; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.3rem;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.5s forwards;
+}
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  animation: scrollLine 2s 2s infinite;
+}
+@keyframes scrollLine { to { left: 100%; } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTIONS SHARED ─── */
+section { padding: 6rem 5%; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--gold-dark); }
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 520px;
+}
+.gold-divider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  margin: 1.5rem 0 2.5rem;
+}
+
+/* ─── FACILITIES ─── */
+#facilities { background: var(--charcoal); }
+#facilities .section-title { color: var(--cream); }
+#facilities .section-sub { color: rgba(250,247,242,0.5); }
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.12);
+  margin-top: 3.5rem;
+}
+.facility-card {
+  background: var(--charcoal);
+  padding: 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: background 0.3s;
+  cursor: default;
+}
+.facility-card:hover { background: rgba(201,168,76,0.06); }
+.facility-card:hover .fac-icon { transform: scale(1.08); color: var(--gold); }
+.fac-icon { font-size: 1.8rem; transition: transform 0.3s, color 0.3s; color: var(--gold-light); }
+.fac-name { font-size: 0.85rem; font-weight: 500; color: var(--cream); letter-spacing: 0.02em; }
+.fac-desc { font-size: 0.78rem; color: rgba(250,247,242,0.4); line-height: 1.6; }
+
+/* ─── ROOMS ─── */
+#rooms { background: var(--warm-white); }
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+.room-card {
+  background: var(--cream);
+  border: 1px solid rgba(201,168,76,0.15);
+  overflow: hidden;
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+.room-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+.room-img-wrap {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.room-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.room-card:hover .room-img-wrap img { transform: scale(1.06); }
+.room-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--gold);
+  color: var(--charcoal);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.8rem;
+}
+.room-body { padding: 1.8rem; }
+.room-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+}
+.room-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+.room-features { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.room-feature {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-dark);
+  background: rgba(201,168,76,0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 2px;
+}
+
+/* ─── PRICING ─── */
+#pricing { background: var(--cream); }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3.5rem;
+  align-items: start;
+}
+.price-card {
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: box-shadow 0.4s, transform 0.4s;
+  background: white;
+}
+.price-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+.price-card.featured {
+  background: var(--charcoal);
+  border-color: var(--gold);
+  transform: translateY(-8px);
+}
+.price-card.featured:hover { transform: translateY(-12px); }
+.popular-badge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--charcoal);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 1.2rem;
+}
+.price-type { font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 1rem; }
+.price-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.price-card.featured .price-amount { color: white; }
+.price-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: 0.5rem; }
+.price-amount span { font-size: 1rem; color: var(--muted); }
+.price-card.featured .price-amount span { color: rgba(255,255,255,0.4); }
+.price-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 2rem; }
+.price-card.featured .price-sub { color: rgba(255,255,255,0.4); }
+.price-divider { width: 100%; height: 1px; background: rgba(201,168,76,0.15); margin-bottom: 1.8rem; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
+.price-features li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.85rem; color: var(--muted); }
+.price-card.featured .price-features li { color: rgba(255,255,255,0.6); }
+.price-features li::before { content: '✓'; color: var(--gold); font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
+.price-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid rgba(201,168,76,0.4);
+  background: transparent;
+  color: var(--charcoal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.price-card.featured .price-btn { background: var(--gold); border-color: var(--gold); color: var(--charcoal); }
+.price-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--charcoal); }
+.price-card.featured .price-btn:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+
+/* ─── GALLERY ─── */
+#gallery { background: var(--warm-white); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 3.5rem;
+}
+.gallery-grid .g1 { grid-column: 1 / 3; grid-row: 1 / 3; }
+.gallery-grid .g5 { grid-column: 3 / 5; grid-row: 2 / 4; }
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  background: #e0d8cc;
+}
+.gallery-grid .g1,
+.gallery-grid .g5 { aspect-ratio: auto; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+  display: block;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,24,20,0.6) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-caption { font-size: 0.78rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-light); }
+
+/* ─── LIGHTBOX ─── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,24,20,0.97);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border: 1px solid rgba(201,168,76,0.2); }
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem; right: 2rem;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+  transition: color 0.3s;
+}
+.lightbox-close:hover { color: var(--gold); }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 1px solid rgba(201,168,76,0.3);
+  color: white;
+  width: 48px; height: 48px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, color 0.3s;
+}
+.lightbox-nav:hover { border-color: var(--gold); color: var(--gold); }
+.lb-prev { left: 1.5rem; }
+.lb-next { right: 1.5rem; }
+
+/* ─── BOOKING ─── */
+#booking { background: var(--charcoal); }
+#booking .section-title { color: var(--cream); }
+#booking .section-sub { color: rgba(250,247,242,0.5); }
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  margin-top: 3.5rem;
+  align-items: start;
+}
+.booking-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 2rem;
+}
+.contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-icon { font-size: 1.1rem; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.contact-text label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(250,247,242,0.35);
+  margin-bottom: 0.2rem;
+}
+.contact-text p { font-size: 0.9rem; color: rgba(250,247,242,0.75); line-height: 1.6; }
+
+.booking-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.5rem;
+}
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(250,247,242,0.4);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(250,247,242,0.05);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 0.85rem 1rem;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 100%;
+  border-radius: 0;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+.form-group select option { background: var(--charcoal); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-submit {
+  grid-column: 1 / -1;
+  background: var(--gold);
+  color: var(--charcoal);
+  border: none;
+  padding: 1rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+.form-submit:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #111009;
+  padding: 4rem 5% 2rem;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+.footer-brand .logo { font-size: 1.6rem; display: block; margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.85rem; color: rgba(250,247,242,0.4); line-height: 1.8; }
+.footer-col h4 {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-col ul li a { font-size: 0.85rem; color: rgba(250,247,242,0.4); text-decoration: none; transition: color 0.3s; }
+.footer-col ul li a:hover { color: var(--gold-light); }
+.social-row { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+.social-icon {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(250,247,242,0.4);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+.social-icon:hover { border-color: var(--gold); color: var(--gold); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,168,76,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-bottom p { font-size: 0.75rem; color: rgba(250,247,242,0.25); }
+
+/* ─── MAP ─── */
+.map-embed {
+  width: 100%;
+  height: 180px;
+  border: 1px solid rgba(201,168,76,0.15);
+  background: rgba(250,247,242,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.map-embed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(201,168,76,0.03) 0px, rgba(201,168,76,0.03) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(201,168,76,0.03) 0px, rgba(201,168,76,0.03) 1px, transparent 1px, transparent 40px);
+}
+.map-pin { font-size: 2rem; }
+.map-label { font-size: 0.75rem; color: rgba(250,247,242,0.3); text-align: center; margin-top: 0.4rem; }
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--charcoal);
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  z-index: 3000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s;
+}
+.toast.show { transform: none; opacity: 1; }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid .g1,
+  .gallery-grid .g5 { grid-column: auto; grid-row: auto; }
+  .gallery-item { aspect-ratio: 4/3; }
+  .booking-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 4rem 5%; }
+  .hero-stats { bottom: 1.5rem; right: 5%; gap: 1.5rem; }
+  .stat-num { font-size: 1.6rem; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .booking-form { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .price-card.featured { transform: none; }
+  .price-card.featured:hover { transform: translateY(-4px); }
+  .lb-prev { left: 0.5rem; }
+  .lb-next { right: 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-btns { gap: 0.8rem; }
+  .btn-primary, .btn-outline { padding: 0.8rem 1.5rem; font-size: 0.78rem; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .rooms-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+}
+</style>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="logo">Elysian <span>Residences</span></a>
+  <ul class="nav-links">
+    <li><a href="#facilities">Amenities</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#facilities" class="mobile-link">Amenities</a>
+  <a href="#rooms" class="mobile-link">Rooms</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#booking" class="mobile-link">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content container">
+    <div class="hero-tag">Premium Living · Since 2018</div>
+    <h1 class="hero-title">Experience <em>Luxury</em> Living Away From Home</h1>
+    <p class="hero-sub">Curated spaces where comfort meets elegance. Premium amenities, 24/7 security, and an unmatched community — your home deserves nothing less.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">✦ Book Now</a>
+      <a href="#rooms" class="btn-outline">View Rooms →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Residents</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Satisfaction</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Years of Trust</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll to Explore
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">World-Class Amenities</div>
+      <h2 class="section-title">Everything You <em>Need,</em><br>All in One Place</h2>
+      <p class="section-sub" style="color:rgba(250,247,242,0.5)">Every detail has been carefully curated to make your stay as comfortable and effortless as possible.</p>
+    </div>
+    <div class="facilities-grid reveal">
+      <div class="facility-card"><div class="fac-icon">📶</div><div class="fac-name">High-Speed WiFi</div><div class="fac-desc">Blazing fast fiber internet with dedicated bandwidth per room.</div></div>
+      <div class="facility-card"><div class="fac-icon">❄️</div><div class="fac-name">AC Rooms</div><div class="fac-desc">Modern split ACs with individual temperature control in every room.</div></div>
+      <div class="facility-card"><div class="fac-icon">🔐</div><div class="fac-name">24/7 Security</div><div class="fac-desc">Round-the-clock trained security personnel at all entry points.</div></div>
+      <div class="facility-card"><div class="fac-icon">📷</div><div class="fac-name">CCTV Surveillance</div><div class="fac-desc">Full HD cameras covering all common areas and corridors.</div></div>
+      <div class="facility-card"><div class="fac-icon">🧹</div><div class="fac-name">Housekeeping</div><div class="fac-desc">Daily room cleaning and linen change twice a week.</div></div>
+      <div class="facility-card"><div class="fac-icon">🧺</div><div class="fac-name">Laundry Service</div><div class="fac-desc">In-house laundry with 24-hour turnaround, complimentary weekly wash.</div></div>
+      <div class="facility-card"><div class="fac-icon">⚡</div><div class="fac-name">Power Backup</div><div class="fac-desc">Generator + UPS ensuring zero downtime for all power needs.</div></div>
+      <div class="facility-card"><div class="fac-icon">🅿️</div><div class="fac-name">Secure Parking</div><div class="fac-desc">Covered, CCTV-monitored parking for two-wheelers and four-wheelers.</div></div>
+      <div class="facility-card"><div class="fac-icon">🍽️</div><div class="fac-name">Meals Included</div><div class="fac-desc">Chef-crafted breakfast, lunch & dinner with multi-cuisine options.</div></div>
+      <div class="facility-card"><div class="fac-icon">🏋️</div><div class="fac-name">Fitness Area</div><div class="fac-desc">Compact gym with essential equipment for your wellness routine.</div></div>
+      <div class="facility-card"><div class="fac-icon">📚</div><div class="fac-name">Reading Lounge</div><div class="fac-desc">Quiet, air-conditioned study space open around the clock.</div></div>
+      <div class="facility-card"><div class="fac-icon">🌿</div><div class="fac-name">Terrace Garden</div><div class="fac-desc">Landscaped rooftop terrace for leisure and community events.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Bedroom Options</div>
+      <h2 class="section-title">Choose Your <em>Perfect</em> Space</h2>
+      <p class="section-sub">Thoughtfully designed rooms for every preference — from private retreats to cozy shared spaces.</p>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card reveal">
+        <div class="room-img-wrap">
+          <img src="https://images.unsplash.com/photo-1631049421450-348ccd7f8949?w=600&q=80" alt="Single Room" loading="lazy">
+          <div class="room-badge">Private</div>
+        </div>
+        <div class="room-body">
+          <h3 class="room-title">Single Sharing</h3>
+          <p class="room-desc">Your own private sanctuary. A fully furnished room with dedicated storage, personal AC, and undisturbed peace.</p>
+          <div class="room-features">
+            <span class="room-feature">King Bed</span>
+            <span class="room-feature">En-suite Bath</span>
+            <span class="room-feature">Study Desk</span>
+            <span class="room-feature">Wardrobe</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-img-wrap">
+          <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=80" alt="Double Room" loading="lazy">
+          <div class="room-badge">Popular</div>
+        </div>
+        <div class="room-body">
+          <h3 class="room-title">Double Sharing</h3>
+          <p class="room-desc">Share a generous, beautifully appointed room with one housemate. All the space and privacy you need, plus great company.</p>
+          <div class="room-features">
+            <span class="room-feature">2 Beds</span>
+            <span class="room-feature">Shared Bath</span>
+            <span class="room-feature">2 Desks</span>
+            <span class="room-feature">2 Wardrobes</span>
+          </div>
+        </div>
+      </div>
+      <div class="room-card reveal">
+        <div class="room-img-wrap">
+          <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=600&q=80" alt="Triple Room" loading="lazy">
+          <div class="room-badge">Value</div>
+        </div>
+        <div class="room-body">
+          <h3 class="room-title">Triple Sharing</h3>
+          <p class="room-desc">A spacious, thoughtfully divided room for three. Maximum value without compromising on comfort or personal space.</p>
+          <div class="room-features">
+            <span class="room-feature">3 Beds</span>
+            <span class="room-feature">2 Baths</span>
+            <span class="room-feature">Common Lounge</span>
+            <span class="room-feature">3 Wardrobes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title">Simple, <em>Honest</em> Plans</h2>
+      <p class="section-sub">No hidden charges. One monthly rent covers everything — meals, utilities, housekeeping, and all facilities.</p>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-type">Single Sharing</div>
+        <div class="price-amount"><sup>₹</sup>18,000<span>/mo</span></div>
+        <div class="price-sub">Private room, all inclusive</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Private furnished room</li>
+          <li>3 meals per day</li>
+          <li>All utilities included</li>
+          <li>Weekly laundry</li>
+          <li>Daily housekeeping</li>
+          <li>WiFi & AC</li>
+          <li>Gym access</li>
+        </ul>
+        <button class="price-btn" onclick="selectPlan('Single Sharing')">Book This Room</button>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-type">Double Sharing</div>
+        <div class="price-amount"><sup>₹</sup>12,500<span>/mo</span></div>
+        <div class="price-sub">Per person, all inclusive</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Shared furnished room</li>
+          <li>3 meals per day</li>
+          <li>All utilities included</li>
+          <li>Weekly laundry</li>
+          <li>Daily housekeeping</li>
+          <li>WiFi & AC</li>
+          <li>Gym + Terrace access</li>
+        </ul>
+        <button class="price-btn" onclick="selectPlan('Double Sharing')">Book This Room</button>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-type">Triple Sharing</div>
+        <div class="price-amount"><sup>₹</sup>9,000<span>/mo</span></div>
+        <div class="price-sub">Per person, all inclusive</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Spacious shared room</li>
+          <li>3 meals per day</li>
+          <li>All utilities included</li>
+          <li>Weekly laundry</li>
+          <li>Daily housekeeping</li>
+          <li>WiFi & AC</li>
+          <li>All common areas</li>
+        </ul>
+        <button class="price-btn" onclick="selectPlan('Triple Sharing')">Book This Room</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Visual Tour</div>
+      <h2 class="section-title">A Glimpse of <em>Elysian</em></h2>
+      <p class="section-sub">Every corner designed with intention. Click any image for a closer look.</p>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item g1" onclick="openLightbox(0)">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80" alt="Luxury Room">
+        <div class="gallery-overlay"><span class="gallery-caption">Master Suite</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600&q=80" alt="Dining">
+        <div class="gallery-overlay"><span class="gallery-caption">Dining Hall</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=600&q=80" alt="Building">
+        <div class="gallery-overlay"><span class="gallery-caption">Exterior</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80" alt="Lounge">
+        <div class="gallery-overlay"><span class="gallery-caption">Common Lounge</span></div>
+      </div>
+      <div class="gallery-item g5" onclick="openLightbox(4)">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Kitchen">
+        <div class="gallery-overlay"><span class="gallery-caption">Modern Kitchen</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Terrace">
+        <div class="gallery-overlay"><span class="gallery-caption">Rooftop Terrace</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <button class="lightbox-nav lb-prev" onclick="navLightbox(-1)">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lb-next" onclick="navLightbox(1)">›</button>
+</div>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Reserve Your Spot</div>
+      <h2 class="section-title">Ready to <em>Move In?</em></h2>
+      <p class="section-sub">Fill out the form below and our team will get back to you within 2 hours.</p>
+    </div>
+    <div class="booking-layout">
+      <div class="booking-info reveal">
+        <h3>We'd love to have you<br>as part of our family.</h3>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-text"><label>Address</label><p>42, Elysian Lane, Koramangala<br>Bengaluru, Karnataka 560034</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-text"><label>Phone</label><p>+91 98765 43210</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-text"><label>Email</label><p>hello@elysianresidences.in</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-text"><label>Office Hours</label><p>Mon–Sat: 9:00 AM – 8:00 PM<br>Sun: 10:00 AM – 4:00 PM</p></div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <div style="text-align:center">
+            <div class="map-pin">📍</div>
+            <div class="map-label">42, Elysian Lane<br>Koramangala, Bengaluru</div>
+          </div>
+        </div>
+      </div>
+      <form class="booking-form reveal" id="bookingForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label for="fname">Full Name</label>
+          <input type="text" id="fname" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="fphone">Phone Number</label>
+          <input type="tel" id="fphone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="you@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="froom">Room Type</label>
+          <select id="froom" name="room" required>
+            <option value="" disabled selected>Select sharing type</option>
+            <option value="single">Single Sharing — ₹18,000/mo</option>
+            <option value="double">Double Sharing — ₹12,500/mo</option>
+            <option value="triple">Triple Sharing — ₹9,000/mo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fdate">Move-In Date</label>
+          <input type="date" id="fdate" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="fduration">Duration</label>
+          <select id="fduration" name="duration">
+            <option value="1">1 Month</option>
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="12" selected>12 Months</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="fmsg">Message (Optional)</label>
+          <textarea id="fmsg" name="message" placeholder="Any special requirements or questions?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">✦ Submit Booking Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="logo">Elysian <span>Residences</span></a>
+      <p>Premium paying guest accommodation designed for professionals and students who refuse to compromise on quality of life.</p>
+      <div class="social-row">
+        <a href="#" class="social-icon" title="Instagram">📸</a>
+        <a href="#" class="social-icon" title="Facebook">👤</a>
+        <a href="#" class="social-icon" title="LinkedIn">💼</a>
+        <a href="#" class="social-icon" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#facilities">Amenities</a></li>
+        <li><a href="#rooms">Room Types</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#booking">Book a Room</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Room Types</h4>
+      <ul>
+        <li><a href="#rooms">Single Sharing</a></li>
+        <li><a href="#rooms">Double Sharing</a></li>
+        <li><a href="#rooms">Triple Sharing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">House Rules</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Elysian Residences. All rights reserved.</p>
+    <p>Crafted with care in Bengaluru, India 🇮🇳</p>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✦ Booking request submitted! We'll contact you within 2 hours.</div>
+
+<script>
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // SCROLL REVEAL
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i % 4) * 0.1 + 's';
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // LIGHTBOX
+  const galleryImages = [
+    { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=90' },
+    { src: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1200&q=90' },
+    { src: 'https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=1200&q=90' },
+    { src: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1200&q=90' },
+    { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=90' },
+    { src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=90' },
+  ];
+  let currentLightbox = 0;
+
+  function openLightbox(idx) {
+    currentLightbox = idx;
+    document.getElementById('lightboxImg').src = galleryImages[idx].src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function navLightbox(dir) {
+    currentLightbox = (currentLightbox + dir + galleryImages.length) % galleryImages.length;
+    document.getElementById('lightboxImg').src = galleryImages[currentLightbox].src;
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+
+  function selectPlan(plan) {
+    document.getElementById('froom').value =
+      plan === 'Single Sharing' ? 'single' :
+      plan === 'Double Sharing' ? 'double' : 'triple';
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    e.target.reset();
+  }
+
+  document.getElementById('fdate').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
